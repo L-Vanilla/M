@@ -17,17 +17,21 @@
       border
       style="width: 100%;">
       <el-table-column
-        prop="id"
-        label="编号">
+        type="index"
+        width="50">
       </el-table-column>
+<!--      <el-table-column-->
+<!--        prop="id"-->
+<!--        label="编号">-->
+<!--      </el-table-column>-->
       <el-table-column
         prop="title"
         label="新闻标题">
       </el-table-column>
-      <el-table-column
-        prop="content"
-        label="内容">
-      </el-table-column>
+<!--      <el-table-column-->
+<!--        prop="content"-->
+<!--        label="内容">-->
+<!--      </el-table-column>-->
         <el-table-column
         prop="clickNum"
         label="点击率">
@@ -35,6 +39,11 @@
       <el-table-column
         prop="createDate"
         label="发布时间">
+      </el-table-column>
+      <el-table-column label="查看内容">
+        <template slot-scope="scope">
+          <el-button @click="details(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-document">查看内容</el-button>
+        </template>
       </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
@@ -45,7 +54,7 @@
     </el-table>
     <el-pagination
       background
-      layout="prev, pager, next"
+      layout="prev, pager, next,total"
       :total="tableData.total"
       :current-page="this.queryParams.pageNo"
       :page-size="this.queryParams.pageSize"
@@ -56,6 +65,7 @@
 
 <script>
   import EditNews from '@/components/news/edit'
+  import DetailsNews from '@/components/news/details'
   export default {
     inject:['reload'],
     name:"news",
@@ -122,6 +132,19 @@
           },
           area:['800px','600px'],
           title: '修改新闻',
+          shadeClose: false,
+          shade :true
+        });
+      },
+      details(row){
+        this.$layer.iframe({
+          content: {
+            content: DetailsNews, //传递的组件对象
+            parent: this,//当前的vue对象
+            data:{id:row.id}//props
+          },
+          area:['800px','600px'],
+          title: '查看内容',
           shadeClose: false,
           shade :true
         });
