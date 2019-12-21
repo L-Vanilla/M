@@ -1,3 +1,4 @@
+<!--2019-12-21编辑新闻-->
 <template>
   <div style="margin-top: 15px;">
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
@@ -22,12 +23,14 @@
 </template>
 
 <script>
+  /*19-12-21引入富文本编译器包*/
   import {
     quillEditor
   } from 'vue-quill-editor'
   import 'quill/dist/quill.core.css'
   import 'quill/dist/quill.snow.css'
   import 'quill/dist/quill.bubble.css'
+  /*-----------------------------------*/
   export default {
       inject:['reload'],
       props:["id"],
@@ -62,7 +65,7 @@
     },
 
     components: {
-      quillEditor
+      quillEditor //注册
     },
     methods:{
         resetForm(formName){

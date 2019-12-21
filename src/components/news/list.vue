@@ -2,7 +2,7 @@
   <div>
     <div style="margin-top: 15px;margin-bottom: 10px">
       <el-row>
-        <el-col :span="2"><el-button style="background-color: #17B3A3;color: #fff" @click="add">添加</el-button></el-col>
+<!--        <el-col :span="2"><el-button style="background-color: #17B3A3;color: #fff" @click="add">添加</el-button></el-col>-->
         <el-col :span="22">
           <el-input placeholder="请输入新闻标题" v-model="search.title" class="input-with-select" style="width: 200px">
             <el-button slot="append" icon="el-icon-search" @click="findData"></el-button>

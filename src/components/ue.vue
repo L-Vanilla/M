@@ -1,3 +1,4 @@
+<!--富文本编译器组件-->
 <template>
   <div>
     <script id="editor" type="text/plain"></script>
