@@ -9,8 +9,6 @@
           </el-input>
         </el-col>
       </el-row>
-
-
     </div>
     <el-table
       :data="tableData.list"

@@ -8,13 +8,14 @@
         text-color="#fff"
         @select="handleSelect"
         style="height:100%;">
-        <el-submenu index="基本信息管理" style="background-color: #42485b">
+        <el-submenu index="新闻管理" style="background-color: #42485b">
           <template slot="title">
             <p style="color:#ffffff;font-size: 14px; ">
               <img src="../../assets/basic_msg.png" style="width: 16px;height: 16px"/>
-              &nbsp;&nbsp;基本信息管理</p>
+              &nbsp;&nbsp;新闻管理</p>
           </template>
-          <el-menu-item index="新闻管理" route="news">新闻管理</el-menu-item>
+          <el-menu-item index="发布新闻" route="newsAdd">发布新闻</el-menu-item>
+          <el-menu-item index="新闻列表" route="news">新闻管理</el-menu-item>
 <!--          <el-menu-item index="楼层管理" route="floor">楼层管理</el-menu-item>-->
 <!--          <el-menu-item index="商品类别管理" route="GoodsType">商品类别管理</el-menu-item>-->
 <!--          <el-menu-item index="商品管理" route="Goods">商品管理</el-menu-item>-->
