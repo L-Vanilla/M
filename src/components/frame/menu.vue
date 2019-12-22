@@ -15,11 +15,19 @@
               &nbsp;&nbsp;新闻管理</p>
           </template>
           <el-menu-item index="发布新闻" route="newsAdd">发布新闻</el-menu-item>
-          <el-menu-item index="新闻列表" route="news">新闻管理</el-menu-item>
-<!--          <el-menu-item index="楼层管理" route="floor">楼层管理</el-menu-item>-->
-<!--          <el-menu-item index="商品类别管理" route="GoodsType">商品类别管理</el-menu-item>-->
-<!--          <el-menu-item index="商品管理" route="Goods">商品管理</el-menu-item>-->
-<!--          <el-menu-item index="会员管理" route="leaguer">会员管理</el-menu-item>-->
+          <el-menu-item index="新闻列表" route="news">新闻列表</el-menu-item>
+        </el-submenu>
+        <el-submenu index="动态管理" style="background-color: #42485b">
+          <template slot="title">
+            <p style="color:#ffffff;font-size: 14px; ">
+              <img src="../../assets/basic_msg.png" style="width: 16px;height: 16px"/>
+              &nbsp;&nbsp;动态管理</p>
+          </template>
+          <el-menu-item index="发布动态" route="healthCareAdd">发布动态</el-menu-item>
+          <el-menu-item index="动态列表" route="healthCare">动态列表</el-menu-item>
+          <el-menu-item index="养生保健列表" route="careList">养生保健列表</el-menu-item>
+          <el-menu-item index="预防知识列表" route="preventionList">预防知识列表</el-menu-item>
+          <el-menu-item index="健康教育列表" route="educationList">健康教育列表</el-menu-item>
         </el-submenu>
 <!--        <el-submenu index="系统管理" style="background-color: #42485b" v-if="user.userPower==='0'">-->
 <!--          <template slot="title">-->

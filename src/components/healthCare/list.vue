@@ -4,7 +4,7 @@
       <el-row>
 <!--        <el-col :span="2"><el-button style="background-color: #17B3A3;color: #fff" @click="add">添加</el-button></el-col>-->
         <el-col :span="22">
-          <el-input placeholder="请输入新闻标题" v-model="search.title" class="input-with-select" style="width: 200px">
+          <el-input placeholder="请输入标题" v-model="search.title" class="input-with-select" style="width: 200px">
             <el-button slot="append" icon="el-icon-search" @click="findData"></el-button>
           </el-input>
         </el-col>
@@ -23,8 +23,12 @@
 <!--        label="编号">-->
 <!--      </el-table-column>-->
       <el-table-column
+        prop="hType"
+        label="动态类型">
+      </el-table-column>
+      <el-table-column
         prop="title"
-        label="新闻标题">
+        label="标题">
       </el-table-column>
 <!--      <el-table-column-->
 <!--        prop="content"-->
@@ -62,11 +66,11 @@
 </template>
 
 <script>
-  import EditNews from '@/components/news/edit'
-  import DetailsNews from '@/components/news/details'
+  import EditHealthCare from '@/components/healthCare/edit'
+  import DetailsHealthCare from '@/components/healthCare/details'
   export default {
     inject:['reload'],
-    name:"news",
+    name:"healthCare",
     data () {
       return {
         search:{
@@ -95,7 +99,7 @@
     methods:{
       getData(){
 
-        this.get("news/list",(data)=>{
+        this.get("healthCare/list",(data)=>{
           this.tableData=data;
           console.log(this.tableData);
         },this.queryParams);
@@ -111,7 +115,7 @@
       add(){
         this.$layer.iframe({
           content: {
-            content: EditNews, //传递的组件对象
+            content: EditHealthCare, //传递的组件对象
             parent: this,//当前的vue对象
             data:{}//props
           },
@@ -123,9 +127,8 @@
       },
       edit(row){
         this.$layer.iframe({
-          type:2,
           content: {
-            content: EditNews, //传递的组件对象
+            content: EditHealthCare, //传递的组件对象
             parent: this,//当前的vue对象
             data:{id:row.id}//props
           },
@@ -138,7 +141,7 @@
       details(row){
         this.$layer.iframe({
           content: {
-            content: DetailsNews, //传递的组件对象
+            content: DetailsHealthCare, //传递的组件对象
             parent: this,//当前的vue对象
             data:{id:row.id}//props
           },
@@ -149,7 +152,7 @@
         });
       },
       del(row){
-        this.delete("news/del",row.id,row.active);
+        this.delete("healthCare/del",row.id,row.active);
       },
       deltext(active){
         return active==1?"删除":"恢复"
