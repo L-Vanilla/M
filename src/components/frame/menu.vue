@@ -37,6 +37,14 @@
           </template>
           <el-menu-item index="公告列表" route="notice">公告列表</el-menu-item>
         </el-submenu>
+        <el-submenu index="用户管理" style="background-color: #42485b">
+          <template slot="title">
+            <p style="color:#ffffff;font-size: 14px; ">
+              <img src="../../assets/basic_msg.png" style="width: 16px;height: 16px"/>
+              &nbsp;&nbsp;用户管理</p>
+          </template>
+          <el-menu-item index="用户列表" route="admin">用户列表</el-menu-item>
+        </el-submenu>
 <!--        <el-submenu index="系统管理" style="background-color: #42485b" v-if="user.userPower==='0'">-->
 <!--          <template slot="title">-->
 <!--            <p style="color:#ffffff;font-size: 14px; ">-->

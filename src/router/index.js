@@ -10,6 +10,7 @@ import CareList from '@/components/healthCare/careList'//养生保健列表
 import PreventionList from '@/components/healthCare/preventionList'//预防知识列表
 import EducationList from '@/components/healthCare/educationList'//健康教育列表
 import Notice from '@/components/notice/list'//公告列表
+import Admin from '@/components/admin/list'//管理员列表
 
 
 
@@ -63,6 +64,10 @@ const router = new Router({
           path:'/notice',
           name:'notice',
           component:Notice
+        },{
+          path:'/admin',
+          name:'admin',
+          component:Admin
         },
 
       ]
