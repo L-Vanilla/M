@@ -11,6 +11,7 @@ import PreventionList from '@/components/healthCare/preventionList'//预防知�
 import EducationList from '@/components/healthCare/educationList'//健康教育列表
 import Notice from '@/components/notice/list'//公告列表
 import Admin from '@/components/admin/list'//管理员列表
+import Worker from '@/components/worker/list'//社区工作人员列表
 
 
 
@@ -68,6 +69,10 @@ const router = new Router({
           path:'/admin',
           name:'admin',
           component:Admin
+        },{
+          path:'/worker',
+          name:'worker',
+          component:Worker
         },
 
       ]
