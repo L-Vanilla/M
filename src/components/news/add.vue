@@ -128,7 +128,7 @@
     },
 
     components: {
-      quillEditor
+
     },
     methods:{
       resetForm(formName){

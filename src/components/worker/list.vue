@@ -14,7 +14,7 @@
     <el-table
       :data="tableData.list"
       border
-      style="width: 100%;">
+      style="width: 150%;">
       <el-table-column
         type="index"
         width="50">
@@ -24,9 +24,16 @@
 <!--        label="编号">-->
 <!--      </el-table-column>-->
       <el-table-column
+        label="图片" style="width: 200%;height: 150%">
+        <template slot-scope="scope">
+          <img :src="baseurl+scope.row.workerPhotourl" alt="" style="width: 100%;height: 120px"/>
+        </template>
+      </el-table-column>
+      <el-table-column
         prop="workerName"
         label="姓名">
       </el-table-column>
+
       <el-table-column
         prop="workerSex"
         label="性别"
@@ -56,6 +63,7 @@
         prop="remarks"
         label="备注">
       </el-table-column>
+
       <el-table-column
         prop="createDate"
         label="添加时间">
@@ -92,6 +100,7 @@
     data () {
 
       return {
+        baseurl:"./static/imgurl/",
         search:{
           name:""
         },

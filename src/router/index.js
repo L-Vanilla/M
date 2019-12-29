@@ -12,6 +12,7 @@ import EducationList from '@/components/healthCare/educationList'//健康教育�
 import Notice from '@/components/notice/list'//公告列表
 import Admin from '@/components/admin/list'//管理员列表
 import Worker from '@/components/worker/list'//社区工作人员列表
+import Img from '@/components/worker/img'//社区工作人员列表
 
 
 
@@ -73,6 +74,10 @@ const router = new Router({
           path:'/worker',
           name:'worker',
           component:Worker
+        },{
+          path:'/img',
+          name:'img',
+          component:Img
         },
 
       ]

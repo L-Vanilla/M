@@ -51,6 +51,7 @@
               <img src="../../assets/basic_msg.png" style="width: 16px;height: 16px"/>
               &nbsp;&nbsp;社区人员管理</p>
           </template>
+          <el-menu-item index="社区人员列表" route="img">社区人员列表</el-menu-item>
           <el-menu-item index="社区人员列表" route="worker">社区人员列表</el-menu-item>
         </el-submenu>
 <!--        <el-submenu index="系统管理" style="background-color: #42485b" v-if="user.userPower==='0'">-->
