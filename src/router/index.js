@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from '@/components/index'
+import AdminIndex from '@/components/adminIndex'
 // import Login from '@/components/login'
 import News from '@/components/news/list'//新闻列表
 import NewsAdd from '@/components/news/add'//发表新闻
@@ -13,6 +13,7 @@ import Notice from '@/components/notice/list'//公告列表
 import Admin from '@/components/admin/list'//管理员列表
 import Worker from '@/components/worker/list'//社区工作人员列表
 import Img from '@/components/worker/img'//社区工作人员列表
+import AdminLogin from '@/components/adminLogin'//社区工作人员列表
 
 
 
@@ -21,15 +22,15 @@ Vue.use(Router);
 const router = new Router({
   mode:'history',
   routes: [
-    // {
-    //   path:'/',
-    //   name:'login',
-    //   component:Login,
-    // },
     {
       path:'/',
-      name:'index',
-      component:Index,
+      name:'adminLogin',
+      component:AdminLogin,
+    },
+    {
+      path:'/adminIndex',
+      name:'adminIndex',
+      component:AdminIndex,
       children:[
         {
           path:'/news',

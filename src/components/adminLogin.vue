@@ -10,19 +10,19 @@
         </div>
       </div>
       <div class="form__content">
-        <h1>酒店管理系统</h1>
+        <h1>老人健康管理与跟踪系统后台登录</h1>
         <div class="styled-input">
-          <input type="text" class="styled-input__input" v-model="loginForm.userName" placeholder="请输入账号" required></input>
+          <input type="text" class="styled-input__input" v-model="loginForm.name" placeholder="请输入账号" required></input>
           <!--<div class="styled-input__placeholder"> <span class="styled-input__placeholder-text">Username</span> </div>-->
           <!--<div class="styled-input__circle"></div>-->
         </div>
         <div class="styled-input">
-          <input type="password" class="styled-input__input" v-model="loginForm.userPwd" placeholder="请输入密码" required/>
+          <input type="password" class="styled-input__input" v-model="loginForm.password" placeholder="请输入密码" required/>
           <!--<div class="styled-input__placeholder"> <span class="styled-input__placeholder-text">Password</span> </div>-->
           <!--<div class="styled-input__circle"></div>-->
         </div>
-        <button type="button" class="styled-button" @click="login()"> <span class="styled-button__real-text-holder"> <span class="styled-button__real-text">登录</span> <span class="styled-button__moving-block face"> <span class="styled-button__text-holder"> <span class="styled-button__text">登录</span> </span> </span><span class="styled-button__moving-block back"> <span class="styled-button__text-holder"> <span class="styled-button__text">登录</span> </span> </span> </span> </button>
-        <h5 style="color: #714cab;">开发人员：阿伊莎、杨美琪、刘香草、张银萍、苏林、罗丹峰</h5>
+        <button type="button" class="styled-button" @click="adminLogin()"> <span class="styled-button__real-text-holder"> <span class="styled-button__real-text">登录</span> <span class="styled-button__moving-block face"> <span class="styled-button__text-holder"> <span class="styled-button__text">登录</span> </span> </span><span class="styled-button__moving-block back"> <span class="styled-button__text-holder"> <span class="styled-button__text">登录</span> </span> </span> </span> </button>
+        <h5 style="color: #714cab;">开发人员：刘香草</h5>
       </div>
     </form>
   </div>
@@ -34,16 +34,16 @@
     data() {
       return {
         loginForm: {
-          userName: '',
-          userPwd: ''
+          name: '',
+          password: ''
         },
-        user: {},
+        admin: {},
         rules: {
-          userName: [
+          name: [
             { required: true, message: '请输入用户名称', trigger: 'blur' },
             { min: 1, max: 20, message: '长度在 1 到 20 个字符', trigger: 'blur' }
           ],
-          userPwd: [
+          password: [
             { required: true, message: '请输入密码', trigger: 'blur' }
           ]
         }
@@ -52,27 +52,28 @@
 
     methods: {
       ...mapMutations(['changeLogin']),
-      login() {
-        if (this.loginForm.userName === '' || this.loginForm.userPwd === '') {
+      adminLogin() {
+        if (this.loginForm.name === '' || this.loginForm.password === '') {
           alert('账号或密码不能为空');
         } else {
           console.log(this.loginForm);
           var params = new URLSearchParams();
-          params.append('userName', this.loginForm.userName);
-          params.append('userPwd', this.loginForm.userPwd);
+          params.append('name', this.loginForm.name);
+          params.append('password', this.loginForm.password);
           this.axios({
             method: 'post',
-            url: '/user/login',
+            url: '/admin/login',
             data: params
           }).then(res => {
-            this.user = res.data;
+            this.admin = res.data;
             // console.log(res.data);
-            if (res.data.userName === this.loginForm.userName) {
+            if (res.data.name === this.loginForm.name) {
               // console.log(res.data);
-              this.$router.push('/index');
-              localStorage.setItem('user', JSON.stringify(res.data));
+              this.$router.push('/adminIndex');
+              localStorage.setItem('admin', JSON.stringify(res.data));
               localStorage.setItem('islogin', '1');
               alert('登陆成功');
+
             } else {
               alert('账号不存在');
             }

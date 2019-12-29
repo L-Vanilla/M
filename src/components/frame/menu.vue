@@ -108,7 +108,6 @@
 
 <script>
   import store from '@/vuex/store'
-
   import {mapMutations} from 'vuex'
   export default {
     name:'mymenu',

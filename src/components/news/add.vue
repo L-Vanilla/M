@@ -70,7 +70,7 @@
 </template>
 
 <script>
-  /*19-12-21导入富文本包*/
+  // /*19-12-21导入富文本包*/
   import {
     quillEditor
   } from 'vue-quill-editor'
@@ -128,7 +128,7 @@
     },
 
     components: {
-
+      quillEditor
     },
     methods:{
       resetForm(formName){
