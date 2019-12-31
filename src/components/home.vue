@@ -1,0 +1,67 @@
+<template>
+  <el-container class="wrap">
+    <el-header></el-header>
+    <!--<div style="width: 100%;height: 50px;background-color:black"></div>-->
+    <div style="width: 100%;height: 50px"></div>
+    <Menu1></Menu1>
+    <el-container style="margin-top: 10px" >
+      <el-aside style="margin-left:15%"  ></el-aside>
+      <el-main style="margin-right:15%">
+        <MyBreadcrumb1 style="margin-bottom:20px;"></MyBreadcrumb1>
+        <router-view></router-view>
+      </el-main>
+    </el-container>
+  </el-container>
+</template>
+
+<script>
+  import Menu1 from '@/components/home_frame/menu_home'
+  import MyBreadcrumb1 from '@/components/frame/myBreadcrumb'
+    export default {
+        name: "home",
+      components: {
+        Menu1,
+        MyBreadcrumb1
+      },
+    }
+</script>
+
+<style>
+ /*@keyframes in {
+    from{transform: translateY(-30px);opacity: 0;}
+    to{transform: translateY(0px);opacity: 1;}
+  }
+  @-webkit-keyframes in{
+    from{transform: translateY(-30px);opacity: 0;}
+    to{transform: translateY(0px);opacity: 1;}
+  }*/
+  .wrap{
+    height:100%;
+    display: flex;
+    flex: 1;
+    flex-direction:column;
+    background-color: #f0efcd;
+  }
+  .el-header, .el-footer {
+    background-color: #585b56;
+    color: #333333;
+    text-align: center;
+    line-height: 60px;
+  }
+
+  .el-aside {
+    background-color: #e8ebbf;
+    color: #333;
+    text-align: center;
+    line-height: 200px;
+  }
+
+
+  body > .el-container {
+    margin-bottom: 40px;
+  }
+  .content{
+    flex: 1;
+  }
+
+</style>

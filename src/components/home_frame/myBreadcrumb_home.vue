@@ -10,7 +10,7 @@
     import store from '@/vuex/store'
     import {mapState} from 'vuex'
     export default {
-        name:'myBreadcrumb',
+        name:'myBreadcrumb_home',
         computed:{
             ...mapState(['arrmenu'])
         },

@@ -1,16 +1,32 @@
-<!--19-12-22公告列表-->
 <template>
   <div>
     <div style="margin-top: 15px;margin-bottom: 10px">
       <el-row>
-        <el-col :span="2"><el-button style="background-color: #17B3A3;color: #fff" @click="add">添加</el-button></el-col>
+        <!--        <el-col :span="2"><el-button style="background-color: #17B3A3;color: #fff" @click="add">添加</el-button></el-col>-->
         <el-col :span="22">
-          <el-input placeholder="请输入姓名" v-model="search.name" class="input-with-select" style="width: 200px">
+          <el-input placeholder="请输入新闻标题" v-model="search.title" class="input-with-select" style="width: 200px">
             <el-button slot="append" icon="el-icon-search" @click="findData"></el-button>
           </el-input>
         </el-col>
       </el-row>
     </div>
+
+    <div style="margin-left: 5%;width: 80%" v-for="item in news" >
+      <div class="left">
+        <el-link href="https://element.eleme.io" target="_blank" v-model="item.title">{{item.title}}</el-link>
+      </div>
+      <div class="right">
+        {{item.createDate}}
+      </div>
+      <div class="center">
+        {{item.clickNum}}
+      </div>
+       <!-- <el-row style="width: 100%">
+
+
+        </el-row>-->
+    </div>
+
     <el-table
       :data="tableData.list"
       border
@@ -19,40 +35,31 @@
         type="index"
         width="50">
       </el-table-column>
-<!--      <el-table-column-->
-<!--        prop="id"-->
-<!--        label="编号">-->
-<!--      </el-table-column>-->
+      <!--      <el-table-column-->
+      <!--        prop="id"-->
+      <!--        label="编号">-->
+      <!--      </el-table-column>-->
       <el-table-column
-        prop="name"
-        label="姓名">
+        prop="title"
+        label="新闻标题">
       </el-table-column>
+      <!--      <el-table-column-->
+      <!--        prop="content"-->
+      <!--        label="内容">-->
+      <!--      </el-table-column>-->
       <el-table-column
-        prop="sex"
-        label="性别"
-        :formatter="sexformat">
-      </el-table-column>
-      <el-table-column
-        prop="phone"
-        label="手机">
-      </el-table-column>
-      <el-table-column
-        prop="idCard"
-        label="身份证">
-      </el-table-column>
-        <el-table-column
-        prop="remarks"
-        label="备注">
+        prop="clickNum"
+        label="点击率">
       </el-table-column>
       <el-table-column
         prop="createDate"
-        label="添加时间">
+        label="发布时间">
       </el-table-column>
-<!--      <el-table-column label="查看内容">-->
-<!--        <template slot-scope="scope">-->
-<!--          <el-button @click="details(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-document">查看内容</el-button>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
+      <el-table-column label="查看内容">
+        <template slot-scope="scope">
+          <el-button @click="details(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-document">查看内容</el-button>
+        </template>
+      </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button @click="edit(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-edit">修改</el-button>
@@ -72,23 +79,23 @@
 </template>
 
 <script>
-  import EditAdmin from '@/components/admin/edit'
-  // import DetailsAdmin from '@/components/admin/details'
+  import EditNews from '@/components/news/edit'
+  import DetailsNews from '@/components/news/details'
   export default {
     inject:['reload'],
-    name:"admin",
+    name:"news",
     data () {
-
       return {
         search:{
-          name:""
+          title:""
         },
         queryParams:{
           pageNo:1,
           pageSize:10,
-          name:""
+          title:""
         },
-        tableData:{}
+        tableData:{},
+        news:[]
       }
     },
     created(){
@@ -105,14 +112,14 @@
     mounted(){},
     methods:{
       getData(){
-        this.get("admin/list",(data)=>{
+
+        this.get("news/list",(data)=>{
           this.tableData=data;
+          this.news=data.list;
           console.log(this.tableData);
         },this.queryParams);
       },
-      sexformat(row, column, cellValue, index){
-        return cellValue==1?"女":"男";
-      },
+
       changePageNo(i){
         this.queryParams.pageNo=i;
       },
@@ -123,12 +130,12 @@
       add(){
         this.$layer.iframe({
           content: {
-            content: EditAdmin, //传递的组件对象
+            content: EditNews, //传递的组件对象
             parent: this,//当前的vue对象
             data:{}//props
           },
           area:['800px','600px'],
-          title: '添加公告',
+          title: '添加新闻',
           shadeClose: false,
           shade :true
         });
@@ -137,31 +144,31 @@
         this.$layer.iframe({
           type:2,
           content: {
-            content: EditAdmin, //传递的组件对象
+            content: EditNews, //传递的组件对象
             parent: this,//当前的vue对象
             data:{id:row.id}//props
           },
           area:['800px','600px'],
-          title: '修改公告',
+          title: '修改新闻',
           shadeClose: false,
           shade :true
         });
       },
-      // details(row){
-      //   this.$layer.iframe({
-      //     content: {
-      //       content: DetailsAdmin, //传递的组件对象
-      //       parent: this,//当前的vue对象
-      //       data:{id:row.id}//props
-      //     },
-      //     area:['800px','600px'],
-      //     title: '查看内容',
-      //     shadeClose: false,
-      //     shade :true
-      //   });
-      // },
+      details(row){
+        this.$layer.iframe({
+          content: {
+            content: DetailsNews, //传递的组件对象
+            parent: this,//当前的vue对象
+            data:{id:row.id}//props
+          },
+          area:['800px','600px'],
+          title: '查看内容',
+          shadeClose: false,
+          shade :true
+        });
+      },
       del(row){
-        this.delete("admin/del",row.id,row.active);
+        this.delete("news/del",row.id,row.active);
       },
       deltext(active){
         return active==1?"删除":"恢复"
@@ -182,4 +189,7 @@
     background-color: #17B3A3;
     color: #FFF;
   }
+  .left {  float: left;  width: 40%;   }
+  .center { margin-left: 50%;  margin-right: 20%;  }
+  .right {  float: right;  width: 30%;    }
 </style>
