@@ -11,7 +11,7 @@
       </el-row>
     </div>
 
-    <div style="margin-left: 5%;width: 80%" v-for="item in news" >
+  <!--  <div style="margin-left: 5%;width: 80%" v-for="item in news" >
       <div class="left">
         <el-link href="https://element.eleme.io" target="_blank" v-model="item.title">{{item.title}}</el-link>
       </div>
@@ -21,60 +21,36 @@
       <div class="center">
         {{item.clickNum}}
       </div>
-       <!-- <el-row style="width: 100%">
+       &lt;!&ndash; <el-row style="width: 100%">
 
 
-        </el-row>-->
-    </div>
-
+        </el-row>&ndash;&gt;
+    </div>-->
     <el-table
       :data="tableData.list"
-      border
-      style="width: 100%;">
+      style="width: 100%">
       <el-table-column
-        type="index"
-        width="50">
+        label="站内新闻"
+        width="480px"
+      style="float: left">
+        <template slot-scope="scope">
+          <span @click="seeDetails(scope.row)" class="mr15">{{scope.row.title}}</span>
+<!--          <router-link to="/newsList">{{scope.row.title}}</router-link>-->
+        </template>
+
       </el-table-column>
-      <!--      <el-table-column-->
-      <!--        prop="id"-->
-      <!--        label="编号">-->
-      <!--      </el-table-column>-->
-      <el-table-column
-        prop="title"
-        label="新闻标题">
-      </el-table-column>
-      <!--      <el-table-column-->
-      <!--        prop="content"-->
-      <!--        label="内容">-->
-      <!--      </el-table-column>-->
-      <el-table-column
+     <!-- <el-table-column
         prop="clickNum"
-        label="点击率">
-      </el-table-column>
+        label="点击率"
+        width="100"
+        style="float: right">
+      </el-table-column>-->
       <el-table-column
         prop="createDate"
-        label="发布时间">
-      </el-table-column>
-      <el-table-column label="查看内容">
-        <template slot-scope="scope">
-          <el-button @click="details(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-document">查看内容</el-button>
-        </template>
-      </el-table-column>
-      <el-table-column label="操作">
-        <template slot-scope="scope">
-          <el-button @click="edit(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-edit">修改</el-button>
-          <el-button type="text" size="small" style="color:red" @click="del(scope.row)"  icon="el-icon-delete">{{deltext(scope.row.active)}}</el-button>
-        </template>
+        label=""
+      style="margin-right: 10px;width: 100px">
       </el-table-column>
     </el-table>
-    <el-pagination
-      background
-      layout="prev, pager, next,total"
-      :total="tableData.total"
-      :current-page="this.queryParams.pageNo"
-      :page-size="this.queryParams.pageSize"
-      @current-change="changePageNo">
-    </el-pagination>
   </div>
 </template>
 
@@ -127,45 +103,8 @@
         this.queryParams.pageNo=1;
         this.merge(this.search,this.queryParams);
       },
-      add(){
-        this.$layer.iframe({
-          content: {
-            content: EditNews, //传递的组件对象
-            parent: this,//当前的vue对象
-            data:{}//props
-          },
-          area:['800px','600px'],
-          title: '添加新闻',
-          shadeClose: false,
-          shade :true
-        });
-      },
-      edit(row){
-        this.$layer.iframe({
-          type:2,
-          content: {
-            content: EditNews, //传递的组件对象
-            parent: this,//当前的vue对象
-            data:{id:row.id}//props
-          },
-          area:['800px','600px'],
-          title: '修改新闻',
-          shadeClose: false,
-          shade :true
-        });
-      },
-      details(row){
-        this.$layer.iframe({
-          content: {
-            content: DetailsNews, //传递的组件对象
-            parent: this,//当前的vue对象
-            data:{id:row.id}//props
-          },
-          area:['800px','600px'],
-          title: '查看内容',
-          shadeClose: false,
-          shade :true
-        });
+      seeDetails(row){
+        this.$router.push("/newsDetails/" + row.id);
       },
       del(row){
         this.delete("news/del",row.id,row.active);
@@ -179,17 +118,23 @@
 
 <style>
   .el-table .cell {
-    text-align: center;
+    height: 19px;
+  }
+  .el-date-table__row tr{
+    height: 10px;
   }
   .el-table__header th, .el-table__header tr {
-    background-color: #17B3A3;
+    background-color: #FFF;
     color: black;
   }
   .el-pagination.is-background .el-pager li:not(.disabled).active {
     background-color: #17B3A3;
     color: #FFF;
   }
-  .left {  float: left;  width: 40%;   }
-  .center { margin-left: 50%;  margin-right: 20%;  }
-  .right {  float: right;  width: 30%;    }
+  .el-table_1_column_2 td{
+    text-align: right;
+  }
+  /*.left {  float: left;  width: 40%;   }*/
+  /*.center { margin-left: 50%;  margin-right: 20%;  }*/
+  /*.right {  float: right;  width: 30%;    }*/
 </style>
