@@ -18,7 +18,7 @@
   export default {
     inject:['reload'],
     data () {
-      name:"newsDetails.vue"
+      name:"healthCareDetails.vue"
       return {
         ruleForm:{
           id:"",
@@ -30,7 +30,7 @@
     created: function() {
       this.ruleForm.id = this.$route.params.id;
       if(this.ruleForm.id){
-        this.get("news/getOne",(data)=>{
+        this.get("healthCare/getOne",(data)=>{
           this.ruleForm=data;
           console.log(this.ruleForm);
         },{id:this.ruleForm.id});
@@ -41,7 +41,9 @@
 
     },
     methods:{
-
+      goBack() {
+        console.log('go back');
+      }
 
     }
   }

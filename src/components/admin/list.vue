@@ -5,7 +5,7 @@
       <el-row>
         <el-col :span="2"><el-button style="background-color: #17B3A3;color: #fff" @click="add">添加</el-button></el-col>
         <el-col :span="22">
-          <el-input placeholder="请输入标题" v-model="search.title" class="input-with-select" style="width: 200px">
+          <el-input placeholder="请输入姓名" v-model="search.name" class="input-with-select" style="width: 200px">
             <el-button slot="append" icon="el-icon-search" @click="findData"></el-button>
           </el-input>
         </el-col>
@@ -19,27 +19,40 @@
         type="index"
         width="50">
       </el-table-column>
-      <!--      <el-table-column-->
-      <!--        prop="id"-->
-      <!--        label="编号">-->
-      <!--      </el-table-column>-->
+<!--      <el-table-column-->
+<!--        prop="id"-->
+<!--        label="编号">-->
+<!--      </el-table-column>-->
       <el-table-column
-        prop="title"
-        label="新闻标题">
+        prop="name"
+        label="姓名">
       </el-table-column>
-      <!--      <el-table-column-->
-      <!--        prop="content"-->
-      <!--        label="内容">-->
-      <!--      </el-table-column>-->
+      <el-table-column
+        prop="sex"
+        label="性别"
+        :formatter="sexformat">
+      </el-table-column>
+      <el-table-column
+        prop="phone"
+        label="手机">
+      </el-table-column>
+      <el-table-column
+        prop="idCard"
+        label="身份证">
+      </el-table-column>
+        <el-table-column
+        prop="remarks"
+        label="备注">
+      </el-table-column>
       <el-table-column
         prop="createDate"
-        label="发布时间">
+        label="添加时间">
       </el-table-column>
-      <el-table-column label="查看内容">
-        <template slot-scope="scope">
-          <el-button @click="details(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-document">查看内容</el-button>
-        </template>
-      </el-table-column>
+<!--      <el-table-column label="查看内容">-->
+<!--        <template slot-scope="scope">-->
+<!--          <el-button @click="details(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-document">查看内容</el-button>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button @click="edit(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-edit">修改</el-button>
@@ -59,20 +72,21 @@
 </template>
 
 <script>
-  import EditNotice from '@/components/notice/edit'
-  import DetailsNotice from '@/components/notice/details'
+  import EditAdmin from '@/components/admin/edit'
+  // import DetailsAdmin from '@/components/admin/details'
   export default {
     inject:['reload'],
-    name:"notice",
+    name:"admin",
     data () {
+
       return {
         search:{
-          title:""
+          name:""
         },
         queryParams:{
           pageNo:1,
           pageSize:10,
-          title:""
+          name:""
         },
         tableData:{}
       }
@@ -91,12 +105,14 @@
     mounted(){},
     methods:{
       getData(){
-        this.get("notice/list",(data)=>{
+        this.get("admin/list",(data)=>{
           this.tableData=data;
           console.log(this.tableData);
         },this.queryParams);
       },
-
+      sexformat(row, column, cellValue, index){
+        return cellValue==1?"女":"男";
+      },
       changePageNo(i){
         this.queryParams.pageNo=i;
       },
@@ -107,7 +123,7 @@
       add(){
         this.$layer.iframe({
           content: {
-            content: EditNotice, //传递的组件对象
+            content: EditAdmin, //传递的组件对象
             parent: this,//当前的vue对象
             data:{}//props
           },
@@ -121,7 +137,7 @@
         this.$layer.iframe({
           type:2,
           content: {
-            content: EditNotice, //传递的组件对象
+            content: EditAdmin, //传递的组件对象
             parent: this,//当前的vue对象
             data:{id:row.id}//props
           },
@@ -131,21 +147,21 @@
           shade :true
         });
       },
-      details(row){
-        this.$layer.iframe({
-          content: {
-            content: DetailsNotice, //传递的组件对象
-            parent: this,//当前的vue对象
-            data:{id:row.id}//props
-          },
-          area:['800px','600px'],
-          title: '查看内容',
-          shadeClose: false,
-          shade :true
-        });
-      },
+      // details(row){
+      //   this.$layer.iframe({
+      //     content: {
+      //       content: DetailsAdmin, //传递的组件对象
+      //       parent: this,//当前的vue对象
+      //       data:{id:row.id}//props
+      //     },
+      //     area:['800px','600px'],
+      //     title: '查看内容',
+      //     shadeClose: false,
+      //     shade :true
+      //   });
+      // },
       del(row){
-        this.delete("notice/del",row.id,row.active);
+        this.delete("admin/del",row.id,row.active);
       },
       deltext(active){
         return active==1?"删除":"恢复"

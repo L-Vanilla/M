@@ -1,3 +1,4 @@
+<!--门户网站导航-->
 <template>
   <el-row  class="tac  firstmenu" style="height:10%;" >
     <el-col style="height:10%;width:80%;margin-left: 10%">
@@ -11,10 +12,17 @@
         active-text-color="#585b56">
 <!--        <el-menu-item index="1">首页</el-menu-item>-->
         <el-menu-item index="站内新闻" route="1">
-          <router-link to="/newsList">站内新闻</router-link><br></el-menu-item>
-        <el-menu-item index="健康教育" route="ss">健康教育</el-menu-item>
-        <el-menu-item index="养生保健">养生保健</el-menu-item>
-        <el-menu-item index="1">预防知识</el-menu-item>
+          <router-link to="/newsList">站内新闻</router-link><br>
+        </el-menu-item>
+        <el-menu-item index="健康教育" route="ss">
+          <router-link to="/education_List">健康教育</router-link><br>
+        </el-menu-item>
+        <el-menu-item index="养生保健">
+          <router-link to="/care_List">养生保健</router-link><br>
+        </el-menu-item>
+        <el-menu-item index="预防知识">
+          <router-link to="/prevention_List">预防知识</router-link><br>
+        </el-menu-item>
         <el-submenu index="2">
           <template slot="title">我的工作台</template>
           <el-menu-item index="2-1">选项1</el-menu-item>

@@ -19,18 +19,18 @@
         type="index"
         width="50">
       </el-table-column>
-      <!--      <el-table-column-->
-      <!--        prop="id"-->
-      <!--        label="编号">-->
-      <!--      </el-table-column>-->
+<!--      <el-table-column-->
+<!--        prop="id"-->
+<!--        label="编号">-->
+<!--      </el-table-column>-->
       <el-table-column
         prop="title"
         label="新闻标题">
       </el-table-column>
-      <!--      <el-table-column-->
-      <!--        prop="content"-->
-      <!--        label="内容">-->
-      <!--      </el-table-column>-->
+<!--      <el-table-column-->
+<!--        prop="content"-->
+<!--        label="内容">-->
+<!--      </el-table-column>-->
       <el-table-column
         prop="createDate"
         label="发布时间">

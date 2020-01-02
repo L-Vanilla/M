@@ -1,9 +1,9 @@
-<!--19-12-22公告列表-->
+<!--19-12-22健康教育-->
 <template>
   <div>
     <div style="margin-top: 15px;margin-bottom: 10px">
       <el-row>
-        <el-col :span="2"><el-button style="background-color: #17B3A3;color: #fff" @click="add">添加</el-button></el-col>
+<!--        <el-col :span="2"><el-button style="background-color: #17B3A3;color: #fff" @click="add">添加</el-button></el-col>-->
         <el-col :span="22">
           <el-input placeholder="请输入标题" v-model="search.title" class="input-with-select" style="width: 200px">
             <el-button slot="append" icon="el-icon-search" @click="findData"></el-button>
@@ -19,18 +19,26 @@
         type="index"
         width="50">
       </el-table-column>
-      <!--      <el-table-column-->
-      <!--        prop="id"-->
-      <!--        label="编号">-->
-      <!--      </el-table-column>-->
+<!--      <el-table-column-->
+<!--        prop="id"-->
+<!--        label="编号">-->
+<!--      </el-table-column>-->
+      <el-table-column
+        prop="hType"
+        label="动态类型">
+      </el-table-column>
       <el-table-column
         prop="title"
-        label="新闻标题">
+        label="标题">
       </el-table-column>
-      <!--      <el-table-column-->
-      <!--        prop="content"-->
-      <!--        label="内容">-->
-      <!--      </el-table-column>-->
+<!--      <el-table-column-->
+<!--        prop="content"-->
+<!--        label="内容">-->
+<!--      </el-table-column>-->
+        <el-table-column
+        prop="clickNum"
+        label="点击率">
+      </el-table-column>
       <el-table-column
         prop="createDate"
         label="发布时间">
@@ -59,20 +67,22 @@
 </template>
 
 <script>
-  import EditNotice from '@/components/notice/edit'
-  import DetailsNotice from '@/components/notice/details'
+  import EditHealthCare from '@/components/healthCare/edit'
+  import DetailsHealthCare from '@/components/healthCare/details'
   export default {
     inject:['reload'],
-    name:"notice",
+    name:"educationList",
     data () {
       return {
         search:{
-          title:""
+          title:"",
+          hType:"健康教育",
         },
         queryParams:{
           pageNo:1,
           pageSize:10,
-          title:""
+          title:"",
+          hType:"健康教育"
         },
         tableData:{}
       }
@@ -91,7 +101,8 @@
     mounted(){},
     methods:{
       getData(){
-        this.get("notice/list",(data)=>{
+
+        this.get("healthCare/list",(data)=>{
           this.tableData=data;
           console.log(this.tableData);
         },this.queryParams);
@@ -107,26 +118,25 @@
       add(){
         this.$layer.iframe({
           content: {
-            content: EditNotice, //传递的组件对象
+            content: EditHealthCare, //传递的组件对象
             parent: this,//当前的vue对象
             data:{}//props
           },
           area:['800px','600px'],
-          title: '添加公告',
+          title: '添加新闻',
           shadeClose: false,
           shade :true
         });
       },
       edit(row){
         this.$layer.iframe({
-          type:2,
           content: {
-            content: EditNotice, //传递的组件对象
+            content: EditHealthCare, //传递的组件对象
             parent: this,//当前的vue对象
             data:{id:row.id}//props
           },
           area:['800px','600px'],
-          title: '修改公告',
+          title: '修改新闻',
           shadeClose: false,
           shade :true
         });
@@ -134,7 +144,7 @@
       details(row){
         this.$layer.iframe({
           content: {
-            content: DetailsNotice, //传递的组件对象
+            content: DetailsHealthCare, //传递的组件对象
             parent: this,//当前的vue对象
             data:{id:row.id}//props
           },
@@ -145,7 +155,7 @@
         });
       },
       del(row){
-        this.delete("notice/del",row.id,row.active);
+        this.delete("healthCare/del",row.id,row.active);
       },
       deltext(active){
         return active==1?"删除":"恢复"
