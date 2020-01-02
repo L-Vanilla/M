@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+/*后台系统管理员---------------------------------------------*/
 import AdminIndex from '@/components/adminIndex'
-// import Login from '@/components/login'
 import News from '@/components/news/list'//新闻列表
 import NewsAdd from '@/components/news/add'//发表新闻
 import HealthCare from '@/components/healthCare/list'//动态列表
@@ -14,15 +14,19 @@ import Admin from '@/components/admin/list'//管理员列表
 import Worker from '@/components/worker/list'//社区工作人员列表
 import Img from '@/components/worker/img'//社区工作人员列表
 import AdminLogin from '@/components/adminLogin'//社区工作人员列表
-/*-----------------------------*/
-import Home from '@/components/home'//社区工作人员列表
-import ss from '@/components/user/ss'//社区工作人员列表
+/*------------------------- ----------  ----------*/
+/*---------前台显示------------------------------------------*/
+import Home from '@/components/home'//首页
+import ss from '@/components/user/ss'//测试
 import newsList from '@/components/user/newsList'//新闻列表
 import newsDetails from '@/components/user/newsDetails'//新闻详情页
 import education_List from '@/components/user/educationList'//健身教育列表
 import healthCareDetails from '@/components/user/healthCareDetails'//动态详情页
 import prevention_List from '@/components/user/preventionList'//预防知识列表
 import care_List from '@/components/user/careList'//养生保健列表
+/*------------------------------------------------------------------------*/
+/*-----------相关的老人信息------------------------------------------------*/
+import Older from '@/components/older/list'//社区工作人员列表
 
 Vue.use(Router);
 
@@ -121,6 +125,10 @@ const router = new Router({
           path:'/img',
           name:'img',
           component:Img
+        },{
+          path:'/older',
+          name:'older',
+          component:Older
         },
 
       ]

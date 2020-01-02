@@ -1,7 +1,13 @@
 <template>
   <div >
   <el-container class="wrap" @scroll="orderScroll">
-    <el-header></el-header>
+    <el-header>
+      <div class="r">
+        <span>注册</span>
+        <el-divider direction="vertical"></el-divider>
+        <span>登录</span>
+      </div>
+    </el-header>
     <!--<div style="width: 100%;height: 50px;background-color:black"></div>-->
     <div style="width: 100%;height: 50px"></div>
     <Menu1></Menu1>
@@ -119,6 +125,9 @@
   }
   .content{
     flex: 1;
+  }
+  .r{
+    margin-left: 80%;
   }
 
 </style>
