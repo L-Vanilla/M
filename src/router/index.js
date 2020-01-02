@@ -26,6 +26,7 @@ import prevention_List from '@/components/user/preventionList'//预防知识列�
 import care_List from '@/components/user/careList'//养生保健列表
 /*------------------------------------------------------------------------*/
 /*-----------相关的老人信息------------------------------------------------*/
+import WorkerIndex from '@/components/workerIndex'
 import Older from '@/components/older/list'//社区工作人员列表
 
 Vue.use(Router);
@@ -35,7 +36,7 @@ const router = new Router({
   routes: [
     {
       path:'/',
-      name:'home',
+      name:'home',/*首页*/
       component:Home,
       children:[
         {
@@ -69,68 +70,76 @@ const router = new Router({
         },
       ]
     }, {
-      path:'/adminLogin',
+      path:'/adminLogin',/*系统登录*/
       name:'adminLogin',
       component:AdminLogin,
     },
     {
-      path:'/adminIndex',
+      path:'/adminIndex',/*系统后台*/
       name:'adminIndex',
       component:AdminIndex,
       children:[
         {
-          path:'/news',
+          path:'/news',/*新闻管理*/
           name:'news',
           component:News
         },
         {
-          path:'/newsAdd',
+          path:'/newsAdd',/*添加新闻*/
           name:'newsAdd',
           component:NewsAdd
         },{
-          path:'/healthCare',
+          path:'/healthCare',/*整个动态*/
           name:'healthCare',
           component:HealthCare
         },
         {
-          path:'/healthCareAdd',
+          path:'/healthCareAdd',/*动态添加*/
           name:'healthCareAdd',
           component:HealthCareAdd
         },
         {
-          path:'/careList',
+          path:'/careList',/*养生保健列表*/
           name:'careList',
           component:CareList
         }, {
-          path:'/preventionList',
+          path:'/preventionList',/*预防知识列表*/
           name:'preventionList',
           component:PreventionList
         },{
-          path:'/educationList',
+          path:'/educationList',/*健身教育列表*/
           name:'educationList',
           component:EducationList
         },{
-          path:'/notice',
+          path:'/notice',/*公告管理*/
           name:'notice',
           component:Notice
         },{
-          path:'/admin',
+          path:'/admin',/*系统用户管理*/
           name:'admin',
           component:Admin
         },{
-          path:'/worker',
+          path:'/worker',/*社区工作者管理*/
           name:'worker',
           component:Worker
         },{
           path:'/img',
           name:'img',
           component:Img
-        },{
+        },
+
+      ]
+    },
+    {
+      path:'/workerIndex',/*系统后台*/
+      name:'workerIndex',
+      component:WorkerIndex,
+      children:[
+        {
           path:'/older',
           name:'older',
           component:Older
-        },
-
+        }
       ]
     }
   ]

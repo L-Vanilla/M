@@ -2,7 +2,7 @@
   <el-container class="wrap">
     <el-header class="header" style=" display: inline-block;">
       <img src="../assets/hotel.png" style="width: 26px;height: 26px;display:inline-block; vertical-align:middle"/>
-      <h1  class="title">老人社区健康管理与跟踪系统</h1>
+      <h1  class="title">老人社区健康管理与跟踪系统（系统后台）</h1>
 <!--      <button @click="logout()" class="logout">退出</button>-->
 <!--      <p  class="user">{{user.userName}}</p>-->
       <el-menu
