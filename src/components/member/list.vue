@@ -1,11 +1,11 @@
-<!--19-12-22公告列表-->
+<!--20-1-2家庭成员列表-->
 <template>
   <div>
     <div style="margin-top: 15px;margin-bottom: 10px">
       <el-row>
-        <el-col :span="2"><el-button style="background-color: #17B3A3;color: #fff" @click="add">添加</el-button></el-col>
+        <el-col :span="2"><el-button style="background-color: #5fb381;color: #fff" @click="add">添加</el-button></el-col>
         <el-col :span="22">
-          <el-input placeholder="请输入姓名" v-model="search.workerName" class="input-with-select" style="width: 200px">
+          <el-input placeholder="请输入姓名" v-model="search.memberName" class="input-with-select" style="width: 200px">
             <el-button slot="append" icon="el-icon-search" @click="findData"></el-button>
           </el-input>
         </el-col>
@@ -19,51 +19,47 @@
         type="index"
         width="50">
       </el-table-column>
-<!--      <el-table-column-->
-<!--        prop="id"-->
-<!--        label="编号">-->
-<!--      </el-table-column>-->
       <el-table-column
-        label="图片" style="width: 200%;height: 150%">
-        <template slot-scope="scope">
-          <img :src="baseurl+scope.row.workerPhotourl" alt="" style="width: 100%;height: 120px"/>
-        </template>
+        prop="olderId"
+        label="老人Id">
       </el-table-column>
       <el-table-column
-        prop="workerName"
+        prop="olderName"
+        label="老人姓名">
+      </el-table-column>
+      <el-table-column
+        prop="memberName"
         label="姓名">
       </el-table-column>
-
       <el-table-column
-        prop="workerSex"
+        prop="memberSex"
         label="性别"
-        :formatter="sexformat">
+        :formatter="memberSexformat">
       </el-table-column>
       <el-table-column
-        prop="workerPhone"
+        prop="memberPhone"
         label="手机">
       </el-table-column>
       <el-table-column
-        prop="workerWechat"
-        label="微信">
+        prop="memberAge"
+        label="年龄">
       </el-table-column>
       <el-table-column
-        prop="workerMail"
-        label="邮箱">
-      </el-table-column>
-      <el-table-column
-        prop="workerAddress"
+        prop="memberAddress"
         label="地址">
       </el-table-column>
       <el-table-column
-        prop="workerCard"
+        prop="memberCard"
         label="身份证">
+      </el-table-column>
+      <el-table-column
+        prop="memberRelation"
+        label="与老人关系">
       </el-table-column>
         <el-table-column
         prop="remarks"
         label="备注">
       </el-table-column>
-
       <el-table-column
         prop="createDate"
         label="添加时间">
@@ -92,22 +88,21 @@
 </template>
 
 <script>
-  import EditWorker from '@/components/worker/edit'
-  // import DetailsWorker from '@/components/worker/details'
+  import EditMember from '@/components/member/edit'
+  // import DetailsMember from '@/components/member/details'
   export default {
     inject:['reload'],
-    name:"worker",
+    name:"member",
     data () {
 
       return {
-        baseurl:"./static/worker_photourl/",
         search:{
-          workerName:""
+          memberName:""
         },
         queryParams:{
           pageNo:1,
           pageSize:10,
-          workerName:""
+          memberName:""
         },
         tableData:{}
       }
@@ -126,12 +121,12 @@
     mounted(){},
     methods:{
       getData(){
-        this.get("worker/list",(data)=>{
+        this.get("member/list",(data)=>{
           this.tableData=data;
           console.log(this.tableData);
         },this.queryParams);
       },
-      sexformat(row, column, cellValue, index){
+      memberSexformat(row, column, cellValue, index){
         return cellValue==1?"女":"男";
       },
       changePageNo(i){
@@ -144,7 +139,7 @@
       add(){
         this.$layer.iframe({
           content: {
-            content: EditWorker, //传递的组件对象
+            content: EditMember, //传递的组件对象
             parent: this,//当前的vue对象
             data:{}//props
           },
@@ -158,7 +153,7 @@
         this.$layer.iframe({
           type:2,
           content: {
-            content: EditWorker, //传递的组件对象
+            content: EditMember, //传递的组件对象
             parent: this,//当前的vue对象
             data:{id:row.id}//props
           },
@@ -171,7 +166,7 @@
       // details(row){
       //   this.$layer.iframe({
       //     content: {
-      //       content: DetailsWorker, //传递的组件对象
+      //       content: DetailsMember, //传递的组件对象
       //       parent: this,//当前的vue对象
       //       data:{id:row.id}//props
       //     },
@@ -182,7 +177,7 @@
       //   });
       // },
       del(row){
-        this.delete("worker/del",row.id,row.active);
+        this.delete("member/del",row.id,row.active);
       },
       deltext(active){
         return active==1?"删除":"恢复"
@@ -196,11 +191,11 @@
     text-align: center;
   }
   .el-table__header th, .el-table__header tr {
-    background-color: #17B3A3;
+    background-color: #5fb381;
     color: black;
   }
   .el-pagination.is-background .el-pager li:not(.disabled).active {
-    background-color: #17B3A3;
+    background-color: #5fb381;
     color: #FFF;
   }
 </style>

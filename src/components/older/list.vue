@@ -97,12 +97,12 @@
       return {
         baseurl:"./static/older_photourl/",
         search:{
-          name:""
+          olderName:""
         },
         queryParams:{
           pageNo:1,
           pageSize:10,
-          name:""
+          olderName:""
         },
         tableData:{}
       }

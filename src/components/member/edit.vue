@@ -1,47 +1,39 @@
-<!--20-1-2老人添加-->
+<!--20-1-2家庭成员添加-->
 <template>
   <div style="margin-top: 15px;">
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" >
-        <el-form-item label="姓名" prop="olderName" >
-            <el-input v-model="ruleForm.olderName"   placeholder="请输入姓名" style="width:200%"></el-input>
+        <el-form-item label="老人Id" prop="olderId" >
+            <el-input v-model="ruleForm.olderId"    style="width:200%" disabled></el-input>
         </el-form-item>
-        <el-form-item label="密码" prop="olderPassword" >
-            <el-input  type="password" :autosize="{ minRows: 5, maxRows: 10}" style="width:200%"  placeholder="请输入密码" v-model="ruleForm.olderPassword" ></el-input>
+        <el-form-item label="老人姓名" prop="olderName" >
+            <el-input v-model="ruleForm.olderName"    style="width:200%" disabled></el-input>
         </el-form-item>
-        <el-form-item label="性别" prop="olderSex" >
-          <el-radio-group v-model="ruleForm.olderSex">
+        <el-form-item label="姓名" prop="memberName" >
+            <el-input v-model="ruleForm.memberName"   placeholder="请输入姓名" style="width:200%"></el-input>
+        </el-form-item>
+        <el-form-item label="性别" prop="memberSex" >
+          <el-radio-group v-model="ruleForm.memberSex">
             <el-radio  :label="0">男</el-radio>
             <el-radio :label="1">女</el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item label="年龄" prop="olderAge" >
-          <el-input v-model="ruleForm.olderAge"   placeholder="请输入年龄" style="width:200%" type="number"></el-input>
+        <el-form-item label="年龄" prop="memberAge" >
+          <el-input v-model="ruleForm.memberAge"   placeholder="请输入年龄" style="width:200%" type="number"></el-input>
         </el-form-item>
-        <el-form-item label="手机号" prop="olderPhone" >
-            <el-input v-model="ruleForm.olderPhone"   placeholder="请输入手机号" style="width:200%"></el-input>
+        <el-form-item label="手机号" prop="memberPhone" >
+            <el-input v-model="ruleForm.memberPhone"   placeholder="请输入手机号" style="width:200%"></el-input>
         </el-form-item>
-        <el-form-item label="身份证" prop="olderCard" >
-          <el-input v-model="ruleForm.olderCard"   placeholder="请输入身份证号" style="width:200%"></el-input>
+        <el-form-item label="身份证" prop="memberCard" >
+          <el-input v-model="ruleForm.memberCard"   placeholder="请输入身份证号" style="width:200%"></el-input>
         </el-form-item>
-        <el-form-item label="地址" prop="olderAddress" >
-          <el-input v-model="ruleForm.olderAddress"   placeholder="请输入地址" style="width:200%"></el-input>
+        <el-form-item label="地址" prop="memberAddress" >
+          <el-input v-model="ruleForm.memberAddress"   placeholder="请输入地址" style="width:200%"></el-input>
         </el-form-item>
-        <el-form-item label="健康状态" prop="olderState" >
-          <el-radio-group v-model="ruleForm.olderState">
-            <el-radio  :label="0">优</el-radio>
-            <el-radio :label="1">良</el-radio>
-            <el-radio  :label="2">一般</el-radio>
-            <el-radio :label="3">差</el-radio>
-          </el-radio-group>
+        <el-form-item label="与老人关系" prop="memberRelation" >
+          <el-input v-model="ruleForm.memberRelation"   placeholder="请输入与老人关系" style="width:200%"></el-input>
         </el-form-item>
         <el-form-item label="备注" prop="remarks" >
           <el-input v-model="ruleForm.remarks"   placeholder="请输入备注" style="width:200%"></el-input>
-        </el-form-item>
-        <el-form-item label="选择图片" prop="olderPhotourl" >
-          <input type="file" @change="upData($event)" ref="InputFile" name="files"  placeholder="请选择图片"/>
-        </el-form-item>
-        <el-form-item label="图片" prop="olderPhotourl" >
-          <img :src="baseurl+ruleForm.olderPhotourl" alt=""style="width: 30%;height: 40%"/>
         </el-form-item>
         <el-form-item >
             <el-button type="primary" @click="submitForm('ruleForm')" >{{buttonText}}</el-button>
@@ -54,9 +46,9 @@
 <script>
   export default {
       inject:['reload'],
-      props:["id"],
+      props:["id","olderId","olderName"],
     data () {
-        name:"olderedit"
+        name:"memberedit"
       /*验证手机号*/
       let checkPhone = (rule, value, callback) => {
         const phoneReg = /^1[3|4|5|7|8][0-9]{9}$/
@@ -93,35 +85,31 @@
         }, 100)
       };
       return {
-        baseurl:"./static/older_photourl/",
-        doUpload:"/older/fileUpload",
+        doUpload:"/member/fileUpload",
           ruleForm:{
-            olderName:"",
-            olderPassword:"",
-            olderPhone:"",
-            olderAge:"",
-            olderState:"",
-            olderSex:"",
-            olderCard:"",
-            olderAddress:"",
+            memberName:"",
+            memberPhone:"",
+            memberAge:"",
+            memberSex:"",
+            memberCard:"",
+            memberAddress:"",
             remarks:"",
-            olderPhotourl:"",
+            memberRelation:"",
+            olderId:"",
+            olderName:"",
           },
           rules: {
-            olderName: [
+            memberName: [
                 { required: true, message: '请输入姓名', trigger: 'blur' },
                 { min: 1, max: 20, message: '长度在 1 到 20 个字符', trigger: 'blur' }
             ] ,
-            olderSex: [
+            memberSex: [
                 { required: true, message: '请选择姓名', trigger: 'blur' },
             ] ,
-            olderPassword: [
-                { required: true, message: '请输入密码', trigger: 'blur' },
-            ] ,
-            olderPhone: [
+            memberPhone: [
               { required: true, trigger: 'blur',validator: checkPhone }//设置全局变量
             ] ,
-            olderCard: [
+            memberCard: [
               { required: true, trigger: 'blur',validator: checkcredentialsNum }//设置全局变量
             ]
         },
@@ -132,11 +120,15 @@
     },
     created(){
         if(this.id){
-             this.get("older/getOne",(data)=>{
+             this.get("member/getOne",(data)=>{
                 this.ruleForm=data;
                 console.log(this.ruleForm);
             },{id:this.id});
             this.buttonText="修改"
+        }
+        if(this.olderId){
+          this.ruleForm.olderId=this.olderId;
+          this.ruleForm.olderName=this.olderName;
         }
 
     },
@@ -151,9 +143,9 @@
         submitForm(formName){
             let url="";
             if(this.id)
-                url="older/update";
+                url="member/update";
             else
-                url="older/add";
+                url="member/add";
             this.post(formName,url,this.ruleForm);
         },
       upData(event) {
@@ -168,10 +160,10 @@
         // 使用formapi打包
         let formData = new FormData();
         formData.append('file', fileData);
-        this.axios.post('/older/fileUpload', formData).then(function(res) {
+        this.axios.post('/member/fileUpload', formData).then(function(res) {
           console.log(res);
-          _this.ruleForm.olderPhotourl=res.data;
-          console.log(_this.ruleForm.olderPhotourl);
+          _this.ruleForm.memberPhotourl=res.data;
+          console.log(_this.ruleForm.memberPhotourl);
           // _this.addimgtijiao = res.data.path;
         });
       },

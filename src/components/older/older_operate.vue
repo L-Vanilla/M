@@ -1,11 +1,10 @@
-<!--19-12-22公告列表-->
+<!--20-1-2老人操作列表-->
 <template>
   <div>
     <div style="margin-top: 15px;margin-bottom: 10px">
       <el-row>
-        <el-col :span="2"><el-button style="background-color: #17B3A3;color: #fff" @click="add">添加</el-button></el-col>
         <el-col :span="22">
-          <el-input placeholder="请输入姓名" v-model="search.workerName" class="input-with-select" style="width: 200px">
+          <el-input placeholder="请输入老人姓名" v-model="search.olderName" class="input-with-select" style="width: 200px">
             <el-button slot="append" icon="el-icon-search" @click="findData"></el-button>
           </el-input>
         </el-col>
@@ -19,66 +18,49 @@
         type="index"
         width="50">
       </el-table-column>
-<!--      <el-table-column-->
-<!--        prop="id"-->
-<!--        label="编号">-->
-<!--      </el-table-column>-->
       <el-table-column
         label="图片" style="width: 200%;height: 150%">
         <template slot-scope="scope">
-          <img :src="baseurl+scope.row.workerPhotourl" alt="" style="width: 100%;height: 120px"/>
+          <img :src="baseurl+scope.row.olderPhotourl" alt="" style="width: 100%;height: 120px"/>
         </template>
       </el-table-column>
       <el-table-column
-        prop="workerName"
+        prop="olderName"
         label="姓名">
       </el-table-column>
-
       <el-table-column
-        prop="workerSex"
+        prop="olderSex"
         label="性别"
         :formatter="sexformat">
       </el-table-column>
       <el-table-column
-        prop="workerPhone"
+        prop="olderPhone"
         label="手机">
       </el-table-column>
       <el-table-column
-        prop="workerWechat"
-        label="微信">
+        prop="olderAge"
+        label="年龄">
       </el-table-column>
       <el-table-column
-        prop="workerMail"
-        label="邮箱">
-      </el-table-column>
-      <el-table-column
-        prop="workerAddress"
-        label="地址">
-      </el-table-column>
-      <el-table-column
-        prop="workerCard"
+        prop="olderCard"
         label="身份证">
       </el-table-column>
-        <el-table-column
-        prop="remarks"
-        label="备注">
+      <el-table-column label="添加家庭成员">
+        <template slot-scope="scope">
+          <el-button @click="addMember(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-document">添加家庭成员</el-button>
+        </template>
       </el-table-column>
-
-      <el-table-column
-        prop="createDate"
-        label="添加时间">
+      <el-table-column label="查看内容">
+        <template slot-scope="scope">
+          <el-button @click="details(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-document">查看内容</el-button>
+        </template>
       </el-table-column>
-<!--      <el-table-column label="查看内容">-->
-<!--        <template slot-scope="scope">-->
-<!--          <el-button @click="details(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-document">查看内容</el-button>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
-      <el-table-column label="操作">
+     <!-- <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button @click="edit(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-edit">修改</el-button>
           <el-button type="text" size="small" style="color:red" @click="del(scope.row)"  icon="el-icon-delete">{{deltext(scope.row.active)}}</el-button>
         </template>
-      </el-table-column>
+      </el-table-column>-->
     </el-table>
     <el-pagination
       background
@@ -92,22 +74,24 @@
 </template>
 
 <script>
-  import EditWorker from '@/components/worker/edit'
-  // import DetailsWorker from '@/components/worker/details'
+  import EditOlder from '@/components/older/edit'
+  import DetailsOlder from '@/components/older/details'
+  import AddMember from '@/components/member/edit'
+  // import DetailsOlder from '@/components/older/details'
   export default {
     inject:['reload'],
-    name:"worker",
+    name:"older",
     data () {
 
       return {
-        baseurl:"./static/worker_photourl/",
+        baseurl:"./static/older_photourl/",
         search:{
-          workerName:""
+          olderName:""
         },
         queryParams:{
           pageNo:1,
           pageSize:10,
-          workerName:""
+          olderName:""
         },
         tableData:{}
       }
@@ -126,13 +110,25 @@
     mounted(){},
     methods:{
       getData(){
-        this.get("worker/list",(data)=>{
+        this.get("older/list",(data)=>{
           this.tableData=data;
           console.log(this.tableData);
         },this.queryParams);
       },
       sexformat(row, column, cellValue, index){
         return cellValue==1?"女":"男";
+      },
+      olderStateformat(row, column, cellValue, index){
+        if(cellValue===0){
+          return "优"
+        }
+        else if (cellValue===1){
+          return "良"
+        }
+        else if (cellValue===2){
+          return "一般"
+        }
+        return "差";
       },
       changePageNo(i){
         this.queryParams.pageNo=i;
@@ -141,48 +137,35 @@
         this.queryParams.pageNo=1;
         this.merge(this.search,this.queryParams);
       },
-      add(){
+      details(row){
         this.$layer.iframe({
           content: {
-            content: EditWorker, //传递的组件对象
-            parent: this,//当前的vue对象
-            data:{}//props
-          },
-          area:['800px','600px'],
-          title: '添加公告',
-          shadeClose: false,
-          shade :true
-        });
-      },
-      edit(row){
-        this.$layer.iframe({
-          type:2,
-          content: {
-            content: EditWorker, //传递的组件对象
+            content: DetailsOlder, //传递的组件对象
             parent: this,//当前的vue对象
             data:{id:row.id}//props
           },
-          area:['800px','600px'],
-          title: '修改公告',
+          area:['800px','500px'],
+          title: '查看内容',
           shadeClose: false,
           shade :true
         });
       },
-      // details(row){
-      //   this.$layer.iframe({
-      //     content: {
-      //       content: DetailsWorker, //传递的组件对象
-      //       parent: this,//当前的vue对象
-      //       data:{id:row.id}//props
-      //     },
-      //     area:['800px','600px'],
-      //     title: '查看内容',
-      //     shadeClose: false,
-      //     shade :true
-      //   });
-      // },
+      addMember(row){
+        this.$layer.iframe({
+          type:2,
+          content: {
+            content: AddMember, //传递的组件对象
+            parent: this,//当前的vue对象
+            data:{olderId:row.id,olderName:row.olderName}//props
+          },
+          area:['800px','600px'],
+          title: '添加家庭成员',
+          shadeClose: false,
+          shade :true
+        });
+      },
       del(row){
-        this.delete("worker/del",row.id,row.active);
+        this.delete("older/del",row.id,row.active);
       },
       deltext(active){
         return active==1?"删除":"恢复"
@@ -196,11 +179,11 @@
     text-align: center;
   }
   .el-table__header th, .el-table__header tr {
-    background-color: #17B3A3;
+    background-color: #5fb381;
     color: black;
   }
   .el-pagination.is-background .el-pager li:not(.disabled).active {
-    background-color: #17B3A3;
+    background-color: #5fb381;
     color: #FFF;
   }
 </style>

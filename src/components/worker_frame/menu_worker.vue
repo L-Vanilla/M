@@ -9,13 +9,22 @@
         text-color="#fff"
         @select="handleSelect"
         style="height:100%;">
-        <el-submenu index="老人管理" style="background-color: #344344">
+        <el-submenu index="老人基本信息管理" style="background-color: #344344">
           <template slot="title">
             <p style="color:#ffffff;font-size: 14px; ">
               <img src="../../assets/basic_msg.png" style="width: 16px;height: 16px"/>
-              &nbsp;&nbsp;老人管理</p>
+              &nbsp;&nbsp;老人基本信息管理</p>
           </template>
-          <el-menu-item index="老人列表" route="older">老人列表</el-menu-item>
+          <el-menu-item index="老人基本信息" route="older">老人基本信息</el-menu-item>
+          <el-menu-item index="老人相关操作列表" route="older0perate">老人相关操作列表</el-menu-item>
+        </el-submenu>
+        <el-submenu index="家庭成员管理" style="background-color: #344344">
+          <template slot="title">
+            <p style="color:#ffffff;font-size: 14px; ">
+              <img src="../../assets/basic_msg.png" style="width: 16px;height: 16px"/>
+              &nbsp;&nbsp;家庭成员管理</p>
+          </template>
+          <el-menu-item index="家庭成员" route="member">家庭成员</el-menu-item>
         </el-submenu>
       </el-menu>
     </el-col>

@@ -27,7 +27,9 @@ import care_List from '@/components/user/careList'//养生保健列表
 /*------------------------------------------------------------------------*/
 /*-----------相关的老人信息------------------------------------------------*/
 import WorkerIndex from '@/components/workerIndex'
-import Older from '@/components/older/list'//社区工作人员列表
+import Older from '@/components/older/list'//老人列表
+import Member from '@/components/member/list'//家庭成员列表
+import Older0perate from '@/components/older/older_operate'//老人相关操作列表
 
 Vue.use(Router);
 
@@ -136,10 +138,18 @@ const router = new Router({
       component:WorkerIndex,
       children:[
         {
-          path:'/older',
+          path:'/older',/*老人基本信息管理*/
           name:'older',
           component:Older
-        }
+        },{
+          path:'/member',/*家庭成员管理*/
+          name:'member',
+          component:Member
+        },{
+          path:'/older0perate',/*老人相关操作列表*/
+          name:'older0perate',
+          component:Older0perate
+        },
       ]
     }
   ]
