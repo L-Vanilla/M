@@ -26,6 +26,7 @@
           </template>
           <el-menu-item index="家庭成员" route="member">家庭成员</el-menu-item>
         </el-submenu>
+        <el-menu-item index="诊断信息" route="diagnosis">诊断信息</el-menu-item>
       </el-menu>
     </el-col>
   </el-row>

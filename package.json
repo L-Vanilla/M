@@ -13,6 +13,7 @@
     "axios": "^0.18.0",
     "echarts": "^4.2.1",
     "element-ui": "^2.8.2",
+    "moment": "^2.24.0",
     "vue": "^2.5.2",
     "vue-layer": "^0.9.13",
     "vue-quill-editor": "^3.0.6",

@@ -1,11 +1,10 @@
-<!--20-1-2家庭成员列表-->
+<!--20-1-3诊断信息列表-->
 <template>
   <div>
     <div style="margin-top: 15px;margin-bottom: 10px">
       <el-row>
-<!--        <el-col :span="2"><el-button style="background-color: #5fb381;color: #fff" @click="add">添加</el-button></el-col>-->
         <el-col :span="22">
-          <el-input placeholder="请输入姓名" v-model="search.memberName" class="input-with-select" style="width: 200px">
+          <el-input placeholder="请输入姓名" v-model="search.olderName" class="input-with-select" style="width: 200px">
             <el-button slot="append" icon="el-icon-search" @click="findData"></el-button>
           </el-input>
         </el-col>
@@ -28,37 +27,23 @@
         label="老人姓名">
       </el-table-column>
       <el-table-column
-        prop="memberName"
-        label="姓名">
+        prop="diagnosisHospital"
+        label="就诊医院">
       </el-table-column>
       <el-table-column
-        prop="memberSex"
-        label="性别"
-        :formatter="memberSexformat">
+        prop="diagnosisDate"
+        label="就诊时间">
+        <template slot-scope="scope">
+          <span>{{scope.row.diagnosisDate | FormatDate('yyyy-MM-dd')}}</span>
+        </template>
       </el-table-column>
       <el-table-column
-        prop="memberPhone"
-        label="手机">
+        prop="diagnosisRemarks"
+        label="病情描述">
       </el-table-column>
       <el-table-column
-        prop="memberAge"
-        label="年龄">
-      </el-table-column>
-      <el-table-column
-        prop="memberAddress"
-        label="地址">
-      </el-table-column>
-      <el-table-column
-        prop="memberCard"
-        label="身份证">
-      </el-table-column>
-      <el-table-column
-        prop="memberRelation"
-        label="与老人关系">
-      </el-table-column>
-        <el-table-column
-        prop="remarks"
-        label="备注">
+        prop="diagnosisInformation"
+        label="医嘱信息">
       </el-table-column>
       <el-table-column
         prop="createDate"
@@ -88,21 +73,21 @@
 </template>
 
 <script>
-  import EditMember from '@/components/member/edit'
-  // import DetailsMember from '@/components/member/details'
+  import EditDiagnosis from '@/components/diagnosis/edit'
+  // import DetailsDiagnosis from '@/components/diagnosis/details'
   export default {
     inject:['reload'],
-    name:"member",
+    name:"diagnosis",
     data () {
 
       return {
         search:{
-          memberName:""
+          olderName:""
         },
         queryParams:{
           pageNo:1,
           pageSize:10,
-          memberName:""
+          olderName:""
         },
         tableData:{}
       }
@@ -120,15 +105,18 @@
     },
     mounted(){},
     methods:{
+      /*formatDate(value){
+        this.value1= new Date(value.diagnosisDate);//value.createdTime是prop绑定的字段名称
+        let dateValue = this.$moment(this.value1).format("YYYY-MM-DD");//$moment专门转化时间的插件（使用时需要下载引入）
+        return dateValue
+      },*/
       getData(){
-        this.get("member/list",(data)=>{
+        this.get("diagnosis/list",(data)=>{
           this.tableData=data;
           console.log(this.tableData);
         },this.queryParams);
       },
-      memberSexformat(row, column, cellValue, index){
-        return cellValue==1?"女":"男";
-      },
+
       changePageNo(i){
         this.queryParams.pageNo=i;
       },
@@ -139,12 +127,12 @@
       add(){
         this.$layer.iframe({
           content: {
-            content: EditMember, //传递的组件对象
+            content: EditDiagnosis, //传递的组件对象
             parent: this,//当前的vue对象
             data:{}//props
           },
           area:['800px','600px'],
-          title: '添加公告',
+          title: '添加诊断信息',
           shadeClose: false,
           shade :true
         });
@@ -153,12 +141,12 @@
         this.$layer.iframe({
           type:2,
           content: {
-            content: EditMember, //传递的组件对象
+            content: EditDiagnosis, //传递的组件对象
             parent: this,//当前的vue对象
             data:{id:row.id}//props
           },
           area:['800px','600px'],
-          title: '修改公告',
+          title: '修改诊断信息',
           shadeClose: false,
           shade :true
         });
@@ -166,7 +154,7 @@
       // details(row){
       //   this.$layer.iframe({
       //     content: {
-      //       content: DetailsMember, //传递的组件对象
+      //       content: DetailsDiagnosis, //传递的组件对象
       //       parent: this,//当前的vue对象
       //       data:{id:row.id}//props
       //     },
@@ -177,7 +165,7 @@
       //   });
       // },
       del(row){
-        this.delete("member/del",row.id,row.active);
+        this.delete("diagnosis/del",row.id,row.active);
       },
       deltext(active){
         return active==1?"删除":"恢复"

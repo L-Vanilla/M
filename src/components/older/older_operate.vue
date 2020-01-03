@@ -50,6 +50,11 @@
           <el-button @click="addMember(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-document">添加家庭成员</el-button>
         </template>
       </el-table-column>
+      <el-table-column label="添加诊断信息">
+        <template slot-scope="scope">
+          <el-button @click="addDiagnosis(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-document">添加诊断信息</el-button>
+        </template>
+      </el-table-column>
       <el-table-column label="查看内容">
         <template slot-scope="scope">
           <el-button @click="details(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-document">查看内容</el-button>
@@ -74,10 +79,9 @@
 </template>
 
 <script>
-  import EditOlder from '@/components/older/edit'
   import DetailsOlder from '@/components/older/details'
   import AddMember from '@/components/member/edit'
-  // import DetailsOlder from '@/components/older/details'
+  import AddDiagnosis from '@/components/diagnosis/edit'
   export default {
     inject:['reload'],
     name:"older",
@@ -164,12 +168,20 @@
           shade :true
         });
       },
-      del(row){
-        this.delete("older/del",row.id,row.active);
+      addDiagnosis(row){
+        this.$layer.iframe({
+          type:2,
+          content: {
+            content: AddDiagnosis, //传递的组件对象
+            parent: this,//当前的vue对象
+            data:{olderId:row.id,olderName:row.olderName}//props
+          },
+          area:['800px','600px'],
+          title: '添加诊断信息',
+          shadeClose: false,
+          shade :true
+        });
       },
-      deltext(active){
-        return active==1?"删除":"恢复"
-      }
     }
   }
 </script>
