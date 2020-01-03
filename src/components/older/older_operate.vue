@@ -60,6 +60,11 @@
           <el-button @click="addAid(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-document">添加急救信息</el-button>
         </template>
       </el-table-column>
+      <el-table-column label="添加体检信息">
+        <template slot-scope="scope">
+          <el-button @click="addExam(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-document">添加体检信息</el-button>
+        </template>
+      </el-table-column>
       <el-table-column label="查看内容">
         <template slot-scope="scope">
           <el-button @click="details(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-document">查看内容</el-button>
@@ -88,6 +93,7 @@
   import AddMember from '@/components/member/edit'
   import AddDiagnosis from '@/components/diagnosis/edit'
   import AddAid from '@/components/aid/edit'
+  import AddExam from '@/components/exam/edit'
   export default {
     inject:['reload'],
     name:"older",
@@ -198,6 +204,20 @@
           },
           area:['800px','600px'],
           title: '添加急救信息',
+          shadeClose: false,
+          shade :true
+        });
+      },
+      addExam(row){
+        this.$layer.iframe({
+          type:2,
+          content: {
+            content: AddExam, //传递的组件对象
+            parent: this,//当前的vue对象
+            data:{olderId:row.id,olderName:row.olderName}//props
+          },
+          area:['800px','600px'],
+          title: '添加体检信息',
           shadeClose: false,
           shade :true
         });

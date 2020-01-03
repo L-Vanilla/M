@@ -21,6 +21,7 @@
         <el-menu-item index="家庭成员" route="member">家庭成员</el-menu-item>
         <el-menu-item index="诊断信息" route="diagnosis">诊断信息</el-menu-item>
         <el-menu-item index="急救信息" route="aid">急救信息</el-menu-item>
+        <el-menu-item index="体检信息" route="exam">体检信息</el-menu-item>
       </el-menu>
     </el-col>
   </el-row>
