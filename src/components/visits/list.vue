@@ -1,19 +1,24 @@
-<!--20-1-3诊断信息列表 ---Vanilla-->
+<!--20-1-3随访信息列表  ---Vanilla-->
 <template>
   <div>
     <div style="margin-top: 15px;margin-bottom: 10px">
       <el-row>
-        <el-col :span="22">
+        <el-col :span="4">
           <el-input placeholder="请输入姓名" v-model="search.olderName" class="input-with-select" style="width: 200px">
             <el-button slot="append" icon="el-icon-search" @click="findData"></el-button>
           </el-input>
+        </el-col>
+        <el-col :span="2">
+          <el-button size="medium" type="primary" @click="handleDownLoad()">下载模板</el-button>
+<!--          <a href="/./static/visits_exam/1.docx">下载</a>-->
         </el-col>
       </el-row>
     </div>
     <el-table
       :data="tableData.list"
       border
-      style="width: 150%;">
+      style="width: 150%;"
+      :header-cell-style="{background:'#5fb381',color:'#606266'}">
       <el-table-column
         type="index"
         width="50">
@@ -27,27 +32,29 @@
         label="老人姓名">
       </el-table-column>
       <el-table-column
-        prop="diagnosisHospital"
-        label="就诊医院">
+        prop="bodyState"
+        label="身体状况">
       </el-table-column>
       <el-table-column
-        prop="diagnosisDate"
-        label="就诊时间">
-        <template slot-scope="scope">
-          <span>{{scope.row.diagnosisDate | FormatDate('yyyy-MM-dd')}}</span>
-        </template>
+        prop="remarks"
+        label="备注">
       </el-table-column>
       <el-table-column
-        prop="diagnosisRemarks"
-        label="病情描述">
-      </el-table-column>
-      <el-table-column
-        prop="diagnosisInformation"
-        label="医嘱信息">
+        prop="visitsDatetime"
+        label="随访时间">
+<!--        <template slot-scope="scope">-->
+<!--          <span>{{scope.row.visitsDatetime | FormatDate('yyyy-MM-dd')}}</span>-->
+<!--        </template>-->
       </el-table-column>
       <el-table-column
         prop="createDate"
         label="添加时间">
+      </el-table-column>
+      <el-table-column
+        label="附件">
+        <template slot-scope="scope">
+          <el-button @click="download(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-edit">附件</el-button>
+        </template>
       </el-table-column>
 <!--      <el-table-column label="查看内容">-->
 <!--        <template slot-scope="scope">-->
@@ -73,11 +80,11 @@
 </template>
 
 <script>
-  import EditDiagnosis from '@/components/diagnosis/edit'
-  // import DetailsDiagnosis from '@/components/diagnosis/details'
+  import EditVisits from '@/components/visits/edit'
+  // import DetailsVisits from '@/components/visits/details'
   export default {
     inject:['reload'],
-    name:"diagnosis",
+    name:"visits",
     data () {
 
       return {
@@ -105,18 +112,12 @@
     },
     mounted(){},
     methods:{
-      /*formatDate(value){
-        this.value1= new Date(value.diagnosisDate);//value.createdTime是prop绑定的字段名称
-        let dateValue = this.$moment(this.value1).format("YYYY-MM-DD");//$moment专门转化时间的插件（使用时需要下载引入）
-        return dateValue
-      },*/
       getData(){
-        this.get("diagnosis/list",(data)=>{
+        this.get("visits/list",(data)=>{
           this.tableData=data;
           console.log(this.tableData);
         },this.queryParams);
       },
-
       changePageNo(i){
         this.queryParams.pageNo=i;
       },
@@ -124,29 +125,16 @@
         this.queryParams.pageNo=1;
         this.merge(this.search,this.queryParams);
       },
-      add(){
-        this.$layer.iframe({
-          content: {
-            content: EditDiagnosis, //传递的组件对象
-            parent: this,//当前的vue对象
-            data:{}//props
-          },
-          area:['800px','600px'],
-          title: '添加诊断信息',
-          shadeClose: false,
-          shade :true
-        });
-      },
       edit(row){
         this.$layer.iframe({
           type:2,
           content: {
-            content: EditDiagnosis, //传递的组件对象
+            content: EditVisits, //传递的组件对象
             parent: this,//当前的vue对象
             data:{id:row.id}//props
           },
           area:['800px','600px'],
-          title: '修改诊断信息',
+          title: '修改急救信息',
           shadeClose: false,
           shade :true
         });
@@ -154,7 +142,7 @@
       // details(row){
       //   this.$layer.iframe({
       //     content: {
-      //       content: DetailsDiagnosis, //传递的组件对象
+      //       content: DetailsVisits, //传递的组件对象
       //       parent: this,//当前的vue对象
       //       data:{id:row.id}//props
       //     },
@@ -165,10 +153,21 @@
       //   });
       // },
       del(row){
-        this.delete("diagnosis/del",row.id,row.active);
+        this.delete("visits/del",row.id,row.active);
       },
       deltext(active){
         return active==1?"删除":"恢复"
+      },
+      /*文件下载*/
+      handleDownLoad(){
+        let a = document.createElement('a');
+        a.href = '/./static/visits_exam/1.docx';
+        a.click();
+      },
+      download(row){
+        let a = document.createElement('a');
+        a.href = '/./static/visits_exam/'+row.fileurl;
+        a.click();
       }
     }
   }

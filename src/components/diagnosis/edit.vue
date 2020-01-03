@@ -1,4 +1,4 @@
-<!--20-1-3诊断信息添加，修改-->
+<!--20-1-3诊断信息添加，修改--Vanilla-->
 <template>
   <div style="margin-top: 15px;">
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" >

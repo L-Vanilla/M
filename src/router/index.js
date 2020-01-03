@@ -33,6 +33,7 @@ import Older0perate from '@/components/older/older_operate'//老人相关操作�
 import Diagnosis from '@/components/diagnosis/list'//诊断信息列表
 import Aid from '@/components/aid/list'//急救信息列表
 import Exam from '@/components/exam/list'//体检信息列表
+import Visits from '@/components/visits/list'//体检信息列表
 
 Vue.use(Router);
 
@@ -164,6 +165,10 @@ const router = new Router({
           path:'/exam',/*体检信息列表*/
           name:'exam',
           component:Exam
+        },{
+          path:'/visits',/*随访信息列表*/
+          name:'visits',
+          component:Visits
         },
       ]
     }
