@@ -1,3 +1,4 @@
+<!--门户网站页头---Vanilla-->
 <template>
     <div>
          <el-breadcrumb v-if="arrmenu.length!=0" separator-class="el-icon-arrow-right">

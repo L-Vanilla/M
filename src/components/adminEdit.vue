@@ -1,3 +1,4 @@
+<!--后台管理员修改个人信息--Vanilla-->
 <template>
   <div style="margin-top: 10px">
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">

@@ -1,4 +1,4 @@
-<!--19-12-22预防知识-->
+<!--19-12-22预防知识----Vanilla-->
 <template>
   <div>
     <div style="margin-top: 15px;margin-bottom: 10px">

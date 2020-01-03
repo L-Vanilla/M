@@ -1,4 +1,4 @@
-<!--19-12-22公告列表-->
+<!--19-12-22公告列表---Vanilla-->
 <template>
   <div>
     <div style="margin-top: 15px;margin-bottom: 10px">

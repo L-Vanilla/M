@@ -1,4 +1,4 @@
-<!--2019-12-21新闻详情-->
+<!--2019-12-21新闻详情---Vanilla-->
 <template>
   <div style="margin-top: 15px;">
     <el-form :model="ruleForm"  ref="ruleForm" label-width="100px" class="demo-ruleForm">

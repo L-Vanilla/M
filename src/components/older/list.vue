@@ -1,4 +1,4 @@
-<!--20-1-2老人列表-->
+<!--20-1-2老人列表---Vanilla-->
 <template>
   <div>
     <div style="margin-top: 15px;margin-bottom: 10px">

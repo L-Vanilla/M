@@ -1,4 +1,4 @@
-<!--2019-12-21添加新闻-->
+<!--2019-12-21添加新闻---Vanilla-->
 <template>
   <div style="margin-top: 15px;">
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">

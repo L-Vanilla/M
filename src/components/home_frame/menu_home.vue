@@ -1,4 +1,4 @@
-<!--门户网站导航-->
+<!--门户网站导航---Vanilla-->
 <template>
   <el-row  class="tac  firstmenu" style="height:10%;" >
     <el-col style="height:10%;width:80%;margin-left: 10%">

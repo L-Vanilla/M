@@ -31,6 +31,7 @@ import Older from '@/components/older/list'//老人列表
 import Member from '@/components/member/list'//家庭成员列表
 import Older0perate from '@/components/older/older_operate'//老人相关操作列表
 import Diagnosis from '@/components/diagnosis/list'//诊断信息列表
+import Aid from '@/components/aid/list'//诊断信息列表
 
 Vue.use(Router);
 
@@ -154,6 +155,10 @@ const router = new Router({
           path:'/diagnosis',/*诊断信息列表*/
           name:'diagnosis',
           component:Diagnosis
+        },{
+          path:'/aid',/*急救信息列表*/
+          name:'aid',
+          component:Aid
         },
       ]
     }

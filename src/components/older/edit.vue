@@ -1,4 +1,4 @@
-<!--20-1-2老人添加-->
+<!--20-1-2老人添加---Vanilla-->
 <template>
   <div style="margin-top: 15px;">
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" >

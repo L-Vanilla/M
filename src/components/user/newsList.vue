@@ -1,3 +1,4 @@
+<!--站内新闻--Vanilla-->
 <template>
   <div>
     <div style="margin-top: 15px;margin-bottom: 10px">
