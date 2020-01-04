@@ -54,12 +54,18 @@
         </template>-->
       </el-table-column>
     </el-table>
+    <el-pagination
+      background
+      layout="prev, pager, next,total"
+      :total="tableData.total"
+      :current-page="this.queryParams.pageNo"
+      :page-size="this.queryParams.pageSize"
+      @current-change="changePageNo">
+    </el-pagination>
   </div>
 </template>
 
 <script>
-  import EditNews from '@/components/news/edit'
-  import DetailsNews from '@/components/news/details'
   export default {
     inject:['reload'],
     name:"news",

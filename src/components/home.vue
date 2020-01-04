@@ -14,16 +14,21 @@
     <Menu1></Menu1>
     <el-container style="margin-top: 10px" >
       <el-aside style="margin-left:15%"  >
-        <div style="margin-top: 20%;height: 50%">
-          <el-form :model="notice"  ref="notice"  class="demo-ruleForm">
-            <el-form-item label="" prop="title" >
-              <h1 style="text-align: center">{{notice.title}}</h1>
-            </el-form-item>
-            <el-form-item label="" prop="content" >
+        <el-card shadow="always">
+          <el-header style="background-color:#cdd1bc;height: 50px ">系统公告</el-header>
+          <div>
+            <el-form :model="notice"  ref="notice"  class="demo-ruleForm">
+              <el-form-item label="" prop="title" >
+                <h1 style="text-align: center">{{notice.title}}</h1>
+              </el-form-item>
+              <el-form-item label="" prop="content" >
                 <h2 style="text-align: center">{{notice.content}}</h2>
-            </el-form-item>
-          </el-form>
-        </div>
+              </el-form-item>
+            </el-form>
+          </div>
+        </el-card>
+
+
 
       </el-aside>
       <el-main style="margin-right:15%">
@@ -130,5 +135,7 @@
   .r{
     margin-left: 80%;
   }
-
+  .el_row{
+    height: 50px;
+  }
 </style>

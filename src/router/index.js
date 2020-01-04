@@ -24,6 +24,7 @@ import education_List from '@/components/user/educationList'//健身教育列表
 import healthCareDetails from '@/components/user/healthCareDetails'//动态详情页
 import prevention_List from '@/components/user/preventionList'//预防知识列表
 import care_List from '@/components/user/careList'//养生保健列表
+import first_page from '@/components/user/first_page'//养生保健列表
 /*------------------------------------------------------------------------*/
 /*-----------相关的老人信息------------------------------------------------*/
 import WorkerIndex from '@/components/workerIndex'
@@ -46,9 +47,9 @@ const router = new Router({
       component:Home,
       children:[
         {
-          path:'/ss',
-          name:'ss',
-          component:ss
+          path:'/',
+          name:'first_page',
+          component:first_page
         },{
           path:'/newsList',
           name:'newsList',
