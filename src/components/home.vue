@@ -3,10 +3,15 @@
   <div >
   <el-container class="wrap" @scroll="orderScroll">
     <el-header>
-      <div class="r">
-        <span>注册</span>
+      <div class="r" v-if="isOlder!=='1'">
+        <el-button type="text" @click="register()">注册</el-button>
         <el-divider direction="vertical"></el-divider>
-        <span>登录</span>
+        <el-button type="text" @click="login()">登录</el-button>
+      </div>
+      <div class="r" v-else>
+        <span>{{older.olderName}}</span>
+        <el-divider direction="vertical"></el-divider>
+        <el-button type="text" @click="logout()" style="color: black">退出</el-button>
       </div>
     </el-header>
     <!--<div style="width: 100%;height: 50px;background-color:black"></div>-->
@@ -27,9 +32,6 @@
             </el-form>
           </div>
         </el-card>
-
-
-
       </el-aside>
       <el-main style="margin-right:15%">
         <MyBreadcrumb1 style="margin-bottom:20px;"></MyBreadcrumb1>
@@ -52,20 +54,31 @@
             pageSize:2,
           },
           notice:{
-
-          }
-
-
+          },
+          /*存储老人信息*/
+          older:[],
+          isOlder: "1"
         }
       },
+      /*引组件*/
       components: {
         Menu1,
         MyBreadcrumb1
       },
       created(){
         this.getData();
+        var isOlder = localStorage.getItem("isOlder");
+        if(isOlder!=='1'){
+          this.$router.push('/');
+        }
+        this.loadUser();
       },
       watch:{
+        isOlder: {
+          handler:function(){
+          },
+          deep:true
+        }
       },
       methods: {
         // 滚动事件
@@ -83,13 +96,45 @@
             return
           }
         },
-
+        /*加载登录老人信息*/
+        loadUser(){
+          var list = JSON.parse(localStorage.getItem("older") || '[]');
+          var isOlder=localStorage.getItem("isOlder");
+          this.isOlder=isOlder;
+          this.older = list;
+          console.log("isOlder"+this.isOlder);
+          console.log(this.older);
+        },
         getData(){
           this.get("notice/list",(data)=>{
             this.notice=data.list[0];
             console.log(this.notice);
           },this.queryParams);
         },
+        /*注册*/
+        register(){
+          this.$router.push({ path:'/olderRegister'  })
+        },
+        /*登录*/
+        login(){
+          this.$router.push({ path:'/olderLogin'  })
+        },
+        /*退出*/
+        logout(){
+          this.get("older/logout",(data)=>{
+            if(data>0){
+              this.$message({
+                type: 'success',
+                message: '退出成功!'
+              });
+              localStorage.removeItem('older');
+              localStorage.removeItem('isOlder');
+              location.reload();
+              alert("退出成功");
+
+            }
+          });
+        }
 
       }
     }

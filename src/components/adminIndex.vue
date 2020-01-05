@@ -46,6 +46,7 @@
       return {
         activeIndex2: '1',
         admin:[],
+        islogin: "1"
       }
     },
 

@@ -25,6 +25,8 @@ import healthCareDetails from '@/components/user/healthCareDetails'//动态详�
 import prevention_List from '@/components/user/preventionList'//预防知识列表
 import care_List from '@/components/user/careList'//养生保健列表
 import first_page from '@/components/user/first_page'//养生保健列表
+import olderRegister from '@/components/olderRegister'//老人注册
+import olderLogin from '@/components/olderLogin'//老人登录
 /*------------------------------------------------------------------------*/
 /*-----------相关的老人信息------------------------------------------------*/
 import WorkerIndex from '@/components/workerIndex'
@@ -77,6 +79,14 @@ const router = new Router({
         },
       ]
     }, {
+      path:'/olderRegister',/*老人注册*/
+      name:'olderRegister',
+      component:olderRegister,
+    },{
+      path:'/olderLogin',/*老人登录*/
+      name:'olderLogin',
+      component:olderLogin,
+    },{
       path:'/adminLogin',/*系统登录*/
       name:'adminLogin',
       component:AdminLogin,
