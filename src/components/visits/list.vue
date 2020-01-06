@@ -40,11 +40,10 @@
         label="备注">
       </el-table-column>
       <el-table-column
-        prop="visitsDatetime"
         label="随访时间">
-<!--        <template slot-scope="scope">-->
-<!--          <span>{{scope.row.visitsDatetime | FormatDate('yyyy-MM-dd')}}</span>-->
-<!--        </template>-->
+        <template slot-scope="scope">
+          <span>{{scope.row.visitsDatetime | FormatDate('yyyy-MM-dd')}}</span>
+        </template>
       </el-table-column>
       <el-table-column
         prop="createDate"
