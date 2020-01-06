@@ -67,7 +67,7 @@
                 localStorage.removeItem('admin');
                 localStorage.removeItem('islogin');
                 alert("退出成功");
-                this.$router.push('/');
+                this.$router.push('/adminLogin');
               }
             });
 
@@ -101,7 +101,7 @@
     created(){
       var islogin = localStorage.getItem("islogin");
       if(islogin!='1'){
-        this.$router.push('/');
+        this.$router.push('/adminLogin');
       }
       this.loadUser();
 

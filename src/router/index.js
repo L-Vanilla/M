@@ -27,6 +27,10 @@ import care_List from '@/components/user/careList'//养生保健列表
 import first_page from '@/components/user/first_page'//养生保健列表
 import olderRegister from '@/components/olderRegister'//老人注册
 import olderLogin from '@/components/olderLogin'//老人登录
+import olderDetails from '@/components/user/olderDetails'//查看个人信息
+import olderEdit from '@/components/user/olderEdit'//修改老人信息
+import person_center from '@/components/user/person_center'//个人中心
+import examList from '@/components/user/examList'//体检中心
 /*------------------------------------------------------------------------*/
 /*-----------相关的老人信息------------------------------------------------*/
 import WorkerIndex from '@/components/workerIndex'
@@ -76,6 +80,26 @@ const router = new Router({
           path:'/care_List',/*养生保健列表*/
           name:'care_List',
           component:care_List
+        },{
+          path:'/olderDetails/:id',/*查看个人信息*/
+          name:'olderDetails',
+          component:olderDetails
+        },{
+          path:'/olderEdit/:id',/*修改个人信息*/
+          name:'olderEdit',
+          component:olderEdit
+        },{
+          path:'/person_center',/*个人中心*/
+          name:'person_center',
+          component:person_center,
+          children:[
+            {
+              path:'/examList',/*体检中心*/
+              name:'examList',
+              component:examList,
+            }
+          ]
+
         },
       ]
     }, {

@@ -4,9 +4,11 @@
   <el-container class="wrap" @scroll="orderScroll">
     <el-header>
       <div class="r" v-if="isOlder!=='1'">
-        <el-button type="text" @click="register()">注册</el-button>
+        <el-button type="text" @click="register()" style="color: black">注册</el-button>
         <el-divider direction="vertical"></el-divider>
-        <el-button type="text" @click="login()">登录</el-button>
+        <el-button type="text" @click="login()" style="color: black">登录</el-button>
+        <el-divider direction="vertical"></el-divider>
+        <el-button type="text" @click="adminLogin()" style="color: black">系统登录</el-button>
       </div>
       <div class="r" v-else>
         <span>{{older.olderName}}</span>
@@ -18,22 +20,41 @@
     <div style="width: 100%;height: 50px"></div>
     <Menu1></Menu1>
     <el-container style="margin-top: 10px" >
-      <el-aside style="margin-left:15%"  >
-        <el-card shadow="always">
-          <el-header style="background-color:#cdd1bc;height: 50px ">系统公告</el-header>
-          <div>
-            <el-form :model="notice"  ref="notice"  class="demo-ruleForm">
-              <el-form-item label="" prop="title" >
-                <h1 style="text-align: center">{{notice.title}}</h1>
-              </el-form-item>
-              <el-form-item label="" prop="content" >
-                <h2 style="text-align: center">{{notice.content}}</h2>
-              </el-form-item>
-            </el-form>
-          </div>
-        </el-card>
-      </el-aside>
-      <el-main style="margin-right:15%">
+<!--      <el-aside style="margin-left:15%"  >-->
+<!--        <div v-if="isOlder==='1'">-->
+<!--          <div style="margin-top: 50px;height: 100px;text-align: center" >-->
+<!--            <el-image-->
+<!--              style="width: 100px; height: 100px;"-->
+<!--              :src="url">-->
+<!--            </el-image>-->
+<!--          </div>-->
+<!--          <el-row style="margin-top: 20px;text-align: center ">{{older.olderName}}-->
+<!--          </el-row>-->
+<!--          <el-row style="margin-top: 20px;text-align: center ">-->
+<!--            <el-col :span="14">-->
+<!--              <el-button style="background-color: #9dd1c6;color: #fff" icon="el-icon-edit" @click="edit()">编辑</el-button>-->
+<!--            </el-col>-->
+<!--            <el-col :span="7">-->
+<!--              <el-button style="background-color: #9dd1c6;color: #fff" icon="el-icon-tickets" @click="details()">查看-->
+<!--              </el-button>-->
+<!--            </el-col>-->
+<!--          </el-row>-->
+<!--        </div>-->
+<!--&lt;!&ndash;        <el-card shadow="always">&ndash;&gt;-->
+<!--&lt;!&ndash;          <el-header style="background-color:#cdd1bc;height: 50px ">系统公告</el-header>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <el-form :model="notice"  ref="notice"  class="demo-ruleForm">&ndash;&gt;-->
+<!--&lt;!&ndash;              <el-form-item label="" prop="title" >&ndash;&gt;-->
+<!--&lt;!&ndash;                <h1 style="text-align: center">{{notice.title}}</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;              </el-form-item>&ndash;&gt;-->
+<!--&lt;!&ndash;              <el-form-item label="" prop="content" >&ndash;&gt;-->
+<!--&lt;!&ndash;                <h2 style="text-align: center">{{notice.content}}</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;              </el-form-item>&ndash;&gt;-->
+<!--&lt;!&ndash;            </el-form>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </el-card>&ndash;&gt;-->
+<!--      </el-aside>-->
+      <el-main style="padding: 15px 300px 15px 300px">
         <MyBreadcrumb1 style="margin-bottom:20px;"></MyBreadcrumb1>
         <router-view></router-view>
       </el-main>
@@ -45,6 +66,7 @@
 <script>
   import Menu1 from '@/components/home_frame/menu_home'
   import MyBreadcrumb1 from '@/components/frame/myBreadcrumb'
+  import DetailsOlder from '@/components/older/details'
     export default {
         name: "home",
       data () {
@@ -57,13 +79,14 @@
           },
           /*存储老人信息*/
           older:[],
-          isOlder: "1"
+          isOlder: "1",
+          url:"",
         }
       },
       /*引组件*/
       components: {
         Menu1,
-        MyBreadcrumb1
+        MyBreadcrumb1,
       },
       created(){
         this.getData();
@@ -102,6 +125,7 @@
           var isOlder=localStorage.getItem("isOlder");
           this.isOlder=isOlder;
           this.older = list;
+          this.url="./static/older_photourl/"+this.older.olderPhotourl;
           console.log("isOlder"+this.isOlder);
           console.log(this.older);
         },
@@ -119,6 +143,10 @@
         login(){
           this.$router.push({ path:'/olderLogin'  })
         },
+        /*系统登录*/
+        adminLogin(){
+          this.$router.push({ path:'/adminLogin'  })
+        },
         /*退出*/
         logout(){
           this.get("older/logout",(data)=>{
@@ -134,6 +162,13 @@
 
             }
           });
+        },
+        /*查看个人信息*/
+        details(){
+          this.$router.push('/olderDetails/'+this.older.id);
+        },
+        edit(){
+          this.$router.push('/olderEdit/'+this.older.id);
         }
 
       }
@@ -164,10 +199,9 @@
   }
 
   .el-aside {
-    background-color: #e8ebbf;
+    background-color: #c6cace;
     color: #333;
-    text-align: center;
-    line-height: 200px;
+    line-height: 20px;
   }
 
 
@@ -183,4 +217,7 @@
   .el_row{
     height: 50px;
   }
+ .el-image__inner{
+   border-radius: 50%;
+ }
 </style>

@@ -22,7 +22,7 @@
                 </el-input>
               </el-form-item>
               <el-form-item label="" prop="olderPassword" >
-                <el-input  type="password" prefix-icon="el-icon-s-goods"  placeholder="请输入密码" style="width: 70%;" v-model="loginForm.olderPassword" ></el-input>
+                <el-input  type="password" prefix-icon="el-icon-lock"  placeholder="请输入密码" style="width: 70%;" v-model="loginForm.olderPassword" ></el-input>
               </el-form-item>
             <el-form-item >
               <el-row>
