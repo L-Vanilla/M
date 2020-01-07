@@ -4,7 +4,7 @@
     <div style="margin-top: 15px;margin-bottom: 10px">
       <el-row>
         <el-col :span="22">
-          <el-input placeholder="请输入姓名" v-model="search.olderName" class="input-with-select" style="width: 200px">
+          <el-input placeholder="请输入老人姓名" v-model="search.olderName" class="input-with-select" style="width: 200px">
             <el-button slot="append" icon="el-icon-search" @click="findData"></el-button>
           </el-input>
         </el-col>

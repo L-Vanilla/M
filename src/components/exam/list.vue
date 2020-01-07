@@ -3,10 +3,27 @@
   <div>
     <div style="margin-top: 15px;margin-bottom: 10px">
       <el-row>
-        <el-col :span="22">
-          <el-input placeholder="请输入老人姓名" v-model="search.olderName" class="input-with-select" style="width: 200px"><el-button slot="append" icon="el-icon-search" @click="findData"></el-button>
+        <el-col :span="5">
+          <el-input placeholder="请输入老人姓名" v-model="search.olderName" class="input-with-select" style="width: 200px">
           </el-input>
         </el-col>
+        <el-col :span="15">
+          <span>查询日期：</span>
+          <el-date-picker
+            v-model="search.date1"
+            type="date"
+            value-format="yyyy-MM-dd"
+            placeholder="选择起始日期">
+          </el-date-picker>
+          <el-date-picker
+            v-model="search.date2"
+            type="date"
+            value-format="yyyy-MM-dd"
+            placeholder="选择结束日期">
+          </el-date-picker>
+          <el-button icon="el-icon-search" style="background-color: #5fb381;color: #fff" @click="findData"></el-button>
+        </el-col>
+
       </el-row>
     </div>
     <el-table
@@ -90,7 +107,7 @@
             <i class="icon-icon-test8" style="color: #4f8cb3">{{scope.row.examGlu}}</i>
           </div>
           <div v-else-if="scope.row.examGlu<7.8&&scope.row.examGlu>=2.8">
-            <sapn style="color: #00ff6b">{{scope.row.examGlu}}</sapn>
+            <span style="color: #00ff6b">{{scope.row.examGlu}}</span>
           </div>
           <div v-else-if="7.8<=scope.row.examGlu&&scope.row.examGlu<11">
             <i class="icon-icon-test8" style="color: #b3880b">{{scope.row.examGlu}}</i>
@@ -108,7 +125,7 @@
             <i class="icon-icon-test8" style="color: #4f8cb3">{{scope.row.examHr}}</i>
           </div>
           <div v-else-if="scope.row.examHr<100&&scope.row.examHr>=60">
-            <sapn style="color: #00ff6b">{{scope.row.examHr}}</sapn>
+            <span style="color: #00ff6b">{{scope.row.examHr}}</span>
           </div>
           <div v-else>
             <i class="icon-icon-test8" style="color: #b30804">{{scope.row.examHr}}</i>
@@ -158,17 +175,22 @@
   // import DetailsExam from '@/components/exam/details'
   export default {
     inject:['reload'],
-    name:"exam",
+    name:"list",
     data () {
 
       return {
         search:{
-          olderName:""
+          olderName:"",
+          date1:"",
+          date2:"",
         },
         queryParams:{
           pageNo:1,
           pageSize:10,
-          olderName:""
+          olderName:"",
+          date1:"",
+          date2:"",
+
         },
         tableData:{}
       }

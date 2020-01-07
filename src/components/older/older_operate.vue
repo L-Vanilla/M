@@ -68,7 +68,7 @@
       </el-table-column>
       <el-table-column label="添加随访信息">
         <template slot-scope="scope">
-          <el-button @click="addVisits(scope.row)" style="color:#17B3A3"  type="text" size="medium" icon="icon-suifanghuanzhe">添加体检</el-button>
+          <el-button @click="addVisits(scope.row)" style="color:#17B3A3"  type="text" size="medium" icon="icon-suifanghuanzhe">添加随访</el-button>
         </template>
       </el-table-column>
       <el-table-column label="查看内容">
