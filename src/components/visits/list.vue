@@ -52,7 +52,8 @@
       <el-table-column
         label="附件">
         <template slot-scope="scope">
-          <el-button @click="download(scope.row)" style="color:#b3aa05" type="text" size="medium" icon="icon-xiazai2">附件</el-button>
+          <el-button @click="download(scope.row)" v-if="scope.row.fileurl!==''&&scope.row.fileurl!==null" style="color:#b3aa05" type="text" size="medium" icon="icon-xiazai2">附件</el-button>
+          <el-button v-else style="color:#8a8783" type="text" size="medium" icon="icon-xiazai2">附件</el-button>
         </template>
       </el-table-column>
 <!--      <el-table-column label="查看内容">-->

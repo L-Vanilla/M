@@ -29,6 +29,9 @@
         <el-menu-item index="个人中心" v-if="isOlder==='1'">
           <router-link to="/person_center">个人中心</router-link><br>
         </el-menu-item>
+        <el-menu-item index="个人中心" v-if="isOlder==='1'">
+          <router-link to="/person_exam">体检管理</router-link><br>
+        </el-menu-item>
       </el-menu>
 
     </el-col>

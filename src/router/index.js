@@ -31,6 +31,7 @@ import olderDetails from '@/components/user/olderDetails'//查看个人信息
 import olderEdit from '@/components/user/olderEdit'//修改老人信息
 import person_center from '@/components/user/person_center'//个人中心
 import examList from '@/components/user/examList'//体检中心
+import person_exam from '@/components/user/person_exam'//体检中心
 /*------------------------------------------------------------------------*/
 /*-----------相关的老人信息------------------------------------------------*/
 import WorkerIndex from '@/components/workerIndex'
@@ -100,7 +101,11 @@ const router = new Router({
             }
           ]
 
-        },
+        },{
+          path:'/person_exam',/*体检中心*/
+          name:'person_exam',
+          component:person_exam,
+        }
       ]
     }, {
       path:'/olderRegister',/*老人注册*/
