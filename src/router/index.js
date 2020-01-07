@@ -167,16 +167,7 @@ const router = new Router({
           path:'/img',
           name:'img',
           component:Img
-        },
-
-      ]
-    },
-    {
-      path:'/workerIndex',/*系统后台*/
-      name:'workerIndex',
-      component:WorkerIndex,
-      children:[
-        {
+        }, {
           path:'/older',/*老人基本信息管理*/
           name:'older',
           component:Older
@@ -205,8 +196,45 @@ const router = new Router({
           name:'visits',
           component:Visits
         },
+
       ]
-    }
+    },
+    // {
+    //   path:'/workerIndex',/*系统后台*/
+    //   name:'workerIndex',
+    //   component:WorkerIndex,
+    //   children:[
+    //     {
+    //       path:'/older',/*老人基本信息管理*/
+    //       name:'older',
+    //       component:Older
+    //     },{
+    //       path:'/member',/*家庭成员管理*/
+    //       name:'member',
+    //       component:Member
+    //     },{
+    //       path:'/older0perate',/*老人相关操作列表*/
+    //       name:'older0perate',
+    //       component:Older0perate
+    //     },{
+    //       path:'/diagnosis',/*诊断信息列表*/
+    //       name:'diagnosis',
+    //       component:Diagnosis
+    //     },{
+    //       path:'/aid',/*急救信息列表*/
+    //       name:'aid',
+    //       component:Aid
+    //     },{
+    //       path:'/exam',/*体检信息列表*/
+    //       name:'exam',
+    //       component:Exam
+    //     },{
+    //       path:'/visits',/*随访信息列表*/
+    //       name:'visits',
+    //       component:Visits
+    //     },
+    //   ]
+    // }
   ]
 })
 export default router;

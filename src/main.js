@@ -3,7 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import './assets/css/font.css'//引富文本编译器样式
+import "./assets/icon/iconfont.css";
+//引富文本编译器样式
+import './assets/css/font.css'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'

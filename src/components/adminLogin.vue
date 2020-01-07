@@ -39,6 +39,7 @@
           password: ''
         },
         admin: {},
+        islogin:"",
         rules: {
           name: [
             { required: true, message: '请输入用户名称', trigger: 'blur' },
@@ -51,7 +52,32 @@
       };
     },
 
+    created(){
+      var islogin = localStorage.getItem("islogin");
+      this.islogin=islogin;
+      console.log("登录状态"+this.islogin);
+      if(islogin!==1){
+        console.log("登录状态"+this.islogin);
+        this.$router.push('/adminIndex');
+      }
+      // this.loadUser();
+
+    },
+    watch:{
+      islogin: {
+        handler:function(){
+
+        },
+        deep:true
+      }
+    },
     methods: {
+      /*获取用户信息*/
+      loadUser(){
+        var list = JSON.parse(localStorage.getItem("admin") || '[]');
+        this.admin = list;
+        console.log(this.admin);
+      },
       ...mapMutations(['changeLogin']),
       adminLogin() {
         if (this.loginForm.name === '' || this.loginForm.password === '') {

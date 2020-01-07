@@ -12,7 +12,8 @@
         <el-submenu index="新闻管理" style="background-color: #42485b">
           <template slot="title">
             <p style="color:#ffffff;font-size: 14px; ">
-              <img src="../../assets/basic_msg.png" style="width: 16px;height: 16px"/>
+              <i class="icon-xinwen" style="width: 18px;height: 18px"></i>
+<!--              <img src="../../assets/basic_msg.png" style="width: 16px;height: 16px"/>-->
               &nbsp;&nbsp;新闻管理</p>
           </template>
           <el-menu-item index="发布新闻" route="newsAdd">发布新闻</el-menu-item>
@@ -21,7 +22,7 @@
         <el-submenu index="动态管理" style="background-color: #42485b">
           <template slot="title">
             <p style="color:#ffffff;font-size: 14px; ">
-              <img src="../../assets/basic_msg.png" style="width: 16px;height: 16px"/>
+              <i class="icon-dongtai" style="width: 18px;height: 18px"></i>
               &nbsp;&nbsp;动态管理</p>
           </template>
           <el-menu-item index="发布动态" route="healthCareAdd">发布动态</el-menu-item>
@@ -33,7 +34,7 @@
         <el-submenu index="公告管理" style="background-color: #42485b">
           <template slot="title">
             <p style="color:#ffffff;font-size: 14px; ">
-              <img src="../../assets/basic_msg.png" style="width: 16px;height: 16px"/>
+              <i class="icon-gonggao" style="width: 18px;height: 18px"></i>
               &nbsp;&nbsp;公告管理</p>
           </template>
           <el-menu-item index="公告列表" route="notice">公告列表</el-menu-item>
@@ -41,7 +42,7 @@
         <el-submenu index="用户管理" style="background-color: #42485b">
           <template slot="title">
             <p style="color:#ffffff;font-size: 14px; ">
-              <img src="../../assets/basic_msg.png" style="width: 16px;height: 16px"/>
+              <i class="icon-user"></i>
               &nbsp;&nbsp;用户管理</p>
           </template>
           <el-menu-item index="用户列表" route="admin">用户列表</el-menu-item>
@@ -52,18 +53,25 @@
               <img src="../../assets/basic_msg.png" style="width: 16px;height: 16px"/>
               &nbsp;&nbsp;社区人员管理</p>
           </template>
-          <el-menu-item index="社区人员列表" route="img">社区人员列表</el-menu-item>
+<!--          <el-menu-item index="社区人员列表" route="img">社区人员列表</el-menu-item>-->
           <el-menu-item index="社区人员列表" route="worker">社区人员列表</el-menu-item>
         </el-submenu>
-        <el-submenu index="老人管理" style="background-color: #42485b">
+        <el-submenu index="老人基本信息管理" style="background-color: #42485b">
           <template slot="title">
             <p style="color:#ffffff;font-size: 14px; ">
-              <img src="../../assets/basic_msg.png" style="width: 16px;height: 16px"/>
-              &nbsp;&nbsp;老人管理</p>
+              <i class="icon-old"></i>
+              &nbsp;&nbsp;老人基本信息管理</p>
           </template>
-          <el-menu-item index="社区人员列表" route="older">老人列表</el-menu-item>
+          <el-menu-item index="老人基本信息" route="older">老人基本信息</el-menu-item>
+          <el-menu-item index="老人相关操作列表" route="older0perate">老人相关操作列表</el-menu-item>
         </el-submenu>
+        <el-menu-item index="家庭成员" route="member">家庭成员</el-menu-item>
+        <el-menu-item index="诊断信息" route="diagnosis">诊断信息</el-menu-item>
+        <el-menu-item index="急救信息" route="aid">急救信息</el-menu-item>
+        <el-menu-item index="体检信息" route="exam">体检信息</el-menu-item>
+        <el-menu-item index="随访信息" route="visits">随访信息</el-menu-item>
       </el-menu>
+
     </el-col>
   </el-row>
 </template>

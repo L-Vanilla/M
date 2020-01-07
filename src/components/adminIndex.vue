@@ -6,6 +6,7 @@
       <h1  class="title">老人社区健康管理与跟踪系统（系统后台）</h1>
 <!--      <button @click="logout()" class="logout">退出</button>-->
 <!--      <p  class="user">{{user.userName}}</p>-->
+      <el-button type="text" @click="home()" style="color: black;margin-left: 850px" icon="el-icon-s-home">首页</el-button>
       <el-menu
         :default-active="activeIndex2"
         mode="horizontal"
@@ -20,8 +21,6 @@
           <el-menu-item index="2-1" @click="logout()">退出</el-menu-item>
         </el-submenu>
       </el-menu>
-<!--      <img src="../assets/census.png" @click="home()"-->
-<!--           style="width: 26px;height: 26px;display:inline-block; cursor: pointer;vertical-align:middle;float:right; margin-top:15px;margin-right:10px"/>-->
     </el-header>
     <el-container class="content">
       <el-aside width="200px">
@@ -74,7 +73,7 @@
       },
      // 跳转首页
       home(){
-        this.$router.push({ path:'/adminIndex'  })
+        this.$router.push({ path:'/'  })
       },
       edit(){
         this.$layer.iframe({

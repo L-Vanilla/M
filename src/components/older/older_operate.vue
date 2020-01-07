@@ -47,27 +47,28 @@
       </el-table-column>
       <el-table-column label="添加家庭成员">
         <template slot-scope="scope">
-          <el-button @click="addMember(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-document">添加家庭成员</el-button>
+          <el-button style="color:#17B3A3" type="text" icon="icon-duoyonghu-tianchong" @click="addMember(scope.row)" size="small">
+            添加家庭成员</el-button>
         </template>
       </el-table-column>
       <el-table-column label="添加诊断信息">
         <template slot-scope="scope">
-          <el-button @click="addDiagnosis(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-document">添加诊断信息</el-button>
+          <el-button @click="addDiagnosis(scope.row)" icon="icon-zhenduan" style="color:#17B3A3" type="text" size="small">添加诊断信息</el-button>
         </template>
       </el-table-column>
       <el-table-column label="添加急救信息">
         <template slot-scope="scope">
-          <el-button @click="addAid(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-document">添加急救信息</el-button>
+          <el-button @click="addAid(scope.row)" icon="icon-jijiu" style="color:#17B3A3" type="text" size="small">添加急救信息</el-button>
         </template>
       </el-table-column>
       <el-table-column label="添加体检信息">
         <template slot-scope="scope">
-          <el-button @click="addExam(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-document">添加体检信息</el-button>
+          <el-button @click="addExam(scope.row)" style="color:#17B3A3" type="text" size="small" icon="icon-tijianbaogao">添加体检信息</el-button>
         </template>
       </el-table-column>
       <el-table-column label="添加随访信息">
         <template slot-scope="scope">
-          <el-button @click="addVisits(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-document">添加随访信息</el-button>
+          <el-button @click="addVisits(scope.row)" style="color:#17B3A3" type="text" size="small" icon="icon-suifanghuanzhe">添加随访信息</el-button>
         </template>
       </el-table-column>
       <el-table-column label="查看内容">
