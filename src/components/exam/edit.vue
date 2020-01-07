@@ -52,7 +52,7 @@
         <el-row>
           <el-col :span="10">
             <el-form-item label="高压" prop="examHighbp" >
-              <el-input-number v-model="ruleForm.examHighbp" controls-position="right" style="width:50%" ></el-input-number>
+              <el-input-number v-model="ruleForm.examHighbp" controls-position="right" style="width:50%" :min="50" :max="220"></el-input-number>
 <!--              <el-input v-model="ruleForm.examHighbp"   placeholder="请输入..." style="width:50%">-->
 <!--&lt;!&ndash;                <span slot="append">mmHg</span>&ndash;&gt;-->
 <!--              </el-input>-->
@@ -62,7 +62,7 @@
           <el-col class="line" :span="2"></el-col>
           <el-col :span="11">
             <el-form-item label="低压" prop="examLowbp" >
-              <el-input-number v-model="ruleForm.examLowbp" controls-position="right" style="width:50%" ></el-input-number>
+              <el-input-number v-model="ruleForm.examLowbp" controls-position="right" style="width:50%" :min="40" :max="120"></el-input-number>
 <!--              <el-input v-model="ruleForm.examLowbp"   placeholder="请输入..." style="width:50%">-->
 <!--&lt;!&ndash;                <span slot="append">mmHg</span>&ndash;&gt;-->
 <!--              </el-input>-->

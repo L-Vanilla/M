@@ -9,7 +9,7 @@
           </el-input>
         </el-col>
         <el-col :span="2">
-          <el-button size="medium" type="primary" @click="handleDownLoad()">下载模板</el-button>
+          <el-button size="medium" type="primary"  icon="icon-xiazai2" @click="handleDownLoad()">下载模板</el-button>
 <!--          <a href="/./static/visits_exam/1.docx">下载</a>-->
         </el-col>
       </el-row>
@@ -52,7 +52,7 @@
       <el-table-column
         label="附件">
         <template slot-scope="scope">
-          <el-button @click="download(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-edit">附件</el-button>
+          <el-button @click="download(scope.row)" style="color:#b3aa05" type="text" size="medium" icon="icon-xiazai2">附件</el-button>
         </template>
       </el-table-column>
 <!--      <el-table-column label="查看内容">-->

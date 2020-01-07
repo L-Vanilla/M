@@ -41,39 +41,39 @@
         prop="olderAge"
         label="年龄">
       </el-table-column>
-      <el-table-column
-        prop="olderCard"
-        label="身份证">
-      </el-table-column>
+<!--      <el-table-column-->
+<!--        prop="olderCard"-->
+<!--        label="身份证">-->
+<!--      </el-table-column>-->
       <el-table-column label="添加家庭成员">
         <template slot-scope="scope">
-          <el-button style="color:#17B3A3" type="text" icon="icon-duoyonghu-tianchong" @click="addMember(scope.row)" size="small">
-            添加家庭成员</el-button>
+          <el-button style="color:#68b36a" type="text" icon="icon-duoyonghu-tianchong" @click="addMember(scope.row)" size="medium">
+            添加家庭</el-button>
         </template>
       </el-table-column>
       <el-table-column label="添加诊断信息">
         <template slot-scope="scope">
-          <el-button @click="addDiagnosis(scope.row)" icon="icon-zhenduan" style="color:#17B3A3" type="text" size="small">添加诊断信息</el-button>
+          <el-button @click="addDiagnosis(scope.row)" icon="icon-zhenduan" style="color:#f0710d" type="text" size="medium">添加诊断</el-button>
         </template>
       </el-table-column>
       <el-table-column label="添加急救信息">
         <template slot-scope="scope">
-          <el-button @click="addAid(scope.row)" icon="icon-jijiu" style="color:#17B3A3" type="text" size="small">添加急救信息</el-button>
+          <el-button @click="addAid(scope.row)" icon="icon-jijiu" style="color:#d00b12" type="text" size="medium">添加急救</el-button>
         </template>
       </el-table-column>
       <el-table-column label="添加体检信息">
         <template slot-scope="scope">
-          <el-button @click="addExam(scope.row)" style="color:#17B3A3" type="text" size="small" icon="icon-tijianbaogao">添加体检信息</el-button>
+          <el-button @click="addExam(scope.row)" style="color:#b3aa05" type="text" size="medium" icon="icon-tijianbaogao">添加体检</el-button>
         </template>
       </el-table-column>
       <el-table-column label="添加随访信息">
         <template slot-scope="scope">
-          <el-button @click="addVisits(scope.row)" style="color:#17B3A3" type="text" size="small" icon="icon-suifanghuanzhe">添加随访信息</el-button>
+          <el-button @click="addVisits(scope.row)" style="color:#17B3A3"  type="text" size="medium" icon="icon-suifanghuanzhe">添加体检</el-button>
         </template>
       </el-table-column>
       <el-table-column label="查看内容">
         <template slot-scope="scope">
-          <el-button @click="details(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-document">查看内容</el-button>
+          <el-button @click="details(scope.row)" style="color:#3888b3" type="text" size="medium" icon="el-icon-document">查看内容</el-button>
         </template>
       </el-table-column>
      <!-- <el-table-column label="操作">

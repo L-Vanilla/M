@@ -4,10 +4,14 @@
     <div style="margin-top: 15px;margin-bottom: 10px">
       <el-row>
 <!--        <el-col :span="2"><el-button style="background-color: #5fb381;color: #fff" @click="add">添加</el-button></el-col>-->
-        <el-col :span="22">
-          <el-input placeholder="请输入成员姓名" v-model="search.memberName" class="input-with-select" style="width: 200px">
-            <el-button slot="append" icon="el-icon-search" @click="findData"></el-button>
+        <el-col :span="4">
+          <el-input placeholder="请输入老人姓名" v-model="search.olderName" class="input-with-select" style="width: 200px">
           </el-input>
+        </el-col>
+        <el-col :span="8">
+          <el-input placeholder="请输入成员姓名" v-model="search.memberName" class="input-with-select" style="width: 200px">
+          </el-input>
+          <el-button icon="el-icon-search" style="background-color: #5fb381;color: #fff" @click="findData"></el-button>
         </el-col>
       </el-row>
     </div>
@@ -97,12 +101,14 @@
 
       return {
         search:{
-          memberName:""
+          memberName:"",
+          olderName:"",
         },
         queryParams:{
           pageNo:1,
           pageSize:10,
-          memberName:""
+          memberName:"",
+          olderName:""
         },
         tableData:{}
       }

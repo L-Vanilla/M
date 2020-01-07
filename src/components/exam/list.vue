@@ -4,7 +4,7 @@
     <div style="margin-top: 15px;margin-bottom: 10px">
       <el-row>
         <el-col :span="22">
-          <el-input placeholder="请输入姓名" v-model="search.olderName" class="input-with-select" style="width: 200px"><el-button slot="append" icon="el-icon-search" @click="findData"></el-button>
+          <el-input placeholder="请输入老人姓名" v-model="search.olderName" class="input-with-select" style="width: 200px"><el-button slot="append" icon="el-icon-search" @click="findData"></el-button>
           </el-input>
         </el-col>
       </el-row>
@@ -48,21 +48,72 @@
       <el-table-column
       label="血压">
         <el-table-column
-          prop="examHighbp"
           label="高压(mmHg)">
+          <template slot-scope="scope">
+            <div v-if="scope.row.examHighbp<=90">
+              <i class="icon-icon-test8" style="color: #4f8cb3">{{scope.row.examHighbp}}</i>
+            </div>
+            <div v-else-if="90<scope.row.examHighbp&&scope.row.examHighbp<140">
+              <span style="color: #00ff6b">{{scope.row.examHighbp}}</span>
+            </div>
+            <div v-else-if="140<=scope.row.examHighbp&&scope.row.examHighbp<=180">
+              <i class="icon-icon-test8" style="color: #b3880b">{{scope.row.examHighbp}}</i>
+            </div>
+            <div v-else>
+              <i class="icon-icon-test8" style="color: #b30804">{{scope.row.examHighbp}}</i>
+            </div>
+          </template>
         </el-table-column>
         <el-table-column
-          prop="examLowbp"
           label="低压(mmHg)">
+          <template slot-scope="scope">
+            <div v-if="scope.row.examLowbp<=60">
+              <i class="icon-icon-test8" style="color: #4f8cb3">{{scope.row.examLowbp}}</i>
+            </div>
+            <div v-else-if="60<scope.row.examLowbp&&scope.row.examLowbp<90">
+              <span style="color: #00ff6b">{{scope.row.examLowbp}}</span>
+            </div>
+            <div v-else-if="90<=scope.row.examLowbp&&scope.row.examLowbp<110">
+              <i class="icon-icon-test8" style="color: #b3880b">{{scope.row.examLowbp}}</i>
+            </div>
+            <div v-else>
+              <i class="icon-icon-test8" style="color: #b30804">{{scope.row.examLowbp}}</i>
+            </div>
+          </template>
         </el-table-column>
       </el-table-column>
       <el-table-column
         prop="examGlu"
         label="血糖(mmd/L)">
+        <template slot-scope="scope">
+          <div v-if="scope.row.examGlu<2.8">
+            <i class="icon-icon-test8" style="color: #4f8cb3">{{scope.row.examGlu}}</i>
+          </div>
+          <div v-else-if="scope.row.examGlu<7.8&&scope.row.examGlu>=2.8">
+            <sapn style="color: #00ff6b">{{scope.row.examGlu}}</sapn>
+          </div>
+          <div v-else-if="7.8<=scope.row.examGlu&&scope.row.examGlu<11">
+            <i class="icon-icon-test8" style="color: #b3880b">{{scope.row.examGlu}}</i>
+          </div>
+          <div v-else>
+            <i class="icon-icon-test8" style="color: #b30804">{{scope.row.examGlu}}</i>
+          </div>
+        </template>
       </el-table-column>
       <el-table-column
         prop="examHr"
         label="心率(次/分)">
+        <template slot-scope="scope">
+          <div v-if="scope.row.examHr<60">
+            <i class="icon-icon-test8" style="color: #4f8cb3">{{scope.row.examHr}}</i>
+          </div>
+          <div v-else-if="scope.row.examHr<100&&scope.row.examHr>=60">
+            <sapn style="color: #00ff6b">{{scope.row.examHr}}</sapn>
+          </div>
+          <div v-else>
+            <i class="icon-icon-test8" style="color: #b30804">{{scope.row.examHr}}</i>
+          </div>
+        </template>
       </el-table-column>
       <el-table-column
         prop="remarks"
