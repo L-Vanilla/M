@@ -43,6 +43,8 @@ import Aid from '@/components/aid/list'//急救信息列表
 import Exam from '@/components/exam/list'//体检信息列表
 import Visits from '@/components/visits/list'//体检信息列表
 
+/*统计*/
+import sum_older from '@/components/Echarts/sum_older'//统计老人信息
 Vue.use(Router);
 
 const router = new Router({
@@ -126,6 +128,10 @@ const router = new Router({
       component:AdminIndex,
       children:[
         {
+          path:'/adminIndex',/*统计*/
+          name:'sum_older',
+          component:sum_older
+        },{
           path:'/news',/*新闻管理*/
           name:'news',
           component:News
