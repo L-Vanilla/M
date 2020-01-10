@@ -1,7 +1,7 @@
 <!--站内新闻--Vanilla-->
 <template>
-  <div>
-    <div style="margin-top: 15px;margin-bottom: 10px">
+  <div style="padding: 0 100px;">
+    <div style="margin-bottom: 10px">
       <el-row>
         <!--        <el-col :span="2"><el-button style="background-color: #17B3A3;color: #fff" @click="add">添加</el-button></el-col>-->
         <el-col :span="22">
@@ -11,7 +11,6 @@
         </el-col>
       </el-row>
     </div>
-
   <!--  <div style="margin-left: 5%;width: 80%" v-for="item in news" >
       <div class="left">
         <el-link href="https://element.eleme.io" target="_blank" v-model="item.title">{{item.title}}</el-link>
@@ -54,9 +53,10 @@
         </template>-->
       </el-table-column>
     </el-table>
+    <br>
     <el-pagination
       background
-      layout="prev, pager, next,total"
+      layout="prev, pager, next"
       :total="tableData.total"
       :current-page="this.queryParams.pageNo"
       :page-size="this.queryParams.pageSize"
@@ -76,7 +76,7 @@
         },
         queryParams:{
           pageNo:1,
-          pageSize:10,
+          pageSize:20,
           title:""
         },
         tableData:{},

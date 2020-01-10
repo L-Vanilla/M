@@ -72,7 +72,7 @@ const router = new Router({
           name:'education_List',
           component:education_List
         },{
-          path:'/healthCareDetails/:id',/*健身教育详情*/
+          path:'/healthCareDetails/:id/:hType',/*健身教育详情*/
           name:'healthCareDetails',
           component:healthCareDetails
         },{

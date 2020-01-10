@@ -1,6 +1,6 @@
 <!--20-1-1预防知识--Vanilla-->
 <template>
-  <div>
+  <div style="padding: 0 100px;">
     <div style="margin-top: 15px;margin-bottom: 10px">
       <el-row>
         <!--        <el-col :span="2"><el-button style="background-color: #17B3A3;color: #fff" @click="add">添加</el-button></el-col>-->
@@ -58,7 +58,7 @@
         },
         queryParams:{
           pageNo:1,
-          pageSize:10,
+          pageSize:20,
           title:"",
           hType:"预防知识"
         },
@@ -93,8 +93,7 @@
         this.merge(this.search,this.queryParams);
       },
       rowClick(row,column,event){
-        this.$router.push("/healthCareDetails/" + row.id);
-      },
+        this.$router.push("/healthCareDetails/" + row.id+"/"+row.hType);      },
 
     }
   }

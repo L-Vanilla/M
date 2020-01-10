@@ -1,6 +1,6 @@
 <!--前台门户--Vanilla-->
 <template>
-  <div>
+  <div @scroll="orderScroll">
     <vue-particles
       color="#123456"
       id="particles-js"
@@ -19,7 +19,7 @@
       :clickEffect="true"
       clickMode="push" class="lizi">
     </vue-particles>
-     <el-container  class="wrap" @scroll="orderScroll">
+     <el-container  class="wrap" >
        <el-header>
          <div class="r" v-if="isOlder!=='1'">
            <el-button type="text" @click="register()" style="color: black">注册</el-button>
@@ -76,7 +76,6 @@
          <!--      </el-aside>-->
          <el-main style="padding: 15px 200px 15px 200px">
            <MyBreadcrumb1 style="margin-bottom:20px;"></MyBreadcrumb1>
-
            <router-view></router-view>
          </el-main>
        </el-container>

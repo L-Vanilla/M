@@ -56,9 +56,12 @@
       var islogin = localStorage.getItem("islogin");
       this.islogin=islogin;
       console.log("登录状态"+this.islogin);
-      if(islogin!==1){
+      if(islogin===1){
         console.log("登录状态"+this.islogin);
         this.$router.push('/adminIndex');
+      }
+      else {
+        this.$router.push('/adminLogin');
       }
       // this.loadUser();
 
