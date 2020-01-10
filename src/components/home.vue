@@ -1,65 +1,87 @@
 <!--前台门户--Vanilla-->
 <template>
-  <div >
-  <el-container class="wrap" @scroll="orderScroll">
-    <el-header>
-      <div class="r" v-if="isOlder!=='1'">
-        <el-button type="text" @click="register()" style="color: black">注册</el-button>
-        <el-divider direction="vertical"></el-divider>
-        <el-button type="text" @click="login()" style="color: black">登录</el-button>
-        <el-divider direction="vertical"></el-divider>
-        <el-button type="text" @click="adminLogin()" style="color: black">系统登录</el-button>
-      </div>
-      <div class="r" v-else>
-        <span>{{older.olderName}}</span>
-        <el-divider direction="vertical"></el-divider>
-        <el-button type="text" @click="logout()" style="color: black">退出</el-button>
-      </div>
-    </el-header>
-    <!--<div style="width: 100%;height: 50px;background-color:black"></div>-->
-    <div style="width: 100%;height: 50px"></div>
-    <Menu1></Menu1>
-    <el-container style="margin-top: 10px" >
-<!--      <el-aside style="margin-left:15%"  >-->
-<!--        <div v-if="isOlder==='1'">-->
-<!--          <div style="margin-top: 50px;height: 100px;text-align: center" >-->
-<!--            <el-image-->
-<!--              style="width: 100px; height: 100px;"-->
-<!--              :src="url">-->
-<!--            </el-image>-->
-<!--          </div>-->
-<!--          <el-row style="margin-top: 20px;text-align: center ">{{older.olderName}}-->
-<!--          </el-row>-->
-<!--          <el-row style="margin-top: 20px;text-align: center ">-->
-<!--            <el-col :span="14">-->
-<!--              <el-button style="background-color: #9dd1c6;color: #fff" icon="el-icon-edit" @click="edit()">编辑</el-button>-->
-<!--            </el-col>-->
-<!--            <el-col :span="7">-->
-<!--              <el-button style="background-color: #9dd1c6;color: #fff" icon="el-icon-tickets" @click="details()">查看-->
-<!--              </el-button>-->
-<!--            </el-col>-->
-<!--          </el-row>-->
-<!--        </div>-->
-<!--&lt;!&ndash;        <el-card shadow="always">&ndash;&gt;-->
-<!--&lt;!&ndash;          <el-header style="background-color:#cdd1bc;height: 50px ">系统公告</el-header>&ndash;&gt;-->
-<!--&lt;!&ndash;          <div>&ndash;&gt;-->
-<!--&lt;!&ndash;            <el-form :model="notice"  ref="notice"  class="demo-ruleForm">&ndash;&gt;-->
-<!--&lt;!&ndash;              <el-form-item label="" prop="title" >&ndash;&gt;-->
-<!--&lt;!&ndash;                <h1 style="text-align: center">{{notice.title}}</h1>&ndash;&gt;-->
-<!--&lt;!&ndash;              </el-form-item>&ndash;&gt;-->
-<!--&lt;!&ndash;              <el-form-item label="" prop="content" >&ndash;&gt;-->
-<!--&lt;!&ndash;                <h2 style="text-align: center">{{notice.content}}</h2>&ndash;&gt;-->
-<!--&lt;!&ndash;              </el-form-item>&ndash;&gt;-->
-<!--&lt;!&ndash;            </el-form>&ndash;&gt;-->
-<!--&lt;!&ndash;          </div>&ndash;&gt;-->
-<!--&lt;!&ndash;        </el-card>&ndash;&gt;-->
-<!--      </el-aside>-->
-      <el-main style="padding: 15px 300px 15px 300px">
-        <MyBreadcrumb1 style="margin-bottom:20px;"></MyBreadcrumb1>
-        <router-view></router-view>
-      </el-main>
-    </el-container>
-  </el-container>
+  <div>
+    <vue-particles
+      color="#123456"
+      id="particles-js"
+      :particleOpacity="0.7"
+      :particlesNumber="180"
+      shapeType="circle"
+      :particleSize="4"
+      linesColor="#203c77"
+      :linesWidth="1"
+      :lineLinked="true"
+      :lineOpacity="0.4"
+      :linesDistance="100"
+      :moveSpeed="2"
+      :hoverEffect="true"
+      hoverMode="grab"
+      :clickEffect="true"
+      clickMode="push" class="lizi">
+    </vue-particles>
+     <el-container  class="wrap" @scroll="orderScroll">
+       <el-header>
+         <div class="r" v-if="isOlder!=='1'">
+           <el-button type="text" @click="register()" style="color: black">注册</el-button>
+           <el-divider direction="vertical"></el-divider>
+           <el-button type="text" @click="login()" style="color: black">登录</el-button>
+           <el-divider direction="vertical"></el-divider>
+           <el-button type="text" @click="adminLogin()" style="color: black">系统登录</el-button>
+         </div>
+         <div class="r" v-else>
+           <span>{{older.olderName}}</span>
+           <el-divider direction="vertical"></el-divider>
+           <el-button type="text" @click="logout()" style="color: black">退出</el-button>
+         </div>
+       </el-header>
+       <!--<div style="width: 100%;height: 50px;background-color:black"></div>-->
+       <div style="width: 100%;height: 50px"></div>
+       <Menu1></Menu1>
+
+       <el-container style="margin-top: 10px" >
+
+         <!--      <el-aside style="margin-left:15%"  >-->
+         <!--        <div v-if="isOlder==='1'">-->
+         <!--          <div style="margin-top: 50px;height: 100px;text-align: center" >-->
+         <!--            <el-image-->
+         <!--              style="width: 100px; height: 100px;"-->
+         <!--              :src="url">-->
+         <!--            </el-image>-->
+         <!--          </div>-->
+         <!--          <el-row style="margin-top: 20px;text-align: center ">{{older.olderName}}-->
+         <!--          </el-row>-->
+         <!--          <el-row style="margin-top: 20px;text-align: center ">-->
+         <!--            <el-col :span="14">-->
+         <!--              <el-button style="background-color: #9dd1c6;color: #fff" icon="el-icon-edit" @click="edit()">编辑</el-button>-->
+         <!--            </el-col>-->
+         <!--            <el-col :span="7">-->
+         <!--              <el-button style="background-color: #9dd1c6;color: #fff" icon="el-icon-tickets" @click="details()">查看-->
+         <!--              </el-button>-->
+         <!--            </el-col>-->
+         <!--          </el-row>-->
+         <!--        </div>-->
+         <!--&lt;!&ndash;        <el-card shadow="always">&ndash;&gt;-->
+         <!--&lt;!&ndash;          <el-header style="background-color:#cdd1bc;height: 50px ">系统公告</el-header>&ndash;&gt;-->
+         <!--&lt;!&ndash;          <div>&ndash;&gt;-->
+         <!--&lt;!&ndash;            <el-form :model="notice"  ref="notice"  class="demo-ruleForm">&ndash;&gt;-->
+         <!--&lt;!&ndash;              <el-form-item label="" prop="title" >&ndash;&gt;-->
+         <!--&lt;!&ndash;                <h1 style="text-align: center">{{notice.title}}</h1>&ndash;&gt;-->
+         <!--&lt;!&ndash;              </el-form-item>&ndash;&gt;-->
+         <!--&lt;!&ndash;              <el-form-item label="" prop="content" >&ndash;&gt;-->
+         <!--&lt;!&ndash;                <h2 style="text-align: center">{{notice.content}}</h2>&ndash;&gt;-->
+         <!--&lt;!&ndash;              </el-form-item>&ndash;&gt;-->
+         <!--&lt;!&ndash;            </el-form>&ndash;&gt;-->
+         <!--&lt;!&ndash;          </div>&ndash;&gt;-->
+         <!--&lt;!&ndash;        </el-card>&ndash;&gt;-->
+         <!--      </el-aside>-->
+         <el-main style="padding: 15px 200px 15px 200px">
+           <MyBreadcrumb1 style="margin-bottom:20px;"></MyBreadcrumb1>
+
+           <router-view></router-view>
+         </el-main>
+       </el-container>
+     </el-container>
+
   </div>
 </template>
 
@@ -67,6 +89,7 @@
   import Menu1 from '@/components/home_frame/menu_home'
   import MyBreadcrumb1 from '@/components/frame/myBreadcrumb'
   import DetailsOlder from '@/components/older/details'
+
     export default {
         name: "home",
       data () {
@@ -81,6 +104,7 @@
           older:[],
           isOlder: "1",
           url:"",
+
         }
       },
       /*引组件*/
@@ -185,12 +209,26 @@
     to{transform: translateY(0px);opacity: 1;}
   }*/
   .wrap{
-    height:100%;
     display: flex;
     flex: 1;
     flex-direction:column;
-    background-color: #FFF;
+    position: relative;
+    /*background-image: url("../assets/img/beijing1.jpg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: contain;*/
   }
+ .main{
+
+ }
+ .lizi{
+   width: 100%;
+   height:calc(200% + 100px);
+   display: flex;
+   flex: 1;
+   flex-direction:column;
+   position: absolute;
+   background-color: #d0dfd9;
+ }
   .el-header, .el-footer {
     background-color: #585b56;
     color: #333333;
@@ -217,7 +255,8 @@
   .el_row{
     height: 50px;
   }
- .el-image__inner{
-   border-radius: 50%;
- }
+ /*.el-image__inner{*/
+ /*  border-radius: 50%;*/
+ /*}*/
+
 </style>

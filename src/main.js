@@ -16,8 +16,10 @@ import mypublic from '@/public/mypublicjs'
 import axios from 'axios'
 import layer from 'vue-layer'
 // import store from './vuex/store.js'
-
-
+/*粒子---------*/
+import VueParticles from 'vue-particles'
+Vue.use(VueParticles);
+/*-----------*/
 axios.defaults.baseURL="http://127.0.0.1/";
 Vue.prototype.axios=axios;
 Vue.config.productionTip = false;

@@ -61,6 +61,7 @@
           pageNo:1,
           pageSize:10,
         },exam:{
+
         }
         // tableData:{},
         // guestTypes:{}
@@ -87,13 +88,12 @@
       loadUser(){
         var list = JSON.parse(localStorage.getItem("older") || '[]');
         this.exam1.olderId = list.id;
-        console.log(this.exam1.olderId);
+        console.log("老人id:"+this.exam1.olderId);
       },
       getData(){
         //统计图
-        this.get("exam/list",(data)=>{
-
-          console.log("统计："+data.list);
+        this.get("exam/getListByOlderId",(data)=>{
+          console.log("统计了列表："+data.list);
           this.exam=data.list;
           let i=this.exam.length-1;
           let j=0;

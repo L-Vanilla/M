@@ -4,25 +4,26 @@
     font-size: 18px;
   }
   #chart_example1{
-    width: 650px;
-    height: 550px;
+    width: 480px;
+    height: 350px;
     background-color: #ffffff;
+    padding-top: 10px;
   }
   #chart_example2{
-    width: 650px;
-    height: 550px;
+    width: 500px;
+    height: 350px;
     background-color: #ffffff;
     padding-top: 10px;
   }
   #chart_example3{
-    width: 850px;
-    height: 550px;
+    width: 550px;
+    height: 350px;
     background-color: #ffffff;
     padding-top: 10px;
   }
   #chart_example4{
-    width: 600px;
-    height: 400px;
+    width: 1100px;
+    height: 550px;
     background-color: #ffffff;
     padding-top: 10px;
   }
@@ -36,18 +37,29 @@
 <!--    </div>-->
     <div style="display:inline-block;margin-top: 10px">
       <el-row>
-        <el-col>
+        <el-col :span="9">
           <!--老人性别比例-->
-          <div id="chart_example1" style="margin-top: 5px;"></div>
+          <div id="chart_example1" style="display:inline-block;margin-top: 5px;"></div>
         </el-col>
-       <el-col>
+       <el-col :span="9">
          <!--老人健康状态分布-->
-         <div id="chart_example2" style="margin-top: 5px;"></div>
+         <div id="chart_example2" style="display:inline-block;margin-top: 5px;"></div>
        </el-col>
-
       </el-row>
-      <!--老人年龄段分布-->
-      <div id="chart_example3" style="margin-top: 5px;"></div>
+      <el-row>
+        <el-col :span="10">
+          <!--老人年龄段分布-->
+          <div id="chart_example3" style="margin-top: 5px;"></div>
+        </el-col>
+        <el-col :span="20">
+
+        </el-col>
+      </el-row>
+      <el-row>
+        <!--高压分布-->
+        <div id="chart_example4" style="display:inline-block;margin-top: 80px" ></div>
+      </el-row>
+
     </div>
 
 <!--    <div id="chart_example3" style="margin-top: 5px;"></div>-->
@@ -80,7 +92,7 @@
     },
     methods:{
       getData(){
-        //统计图
+        //老人统计图
         this.get("older/SumOlder",(data)=>{
 
           console.log("统计："+data);
@@ -117,7 +129,7 @@
             series: [{
               type: 'pie',
               name: '',
-              radius: [120, 200],
+              radius: [20, 40],
               hoverAnimation: false,
               silent: true,
               clockwise: false,
@@ -147,7 +159,7 @@
 
               {
                 type: 'pie',
-                radius: [120, 120],
+                radius: [40, 60],
                 hoverAnimation: false,
                 silent: true,
                 data: [{
@@ -173,7 +185,7 @@
                 }]
               }, {
                 type: 'pie',
-                radius: [130, 190],
+                radius: [130, 20],
                 hoverAnimation: false,
                 data: [{
                   value: datam[0],
@@ -187,7 +199,7 @@
                   },
                   labelLine: {
                     normal: {
-                      length: 60
+                      length: 120
                     }
                   }
                 }, {
@@ -202,7 +214,7 @@
                   },
                   labelLine: {
                     normal: {
-                      length: 60
+                      length: 120
                     }
                   }
                 }]
@@ -215,7 +227,7 @@
             series: [{
               type: 'pie',
               name: '',
-              radius: [120, 200],
+              radius: [20, 40],
               hoverAnimation: false,
               silent: true,
               clockwise: false,
@@ -244,7 +256,7 @@
             },
               {
                 type: 'pie',
-                radius: [120, 120],
+                radius: [40, 60],
                 hoverAnimation: false,
                 silent: true,
                 data: [{
@@ -270,7 +282,7 @@
                 }]
               }, {
                 type: 'pie',
-                radius: [130, 190],
+                radius: [130, 20],
                 hoverAnimation: false,
                 data: [{
                   value: dataState[0],
@@ -284,7 +296,7 @@
                   },
                   labelLine: {
                     normal: {
-                      length: 60
+                      length: 120
                     }
                   }
                 },
@@ -300,7 +312,7 @@
                   },
                   labelLine: {
                     normal: {
-                      length: 60
+                      length: 120
                     }
                   }
                 },
@@ -316,7 +328,7 @@
                   },
                   labelLine: {
                     normal: {
-                      length: 60
+                      length: 120
                     }
                   }
                 },
@@ -332,7 +344,7 @@
                   },
                   labelLine: {
                     normal: {
-                      length: 60
+                      length: 120
                     }
                   }
                 },
@@ -345,7 +357,7 @@
             series: [{
               type: 'pie',
               name: '',
-              radius: [120, 200],
+              radius: [20, 40],
               hoverAnimation: false,
               silent: true,
               clockwise: false,
@@ -374,7 +386,7 @@
             },
               {
                 type: 'pie',
-                radius: [120, 120],
+                radius: [40, 60],
                 hoverAnimation: false,
                 silent: true,
                 data: [{
@@ -400,11 +412,11 @@
                 }]
               }, {
                 type: 'pie',
-                radius: [130, 190],
+                radius: [130, 20],
                 hoverAnimation: false,
                 data: [{
                   value: dataAge[0],
-                  name: '1-50年龄段',
+                  name: '小于50',
                   label: {
                     normal: {
                       color: '#47b34f',
@@ -414,7 +426,7 @@
                   },
                   labelLine: {
                     normal: {
-                      length: 60
+                      length: 120
                     }
                   }
                 },
@@ -430,7 +442,7 @@
                   },
                   labelLine: {
                     normal: {
-                      length: 60
+                      length: 120
                     }
                   }
                 },
@@ -446,7 +458,7 @@
                   },
                   labelLine: {
                     normal: {
-                      length: 60
+                      length: 120
                     }
                   }
                 },
@@ -462,7 +474,7 @@
                   },
                   labelLine: {
                     normal: {
-                      length: 60
+                      length: 120
                     }
                   }
                 },{
@@ -477,7 +489,7 @@
                   },
                   labelLine: {
                     normal: {
-                      length: 60
+                      length: 120
                     }
                   }
                 },
@@ -495,6 +507,121 @@
           /*老人年龄分布*/
           myChart3.setOption(option3);
           window.addEventListener('resize',function() {myChart3.resize()});
+          // myChart4.setOption(option4);
+          // window.addEventListener('resize',function() {myChart4.resize()});
+        });
+        /*体检信息统计图*/
+        this.get("exam/SumExam",(data)=>{
+          console.log("统计高压："+data.examHighbps.length);
+          let i=0;
+          /*高压统计*/
+          const datahigh=[],datax=[];
+          for( i=0 ; i<data.examHighbps.length;i++){
+            datax.push(i+1);
+            datahigh.push(data.examHighbps[i].count);
+            console.log("高压数："+datahigh[i]);
+          }
+          /*低压统计*/
+          const datalow=[];
+          for( i=0 ; i<data.examLowbps.length;i++){
+            datax.push(i+1);
+            datalow.push(data.examLowbps[i].count);
+            console.log("低压数："+datalow[i]);
+          }
+
+
+          /*高压统计表*/
+          let myChart4 = echarts.init(document.getElementById('chart_example4'));
+          /*老人健康统计*/
+          // let myChart2 = echarts.init(document.getElementById('chart_example2'));
+          /*老人年龄段分布*/
+          // let myChart3 = echarts.init(document.getElementById('chart_example3'));
+          // let myChart4 = echarts.init(document.getElementById('chart_example4'));
+
+          /*高/低压统计*/
+          let option4 = {
+            title: {
+              text: '高低压浓度变化'
+            },
+            tooltip: {
+              trigger: 'axis'
+            },
+            legend: {
+              data: ['高压', '低压']
+            },
+            xAxis : [
+              {
+                type : 'category',
+                data : ['<90','90-140','140-180','180+'],
+                name:'高压范围(mmHg)',
+                position: 'bottom',
+                axisTick: {
+                  alignWithLabel: true
+                }
+              },
+              {
+                type : 'category',
+                position: 'middle',
+                data : ['<60','60-90','90-110','110+'],
+                name:'低压范围(mmHg)',
+                axisTick: {
+                  alignWithLabel: true
+                }
+              }
+            ],
+            yAxis : [
+              {
+                name:'总次数',
+                type : 'value'
+              }
+            ],
+            series : [
+              {
+                name:'总次数',
+                type:'bar',
+                barWidth: '10px',
+                barGap:'40%',//柱图间距
+                data:datahigh,
+                label: {
+                  normal: {
+                    fontSize:20,
+                    show: true,
+                  }
+                },
+                itemStyle: {
+                  color: '#ce5849',
+                }
+              },
+              {
+                name:'总次数',
+                type:'bar',
+                barWidth: '10px',
+                barGap:'30%',//柱图间距
+                data:datalow,
+                label: {
+                  normal: {
+                    fontSize:20,
+                    show: true,
+                  }
+                },
+                itemStyle: {
+                  color: '#7cc0ce',
+                }
+              },
+
+            ]
+          };
+
+
+          /*高压统计*/
+          myChart4.setOption(option4);
+          window.addEventListener('resize',function() {myChart4.resize()});
+          /*老人健康状态统计*/
+          // myChart2.setOption(option2);
+          // window.addEventListener('resize',function() {myChart2.resize()});
+          /*老人年龄分布*/
+          // myChart3.setOption(option3);
+          // window.addEventListener('resize',function() {myChart3.resize()});
           // myChart4.setOption(option4);
           // window.addEventListener('resize',function() {myChart4.resize()});
         });

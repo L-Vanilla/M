@@ -6,7 +6,8 @@
       <h1  class="title">老人社区健康管理与跟踪系统（系统后台）</h1>
 <!--      <button @click="logout()" class="logout">退出</button>-->
 <!--      <p  class="user">{{user.userName}}</p>-->
-      <el-button type="text" @click="home()" style="color: black;margin-left: 850px" icon="el-icon-s-home">首页</el-button>
+      <el-button type="text" @click="home()" style="color: #FFFFFF;margin-left: 850px" icon="el-icon-s-home">首页</el-button>
+      <el-button type="text" @click="Sum_Older()" style="color: #FFFFFF;" icon="icon-tubiao"></el-button>
       <el-menu
         :default-active="activeIndex2"
         mode="horizontal"
@@ -74,6 +75,10 @@
      // 跳转首页
       home(){
         this.$router.push({ path:'/'  })
+      },
+      // 跳转首页
+      Sum_Older(){
+        this.$router.push({ path:'/adminIndex'  })
       },
       edit(){
         this.$layer.iframe({
