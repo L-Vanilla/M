@@ -53,23 +53,14 @@
     },
 
     created(){
-      var islogin = localStorage.getItem("islogin");
-      this.islogin=islogin;
-      console.log("登录状态"+this.islogin);
-      if(islogin===1){
-        console.log("登录状态"+this.islogin);
-        this.$router.push('/adminIndex');
-      }
-      else {
-        this.$router.push('/adminLogin');
-      }
-      // this.loadUser();
+
+      this.loadUser();
 
     },
     watch:{
       islogin: {
         handler:function(){
-
+          this.loadUser();
         },
         deep:true
       }
@@ -77,8 +68,19 @@
     methods: {
       /*获取用户信息*/
       loadUser(){
-        var list = JSON.parse(localStorage.getItem("admin") || '[]');
-        this.admin = list;
+        var islogin = localStorage.getItem("islogin");
+        this.islogin=islogin;
+        console.log("登录状态"+this.islogin);
+        if(islogin!=='1'){
+          console.log("登录状态"+this.islogin);
+          this.$router.push('/adminLogin');
+        }
+        else {
+          var list = JSON.parse(localStorage.getItem("admin") || '[]');
+          this.admin = list;
+          this.$router.push('/adminIndex');
+        }
+
         console.log(this.admin);
       },
       ...mapMutations(['changeLogin']),

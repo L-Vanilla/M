@@ -40,6 +40,20 @@
         label="备注">
       </el-table-column>
       <el-table-column
+        prop="workerName"
+        label="随访人">
+      </el-table-column>
+      <el-table-column
+        prop="visitsState"
+        label="是否随访">
+        <template slot-scope="scope">
+          <span v-if="scope.row.visitsState===0" style="color: #df9549">未随访</span>
+          <el-button v-if="scope.row.visitsState===0" @click="update_visitsState(scope.row)" type="small" style="background-color:#5fb381;">已随访</el-button>
+          <span v-if="scope.row.visitsState===1" style="color: #9bdf72">已随访</span>
+        </template>
+      </el-table-column>
+
+      <el-table-column
         label="随访时间">
         <template slot-scope="scope">
           <span>{{scope.row.visitsDatetime | FormatDate('yyyy-MM-dd')}}</span>
@@ -168,7 +182,29 @@
         let a = document.createElement('a');
         a.href = '/./static/visits_exam/'+row.fileurl;
         a.click();
-      }
+      },
+      update_visitsState(row){
+        this.$confirm('确定要取消码?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          row.visitsState=1;
+          this.get("visits/updateVisitsState",(data)=>{
+            if(data>0){
+              this.$message({
+                type: 'success',
+                message: '成功!'
+              });
+            }
+          },{id:row.id,visitsState: row.visitsState});
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '失败'
+          });
+        });
+      },
     }
   }
 </script>

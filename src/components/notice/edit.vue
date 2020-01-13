@@ -26,6 +26,8 @@
           ruleForm:{
             id:"",
             title:"",
+            publisherId:"",
+            publisherName:"",
             content:""
           },
           rules: {
@@ -50,6 +52,7 @@
             },{id:this.id});
             this.buttonText="修改"
         }
+        this.loadUser();
 
     },
 
@@ -57,6 +60,12 @@
 
     },
     methods:{
+      /*获取用户数据*/
+      loadUser(){
+        var list = JSON.parse(localStorage.getItem("admin") || '[]');
+        this.ruleForm.publisherName=list.name;
+        this.ruleForm.publisherId=list.id;
+      },
         resetForm(formName){
              this.$refs[formName].resetFields();
         },

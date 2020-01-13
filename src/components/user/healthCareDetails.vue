@@ -127,6 +127,8 @@
         this.queryParams.pageNo=i;
       },
       rowClick(row,column,event){
+        this.get("healthCare/updateClickNum",(data)=>{
+        },{id:row.id,clickNum: row.clickNum+1});
         window.open("/healthCareDetails/" + row.id+"/"+row.hType);
       },
 

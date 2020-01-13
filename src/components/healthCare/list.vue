@@ -40,6 +40,10 @@
         label="点击率">
       </el-table-column>
       <el-table-column
+        prop="publisherName"
+        label="发布人">
+      </el-table-column>
+      <el-table-column
         prop="createDate"
         label="发布时间">
       </el-table-column>

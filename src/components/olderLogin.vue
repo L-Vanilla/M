@@ -1,22 +1,41 @@
 <!--20-1-5前台老人登录--Vanilla-->
 <template>
   <div>
-    <div style="padding: 80px 400px 50px 400px">
-  </div>
-    <div style="padding: 30px 500px 50px 500px">
-      <div>
-        <el-card class="box-card" >
-          <div slot="header" class="clearfix" >
-            <el-row>
-              <el-col :span="3" style="float: left">
-                <el-button type="text" style="float: right;"  icon="el-icon-back" size="medium" @click="home()">去首页</el-button>
-              </el-col>
-            </el-row>
-            <el-row style="text-align: center">
+    <vue-particles
+      color="#123456"
+      id="particles-js"
+      :particleOpacity="0.7"
+      :particlesNumber="100"
+      shapeType="polygon"
+      :particleSize="4"
+      linesColor="#203c77"
+      :linesWidth="1"
+      :lineLinked="true"
+      :lineOpacity="0.4"
+      :linesDistance="100"
+      :moveSpeed="2"
+      :hoverEffect="true"
+      hoverMode="grab"
+      :clickEffect="true"
+      clickMode="push" class="lizi">
+    </vue-particles>
+    <div class="wrap">
+      <div style="">
+      </div>
+      <div style="padding: 100px 100px">
+        <div>
+          <el-card class="box-card"  style="">
+            <div slot="header" class="clearfix" >
+              <el-row>
+                <el-col :span="3" style="float: left">
+                  <el-button type="text" style="float: right;"  icon="el-icon-back" size="medium" @click="home()">去首页</el-button>
+                </el-col>
+              </el-row>
+              <el-row style="text-align: center">
                 <span>用户登录</span>
-            </el-row>
-          </div>
-          <el-form :model="loginForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" >
+              </el-row>
+            </div>
+            <el-form :model="loginForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" >
               <el-form-item label="" prop="olderName" >
                 <el-input v-model="loginForm.olderName" prefix-icon="el-icon-user-solid"  style="width: 70%;"  placeholder="请输入姓名" >
                 </el-input>
@@ -24,18 +43,19 @@
               <el-form-item label="" prop="olderPassword" >
                 <el-input  type="password" prefix-icon="el-icon-lock"  placeholder="请输入密码" style="width: 70%;" v-model="loginForm.olderPassword" ></el-input>
               </el-form-item>
-            <el-form-item >
-              <el-row>
-                <el-col :span="10">
-                  <el-button type="primary" @click="olderLogin()" >登录</el-button>
-                </el-col>
-                <el-col :span="5">
-                  <el-button type="text" style="float: right;" size="medium" @click="register()">无账号?去注册</el-button>
-                </el-col>
-              </el-row>
-            </el-form-item>
-          </el-form>
-        </el-card>
+              <el-form-item >
+                <el-row>
+                  <el-col :span="10">
+                    <el-button type="primary" @click="olderLogin()" >登录</el-button>
+                  </el-col>
+                  <el-col :span="5">
+                    <el-button type="text" style="float: right;" size="medium" @click="register()">无账号?去注册</el-button>
+                  </el-col>
+                </el-row>
+              </el-form-item>
+            </el-form>
+          </el-card>
+        </div>
       </div>
     </div>
   </div>
@@ -108,5 +128,25 @@
 
 </script>
 <style scoped>
-  @import "../assets/login.css";
+  /*@import "../assets/login.css";*/
+  .wrap{
+    display: flex;
+    flex: 1;
+    flex-direction:column;
+    position: relative;
+    padding: 50px 400px 50px 400px;
+
+  }
+  .lizi{
+    width: 100%;
+    height:100%;
+    display: flex;
+    flex: 1;
+    flex-direction:column;
+    position: absolute;
+    background-color: #d0dfd9;
+    /*background-image: url("../assets/img/register.jpg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: 100%;*/
+  }
 </style>

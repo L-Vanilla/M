@@ -107,6 +107,9 @@
             remarks:"",
             olderPhotourl:"",
           },
+        older:{
+          olderName:""
+        },
           rules: {
             olderName: [
                 { required: true, message: '请输入姓名', trigger: 'blur' },
@@ -149,12 +152,39 @@
              this.$refs[formName].resetFields();
         },
         submitForm(formName){
-            let url="";
-            if(this.id)
+          let url="";
+          this.older.olderName=this.ruleForm.olderName;
+          if(this.id){
+            this.get("older/getAll",(data)=>{
+              // this.admin.name=this.ruleForm.name;
+              console.log("用户姓名"+this.ruleForm.name);
+              console.log("用户姓名"+data);
+              if(data.length>0){
+                if(data[0].id===this.id){
+                  url="older/update";
+                  this.post(formName,url,this.ruleForm);
+                }else{
+                  alert("该用户已存在");
+                }
+              }else {
                 url="older/update";
-            else
+                this.post(formName,url,this.ruleForm);
+              }
+            },this.older);
+          }
+          else{
+            this.get("older/getAll",(data)=>{
+              // this.admin.name=this.ruleForm.name;
+              console.log("用户姓名"+this.ruleForm.name);
+              console.log("用户姓名"+data);
+              if(data.length>0){
+                alert("该用户已存在");
+              }else {
                 url="older/add";
-            this.post(formName,url,this.ruleForm);
+                this.post(formName,url,this.ruleForm);
+              }
+            },this.older);
+          }
         },
       upData(event) {
         var reader = new FileReader();

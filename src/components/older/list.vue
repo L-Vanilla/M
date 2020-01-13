@@ -175,19 +175,6 @@
           shade :true
         });
       },
-      // details(row){
-      //   this.$layer.iframe({
-      //     content: {
-      //       content: DetailsOlder, //传递的组件对象
-      //       parent: this,//当前的vue对象
-      //       data:{id:row.id}//props
-      //     },
-      //     area:['800px','600px'],
-      //     title: '查看内容',
-      //     shadeClose: false,
-      //     shade :true
-      //   });
-      // },
       del(row){
         this.delete("older/del",row.id,row.active);
       },

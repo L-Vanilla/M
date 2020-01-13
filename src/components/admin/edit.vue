@@ -82,6 +82,9 @@
             idCard:"",
             remarks:"",
           },
+        admin:{
+            name:"",
+        },
           rules: {
             name: [
                 { required: true, message: '请输入姓名', trigger: 'blur' },
@@ -124,11 +127,40 @@
         },
         submitForm(formName){
             let url="";
-            if(this.id)
-                url="admin/update";
-            else
-                url="admin/add";
-            this.post(formName,url,this.ruleForm);
+            this.admin.name=this.ruleForm.name;
+            if(this.id){
+              this.get("admin/getAll",(data)=>{
+                // this.admin.name=this.ruleForm.name;
+                console.log("用户姓名"+this.ruleForm.name);
+                console.log("用户姓名"+data);
+                if(data.length>0){
+                  if(data[0].id===this.id){
+                    url="admin/update";
+                    this.post(formName,url,this.ruleForm);
+                  }else{
+                    alert("该用户已存在");
+                  }
+                }else {
+                  url="admin/update";
+                  this.post(formName,url,this.ruleForm);
+                }
+              },this.admin);
+            }
+            else{
+              this.get("admin/getAll",(data)=>{
+                // this.admin.name=this.ruleForm.name;
+                console.log("用户姓名"+this.ruleForm.name);
+                console.log("用户姓名"+data);
+                if(data.length>0){
+                    alert("该用户已存在");
+                }else {
+                  url="admin/add";
+                  this.post(formName,url,this.ruleForm);
+                }
+              },this.admin);
+
+            }
+
         }
 
     }

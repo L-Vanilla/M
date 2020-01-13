@@ -11,25 +11,25 @@
         text-color="#F0EFCD"
         active-text-color="#585b56">
 <!--        <el-menu-item index="1">首页</el-menu-item>-->
-        <el-menu-item index="" route="1">
+        <el-menu-item index="首页" route="1">
           <router-link to="/">首页</router-link><br>
         </el-menu-item>
-        <el-menu-item index="" route="1">
+        <el-menu-item index="站内新闻" route="1">
           <router-link to="/newsList">站内新闻</router-link><br>
         </el-menu-item>
-        <el-menu-item index="">
+        <el-menu-item index="健康教育">
           <router-link to="/education_List">健康教育</router-link><br>
         </el-menu-item>
-        <el-menu-item index="">
+        <el-menu-item index="养生保健">
           <router-link to="/care_List">养生保健</router-link><br>
         </el-menu-item>
-        <el-menu-item index="">
+        <el-menu-item index="预防知识">
           <router-link to="/prevention_List">预防知识</router-link><br>
         </el-menu-item>
         <el-menu-item index="个人中心" v-if="isOlder==='1'">
           <router-link to="/person_center">个人中心</router-link><br>
         </el-menu-item>
-        <el-menu-item index="个人中心" v-if="isOlder==='1'">
+        <el-menu-item index="体检管理" v-if="isOlder==='1'">
           <router-link to="/person_exam">体检管理</router-link><br>
         </el-menu-item>
       </el-menu>

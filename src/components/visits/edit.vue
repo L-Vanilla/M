@@ -11,7 +11,7 @@
       <el-form-item label="身体状况" prop="bodyState" >
         <el-input v-model="ruleForm.bodyState"   placeholder="请输入..." style="width:200%"></el-input>
       </el-form-item>
-      <el-form-item label="诊断时间" prop="visitsDatetime" >
+      <el-form-item label="随访时间" prop="visitsDatetime" >
         <el-date-picker
           v-model="ruleForm.visitsDatetime"
           type="datetime"
@@ -47,6 +47,8 @@
           olderName:"",
           bodyState:"",
           visitsDatetime:"",
+          workerId:"",
+          workerName:"",
           remarks:"",
           fileurl:"",
         },
@@ -74,6 +76,7 @@
         this.ruleForm.olderId=this.olderId;
         this.ruleForm.olderName=this.olderName;
       }
+      this.loadUser();
 
     },
 
@@ -81,6 +84,12 @@
 
     },
     methods:{
+      /*获取用户数据*/
+      loadUser(){
+        var list = JSON.parse(localStorage.getItem("admin") || '[]');
+        this.ruleForm.workerName=list.name;
+        this.ruleForm.workerId=list.id;
+      },
       resetForm(formName){
         this.$refs[formName].resetFields();
       },

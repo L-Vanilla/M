@@ -68,16 +68,16 @@
           label="高压(mmHg)">
           <template slot-scope="scope">
             <div v-if="scope.row.examHighbp<=90">
-              <i class="icon-icon-test8" style="color: #4f8cb3">{{scope.row.examHighbp}}</i>
+              <i class="icon-icon-test8" style="color: #4f8cb3">{{scope.row.examHighbp}}</i><!--血压低-->
             </div>
-            <div v-else-if="90<scope.row.examHighbp&&scope.row.examHighbp<140">
+            <div v-else-if="90<scope.row.examHighbp&&scope.row.examHighbp<140"><!--血压正常-->
               <span style="color: #00ff6b">{{scope.row.examHighbp}}</span>
             </div>
-            <div v-else-if="140<=scope.row.examHighbp&&scope.row.examHighbp<=180">
+            <div v-else-if="140<=scope.row.examHighbp&&scope.row.examHighbp<=180"><!--血压偏高-->
               <i class="icon-icon-test8" style="color: #b3880b">{{scope.row.examHighbp}}</i>
             </div>
             <div v-else>
-              <i class="icon-icon-test8" style="color: #b30804">{{scope.row.examHighbp}}</i>
+              <i class="icon-icon-test8" style="color: #b30804">{{scope.row.examHighbp}}</i><!--血压太高-->
             </div>
           </template>
         </el-table-column>
@@ -85,16 +85,16 @@
           label="低压(mmHg)">
           <template slot-scope="scope">
             <div v-if="scope.row.examLowbp<=60">
-              <i class="icon-icon-test8" style="color: #4f8cb3">{{scope.row.examLowbp}}</i>
+              <i class="icon-icon-test8" style="color: #4f8cb3">{{scope.row.examLowbp}}</i><!--血压低-->
             </div>
             <div v-else-if="60<scope.row.examLowbp&&scope.row.examLowbp<90">
-              <span style="color: #00ff6b">{{scope.row.examLowbp}}</span>
+              <span style="color: #00ff6b">{{scope.row.examLowbp}}</span><!--血压正常-->
             </div>
             <div v-else-if="90<=scope.row.examLowbp&&scope.row.examLowbp<110">
-              <i class="icon-icon-test8" style="color: #b3880b">{{scope.row.examLowbp}}</i>
+              <i class="icon-icon-test8" style="color: #b3880b">{{scope.row.examLowbp}}</i><!--血压高-->
             </div>
             <div v-else>
-              <i class="icon-icon-test8" style="color: #b30804">{{scope.row.examLowbp}}</i>
+              <i class="icon-icon-test8" style="color: #b30804">{{scope.row.examLowbp}}</i><!--血压太高-->
             </div>
           </template>
         </el-table-column>
@@ -104,16 +104,16 @@
         label="血糖(mmd/L)">
         <template slot-scope="scope">
           <div v-if="scope.row.examGlu<2.8">
-            <i class="icon-icon-test8" style="color: #4f8cb3">{{scope.row.examGlu}}</i>
+            <i class="icon-icon-test8" style="color: #4f8cb3">{{scope.row.examGlu}}</i><!--血糖低-->
           </div>
           <div v-else-if="scope.row.examGlu<7.8&&scope.row.examGlu>=2.8">
-            <span style="color: #00ff6b">{{scope.row.examGlu}}</span>
+            <span style="color: #00ff6b">{{scope.row.examGlu}}</span><!--血糖正常-->
           </div>
           <div v-else-if="7.8<=scope.row.examGlu&&scope.row.examGlu<11">
-            <i class="icon-icon-test8" style="color: #b3880b">{{scope.row.examGlu}}</i>
+            <i class="icon-icon-test8" style="color: #b3880b">{{scope.row.examGlu}}</i><!--血糖偏高-->
           </div>
           <div v-else>
-            <i class="icon-icon-test8" style="color: #b30804">{{scope.row.examGlu}}</i>
+            <i class="icon-icon-test8" style="color: #b30804">{{scope.row.examGlu}}</i><!--血糖太高-->
           </div>
         </template>
       </el-table-column>

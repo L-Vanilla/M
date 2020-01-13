@@ -21,23 +21,31 @@
     </vue-particles>
      <el-container  class="wrap" >
        <el-header>
-         <div class="r" v-if="isOlder!=='1'">
-           <el-button type="text" @click="register()" style="color: black">注册</el-button>
-           <el-divider direction="vertical"></el-divider>
-           <el-button type="text" @click="login()" style="color: black">登录</el-button>
-           <el-divider direction="vertical"></el-divider>
-           <el-button type="text" @click="adminLogin()" style="color: black">系统登录</el-button>
-         </div>
-         <div class="r" v-else>
-           <span>{{older.olderName}}</span>
-           <el-divider direction="vertical"></el-divider>
-           <el-button type="text" @click="logout()" style="color: black">退出</el-button>
-         </div>
+         <el-row>
+           <el-col :span="18" style="text-align: left" >
+             <h1>社区老人健康监控与跟踪系统</h1>
+           </el-col>
+           <el-col :span="6">
+             <div v-if="isOlder!=='1'">
+               <el-button type="text" @click="register()" style="color: black">注册</el-button>
+               <el-divider direction="vertical"></el-divider>
+               <el-button type="text" @click="login()" style="color: black">登录</el-button>
+               <el-divider direction="vertical"></el-divider>
+               <el-button type="text" @click="adminLogin()" style="color: black">系统后台</el-button>
+             </div>
+             <div v-else>
+               <span>{{older.olderName}}</span>
+               <el-divider direction="vertical"></el-divider>
+               <el-button type="text" @click="logout()" style="color: black">退出</el-button>
+             </div>
+           </el-col>
+         </el-row>
+
+
        </el-header>
        <!--<div style="width: 100%;height: 50px;background-color:black"></div>-->
        <div style="width: 100%;height: 50px"></div>
        <Menu1></Menu1>
-
        <el-container style="margin-top: 10px" >
 
          <!--      <el-aside style="margin-left:15%"  >-->
@@ -75,7 +83,7 @@
          <!--&lt;!&ndash;        </el-card>&ndash;&gt;-->
          <!--      </el-aside>-->
          <el-main style="padding: 15px 200px 15px 200px">
-           <MyBreadcrumb1 style="margin-bottom:20px;"></MyBreadcrumb1>
+<!--           <MyBreadcrumb1 style="margin-bottom:20px;"></MyBreadcrumb1>-->
            <router-view></router-view>
          </el-main>
        </el-container>
@@ -251,9 +259,9 @@
   .r{
     margin-left: 80%;
   }
-  .el_row{
-    height: 50px;
-  }
+  /*.el_row{*/
+  /*  height: 50px;*/
+  /*}*/
  /*.el-image__inner{*/
  /*  border-radius: 50%;*/
  /*}*/

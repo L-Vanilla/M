@@ -39,8 +39,8 @@
           phone:"",
           remarks:""
         },
-        admins:{
-
+        admin:{
+          name:"",
         },
         rules: {
           name: [
@@ -73,31 +73,31 @@
       },
       submitForm(formName){
         let url="";
+        this.admin.name=this.ruleForm.name;
         if(this.id){
           this.get("admin/getAll",(data)=>{
-            this.admins=data;
+
             // console.log(this.ruleForm);
             if(data.length>0){
-              if(data[0].id!==this.id){
-                alert("该用户已存在!");
-              }
-              else{
+              if(data[0].id===this.id){
                 url="admin/update";
                 this.post(formName,url,this.ruleForm);
                 localStorage.removeItem('admin');
                 localStorage.removeItem('islogin');
-                this.$router.push('/');
+                this.$router.push('/adminLogin');
                 alert("请重新登录！！");
+              }else {
+                alert("该用户已存在");
               }
             }else{
               url="admin/update";
               this.post(formName,url,this.ruleForm);
               localStorage.removeItem('admin');
               localStorage.removeItem('islogin');
-              this.$router.push('/');
+              this.$router.push('/adminLogin');
               alert("请重新登录！！");
             }
-          },{name:this.ruleForm.name});
+          },this.admin);
         }
       }
 

@@ -132,11 +132,14 @@
     },
     created(){
        // 获取首页传来的老人id
-       this.ruleForm.id=this.$route.params.id;
+      var list = JSON.parse(localStorage.getItem("older") || '[]');
+      this.ruleForm.id=list.id;
+      this.ruleForm.olderPhotourl=list.olderPhotourl;
        this.get("older/getOne",(data)=>{
           this.ruleForm=data;
           console.log(this.ruleForm);
       },{id:this.ruleForm.id});
+
       this.buttonText="修改"
 
     },
@@ -152,6 +155,7 @@
             let url="";
             url="older/update";
             this.post(formName,url,this.ruleForm);
+          this.$router.push('/person_center');
         },
       upData(event) {
         var reader = new FileReader();

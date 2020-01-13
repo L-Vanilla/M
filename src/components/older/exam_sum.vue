@@ -31,102 +31,12 @@
 
 <template>
   <div>
-<!--    <div style="display:inline-block;margin-top: 10px">-->
-<!--      <div id="chart_example3" style="display:inline-block;"></div>-->
-<!--    </div>-->
-<!--    <div style="display:inline-block;margin-top: 10px">-->
-<!--      <div id="chart_example1" style="display:inline-block;"></div>-->
-<!--      <div id="chart_example2" style="display:inline-block;margin-left: 5px;"></div>-->
-<!--    </div>-->
-    <!--急救管理-->
-    <el-container style="background-color: #FFFFFF">
-      <el-main >
-        <!--体检-->
-        <el-card >
-          <div slot="header" class="clearfix">
-            <el-row style="height: 25px">
-              <el-col :span="12">
-                <h1><i class="icon-jijiu" style="font-size: 20px"></i>&nbsp;体检管理</h1>
-              </el-col>
-              <el-col :span="12">
-                <el-button style="float: right;background-color:#e4f1ff " type="small" @click="addExam()">添加</el-button>
-              </el-col>
-            </el-row>
-          </div>
-          <div v-for="item in tabledata.list">
-            <el-card class="box-card" shadow="never" >
-              <div>
-                <el-row>
-                  <el-col :span="7">
-                    <span>身 高：{{item.examHeight}}</span>
-                  </el-col>
-                  <el-col :span="7">
-                    <span>左眼视力：{{item.examRsight}}</span>
-                  </el-col>
-                  <el-col :span="10">
-                    <span>高 压：{{item.examHighbp}}</span>
-                  </el-col>
-                </el-row>
-                <br>
-                <el-row>
-                  <el-col :span="7">
-                    <span>体 重：{{item.examWeight}}</span>
-                  </el-col>
-                  <el-col :span="7">
-                    <span>右眼视力：{{item.examLsight}}</span>
-                  </el-col>
-                  <el-col :span="10">
-                    <span>低 压：{{item.examLowbp}}</span>
-                  </el-col>
-                </el-row>
-                <br>
-                <el-row>
-                  <el-col :span="7">
-                    <span>血 糖：{{item.examGlu}}</span>
-                  </el-col>
-                  <el-col :span="7">
-                    <span>心 率：{{item.examHr}}</span>
-                  </el-col>
-                  <el-col :span="10">
-                    <span>体检时间：{{item.examDate | FormatDate('yyyy-MM-dd')}}</span>
-                  </el-col>
-                </el-row>
-                <br>
-                <el-row>
-                  <el-col :span="8">
-                    <span>备注：{{item.remarks}}</span>
-                  </el-col>
-                </el-row>
-              </div>
-            </el-card>
-            <br>
-          </div>
-        </el-card>
-      </el-main>
-      <el-main ><!--随访-->
+      <!--血糖-->
        <div id="chart_example2" style="margin-top: 5px;"></div>
         <!--心率变化-->
         <div id="chart_example3" style="margin-top: 5px;"></div>
         <!--高低压变化-->
         <div id="chart_example1" style="margin-top: 5px;"></div>
-      </el-main>
-    </el-container>
-    <el-container>
-      <el-main>
-      </el-main>
-    </el-container>
-    <div>
-      <el-row>
-        <el-col :span="12">
-          <!--血糖变化-->
-<!--          <div id="chart_example2" style="margin-top: 5px;"></div>-->
-        </el-col>
-        <el-col :span="12">
-
-        </el-col>
-      </el-row>
-    </div>
-
   </div>
 </template>
 
@@ -135,6 +45,7 @@
   import echarts from 'echarts';
   import AddExam from '@/components/exam/edit'/*添加体检*/
   export default {
+    props:["id"],
     data () {
       return {
         search:{
@@ -174,25 +85,9 @@
       findData(){
         this.getData();
       },
-      loadUser(){
-        var list = JSON.parse(localStorage.getItem("older") || '[]');
-        this.exam1.olderId = list.id;
-        this.exam1.olderName = list.olderName;
-        console.log("老人id:"+this.exam1.olderId);
-      },
       getData(){
-        //体检
-        this.get("exam/list",(data)=>{
-          this.tabledata=data;
-          console.log(this.tabledata);
-        },this.exam1);
-        //随访
-        this.get("visits/list",(data)=>{
-          this.visits=data;
-          console.log(this.visits);
-        },this.exam1);
-
         //统计图
+        this.exam1.olderId=this.id;
         this.get("exam/getListByOlderId",(data)=>{
           console.log("统计了列表："+data.list);
           this.exam=data.list;
@@ -200,6 +95,13 @@
           let j=0;
           /*高/低血压统计*/
           const month=[],datam=[],datalow=[],dataglu=[],datahr=[];
+          // for( i ; i<this.exam.length;i++){
+          //   month.push(i+1);
+          //   datam.push(this.exam[i].examHighbp);/*高压*/
+          //   datalow.push(this.exam[i].examLowbp);/*低压*/
+          //   dataglu.push(this.exam[i].examGlu);/*血糖*/
+          //   datahr.push(this.exam[i].examHr);/*心率*/
+          // }
           for( i ; i>-1;i--){
             datam.push(this.exam[i].examHighbp);/*高压*/
             datalow.push(this.exam[i].examLowbp);/*低压*/

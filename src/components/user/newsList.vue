@@ -116,13 +116,16 @@
         this.$router.push("/newsDetails/" + row.id);
       },*/
       rowClick(row,column,event){
+        this.get("news/updateClickNum",(data)=>{
+
+        },{id:row.id,clickNum: row.clickNum+1});
         this.$router.push("/newsDetails/" + row.id);
       },
     }
   }
 </script>
 
-<style>
+<style scoped>
   .el-table .cell {
     height: 19px;
 

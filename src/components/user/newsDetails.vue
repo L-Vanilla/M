@@ -115,6 +115,10 @@
           this.getData();
         },
         deep:true
+      },
+      '$route': function (to, from) {
+        //执行数据更新查询
+        this.rowClick();
       }
     },
     components: {
@@ -132,6 +136,8 @@
          this.$router.push("/newsDetails/" + row.id);
        },*/
       rowClick(row,column,event){
+        this.get("news/updateClickNum",(data)=>{
+        },{id:row.id,clickNum: row.clickNum+1});
         window.open("/newsDetails/" + row.id);
       },
 

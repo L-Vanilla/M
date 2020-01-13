@@ -42,6 +42,7 @@ import Diagnosis from '@/components/diagnosis/list'//诊断信息列表
 import Aid from '@/components/aid/list'//急救信息列表
 import Exam from '@/components/exam/list'//体检信息列表
 import Visits from '@/components/visits/list'//体检信息列表
+import Older_mine from '@/components/older/older_mine'//老人个人中心列表
 
 /*统计*/
 import sum_older from '@/components/Echarts/sum_older'//统计老人信息
@@ -83,15 +84,18 @@ const router = new Router({
           path:'/care_List',/*养生保健列表*/
           name:'care_List',
           component:care_List
-        },{
-          path:'/olderDetails/:id',/*查看个人信息*/
-          name:'olderDetails',
-          component:olderDetails
-        },{
-          path:'/olderEdit/:id',/*修改个人信息*/
-          name:'olderEdit',
-          component:olderEdit
-        },{
+        },
+        // {
+        //   path:'/olderDetails/:id',/*查看个人信息*/
+        //   name:'olderDetails',
+        //   component:olderDetails
+        // },
+        // {
+        //   path:'/olderEdit/:id',/*修改个人信息*/
+        //   name:'olderEdit',
+        //   component:olderEdit
+        // },
+        {
           path:'/person_center',/*个人中心*/
           name:'person_center',
           component:person_center,
@@ -100,7 +104,16 @@ const router = new Router({
               path:'/examList',/*体检中心*/
               name:'examList',
               component:examList,
-            }
+            },{
+              path:'/person_center',/*查看信息*/
+              name:'olderDetails',
+              component:olderDetails
+            },
+            {
+              path:'/olderEdit/:id',/*修改个人信息*/
+              name:'olderEdit',
+              component:olderEdit
+            },
           ]
 
         },{
@@ -206,6 +219,10 @@ const router = new Router({
           path:'/visits',/*随访信息列表*/
           name:'visits',
           component:Visits
+        },{
+          path:'/:id',/*老人个人中心*/
+          name:'older_mine',
+          component:Older_mine
         },
 
       ]

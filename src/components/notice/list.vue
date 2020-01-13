@@ -25,12 +25,16 @@
 <!--      </el-table-column>-->
       <el-table-column
         prop="title"
-        label="新闻标题">
+        label="标题">
       </el-table-column>
 <!--      <el-table-column-->
 <!--        prop="content"-->
 <!--        label="内容">-->
 <!--      </el-table-column>-->
+      <el-table-column
+        prop="publisherName"
+        label="发布人">
+      </el-table-column>
       <el-table-column
         prop="createDate"
         label="发布时间">

@@ -1,9 +1,9 @@
 <!--门户网站页头---Vanilla-->
 <template>
     <div>
-         <el-breadcrumb v-if="arrmenu.length!=0" separator-class="el-icon-arrow-right">
-            <el-breadcrumb-item v-for="(txt,index) in arrmenu" :key="index">{{txt}}</el-breadcrumb-item>
-        </el-breadcrumb>
+<!--         <el-breadcrumb v-if="arrmenu.length!=0" separator-class="el-icon-arrow-right">-->
+<!--            <el-breadcrumb-item v-for="(txt,index) in arrmenu" :key="index">{{txt}}</el-breadcrumb-item>-->
+<!--        </el-breadcrumb>-->
     </div>
 </template>
 

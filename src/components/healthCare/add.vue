@@ -52,7 +52,9 @@
           id:"",
           hType:"",
           title:"",
-          content:""
+          content:"",
+          publisherId:"",
+          publisherName:"",
         },
         options: [{
           value: '养生保健',
@@ -83,12 +85,20 @@
       }
     },
     created(){
+      this.loadUser();
     },
 
     components: {
       quillEditor
     },
     methods:{
+      /*获取用户数据*/
+      loadUser(){
+        var list = JSON.parse(localStorage.getItem("admin") || '[]');
+        // this.admin = list;
+        this.ruleForm.publisherName=list.name;
+        this.ruleForm.publisherId=list.id;
+      },
       resetForm(formName){
         this.$refs[formName].resetFields();
       },

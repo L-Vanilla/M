@@ -3,6 +3,7 @@
   <div>
     <div style="margin-top: 15px;margin-bottom: 10px">
       <el-row>
+        <el-col :span="2"><el-button style="background-color: #5fb381;color: #fff" @click="add">添加</el-button></el-col>
         <el-col :span="22">
           <el-input placeholder="请输入老人姓名" v-model="search.olderName" class="input-with-select" style="width: 200px">
             <el-button slot="append" icon="el-icon-search" @click="findData"></el-button>
@@ -13,7 +14,8 @@
     <el-table
       :data="tableData.list"
       border
-      style="width: 150%;">
+      style="width: 150%;"
+      >
       <el-table-column
         type="index"
         width="50">
@@ -21,7 +23,7 @@
       <el-table-column
         label="图片" style="width: 200%;height: 150%">
         <template slot-scope="scope">
-          <img :src="baseurl+scope.row.olderPhotourl" alt="" style="width: 100%;height: 120px"/>
+          <img :src="baseurl+scope.row.olderPhotourl" alt="" style="width: 100%;height: 120px" @click="rowClick_older(scope.row)"/>
         </template>
       </el-table-column>
       <el-table-column
@@ -76,12 +78,12 @@
           <el-button @click="details(scope.row)" style="color:#3888b3" type="text" size="medium" icon="el-icon-document">查看内容</el-button>
         </template>
       </el-table-column>
-     <!-- <el-table-column label="操作">
+      <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button @click="edit(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-edit">修改</el-button>
           <el-button type="text" size="small" style="color:red" @click="del(scope.row)"  icon="el-icon-delete">{{deltext(scope.row.active)}}</el-button>
         </template>
-      </el-table-column>-->
+      </el-table-column>
     </el-table>
     <el-pagination
       background
@@ -101,6 +103,7 @@
   import AddAid from '@/components/aid/edit'
   import AddExam from '@/components/exam/edit'
   import AddVisits from '@/components/visits/edit'
+  import EditOlder from '@/components/older/edit'
   export default {
     inject:['reload'],
     name:"older",
@@ -169,6 +172,19 @@
           },
           area:['800px','500px'],
           title: '查看内容',
+          shadeClose: false,
+          shade :true
+        });
+      },
+      add(row){
+        this.$layer.iframe({
+          content: {
+            content: EditOlder, //传递的组件对象
+            parent: this,//当前的vue对象
+            data:{id:row.id}//props
+          },
+          area:['800px','500px'],
+          title: '添加老人信息',
           shadeClose: false,
           shade :true
         });
@@ -243,6 +259,30 @@
           shade :true
         });
       },
+      /*老人个人中心*/
+      rowClick_older(row){
+        this.$router.push("/" + row.id);
+      },
+      edit(row){
+        this.$layer.iframe({
+          type:2,
+          content: {
+            content: EditOlder, //传递的组件对象
+            parent: this,//当前的vue对象
+            data:{id:row.id}//props
+          },
+          area:['800px','600px'],
+          title: '修改公告',
+          shadeClose: false,
+          shade :true
+        });
+      },
+      del(row){
+        this.delete("older/del",row.id,row.active);
+      },
+      deltext(active){
+        return active==1?"删除":"恢复"
+      }
     }
   }
 </script>

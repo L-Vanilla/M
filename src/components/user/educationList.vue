@@ -92,6 +92,9 @@
         this.merge(this.search,this.queryParams);
       },
       rowClick(row,column,event){
+        this.get("healthCare/updateClickNum",(data)=>{
+
+        },{id:row.id,clickNum: row.clickNum+1});
         this.$router.push("/healthCareDetails/" + row.id+"/"+row.hType);
       },
 
