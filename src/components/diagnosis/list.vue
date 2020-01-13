@@ -46,6 +46,24 @@
         label="医嘱信息">
       </el-table-column>
       <el-table-column
+        prop="rank"
+        label="严重等级">
+        <template slot-scope="scope">
+          <div class="block">
+            <el-radio-group v-model="scope.row.rank" v-if="scope.row.checkState===1"  disabled>
+              <el-radio :label="1" >一般</el-radio>
+              <el-radio :label="2" >严重</el-radio>
+              <el-radio :label="3" >非常严重</el-radio>
+            </el-radio-group>
+            <el-radio-group v-model="scope.row.rank" @change="updateRank(scope.row)"   v-else>
+              <el-radio :label="1" >一般</el-radio>
+              <el-radio :label="2" >严重</el-radio>
+              <el-radio :label="3" >非常严重</el-radio>
+            </el-radio-group>
+          </div>
+        </template>
+      </el-table-column>
+      <el-table-column
         prop="createDate"
         label="添加时间">
       </el-table-column>
@@ -89,7 +107,8 @@
           pageSize:10,
           olderName:""
         },
-        tableData:{}
+        tableData:{},
+
       }
     },
     created(){
@@ -105,11 +124,6 @@
     },
     mounted(){},
     methods:{
-      /*formatDate(value){
-        this.value1= new Date(value.diagnosisDate);//value.createdTime是prop绑定的字段名称
-        let dateValue = this.$moment(this.value1).format("YYYY-MM-DD");//$moment专门转化时间的插件（使用时需要下载引入）
-        return dateValue
-      },*/
       getData(){
         this.get("diagnosis/list",(data)=>{
           this.tableData=data;
@@ -164,6 +178,28 @@
       //     shade :true
       //   });
       // },
+      /*修改等级状态*/
+      updateRank(row){
+        this.$confirm('确定码?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.get("diagnosis/updateRank",(data)=>{
+            if(data>0){
+              this.$message({
+                type: 'success',
+                message: '成功!'
+              });
+            }
+          },{id:row.id,rank: row.rank,olderId:row.olderId});
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '失败'
+          });
+        });
+      },
       del(row){
         this.delete("diagnosis/del",row.id,row.active);
       },

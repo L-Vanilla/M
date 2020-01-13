@@ -26,14 +26,14 @@
         <el-form-item label="地址" prop="olderAddress" >
           <el-input v-model="ruleForm.olderAddress"   placeholder="请输入地址" style="width:50%"></el-input>
         </el-form-item>
-        <el-form-item label="健康状态" prop="olderState" >
-          <el-radio-group v-model="ruleForm.olderState">
-            <el-radio  :label="0">优</el-radio>
-            <el-radio :label="1">良</el-radio>
-            <el-radio  :label="2">一般</el-radio>
-            <el-radio :label="3">差</el-radio>
-          </el-radio-group>
-        </el-form-item>
+<!--        <el-form-item label="健康状态" prop="olderState" >-->
+<!--          <el-radio-group v-model="ruleForm.olderState">-->
+<!--            <el-radio  :label="0">优</el-radio>-->
+<!--            <el-radio :label="1">良</el-radio>-->
+<!--            <el-radio  :label="2">一般</el-radio>-->
+<!--            <el-radio :label="3">差</el-radio>-->
+<!--          </el-radio-group>-->
+<!--        </el-form-item>-->
         <el-form-item label="备注" prop="remarks" >
           <el-input v-model="ruleForm.remarks"   placeholder="请输入备注" style="width:50%"></el-input>
         </el-form-item>
@@ -135,9 +135,10 @@
       var list = JSON.parse(localStorage.getItem("older") || '[]');
       this.ruleForm.id=list.id;
       this.ruleForm.olderPhotourl=list.olderPhotourl;
+
        this.get("older/getOne",(data)=>{
           this.ruleForm=data;
-          console.log(this.ruleForm);
+          console.log("老人图片："+this.ruleForm.olderPhotourl);
       },{id:this.ruleForm.id});
 
       this.buttonText="修改"

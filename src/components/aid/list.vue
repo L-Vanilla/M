@@ -42,6 +42,24 @@
         label="病情描述">
       </el-table-column>
       <el-table-column
+        prop="rank"
+        label="严重等级">
+        <template slot-scope="scope">
+          <div class="block">
+            <el-radio-group v-model="scope.row.rank" v-if="scope.row.checkState===1"  disabled>
+              <el-radio :label="1" >一般</el-radio>
+              <el-radio :label="2" >严重</el-radio>
+              <el-radio :label="3" >非常严重</el-radio>
+            </el-radio-group>
+            <el-radio-group v-model="scope.row.rank" @change="updateRank(scope.row)"   v-else>
+              <el-radio :label="1" >一般</el-radio>
+              <el-radio :label="2" >严重</el-radio>
+              <el-radio :label="3" >非常严重</el-radio>
+            </el-radio-group>
+          </div>
+        </template>
+      </el-table-column>
+      <el-table-column
         prop="createDate"
         label="添加时间">
       </el-table-column>
@@ -141,6 +159,28 @@
       //     shade :true
       //   });
       // },
+      /*修改等级状态*/
+      updateRank(row){
+        this.$confirm('确定码?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.get("aid/updateRank",(data)=>{
+            if(data>0){
+              this.$message({
+                type: 'success',
+                message: '成功!'
+              });
+            }
+          },{id:row.id,rank: row.rank,olderId:row.olderId});
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '失败'
+          });
+        });
+      },
       del(row){
         this.delete("aid/del",row.id,row.active);
       },

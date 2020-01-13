@@ -21,17 +21,11 @@
           <span>{{ruleForm.olderAddress}}</span>
 <!--          <el-input v-model="ruleForm.olderAddress"   style="width:50%" disabled></el-input>-->
         </el-form-item>
-        <el-form-item label="健康状态：" prop="olderState" >
-          <span v-if="ruleForm.olderState===0">优</span>
-          <span v-if="ruleForm.olderState===1">良</span>
-          <span v-if="ruleForm.olderState===2">一般</span>
-          <span v-if="ruleForm.olderState===3">差</span>
-<!--          <el-radio-group v-model="ruleForm.olderState" disabled >-->
-<!--            <el-radio  :label="0" v-model="ruleForm.olderState">优</el-radio>-->
-<!--            <el-radio :label="1" v-model="ruleForm.olderState">良</el-radio>-->
-<!--            <el-radio  :label="2" v-model="ruleForm.olderState">一般</el-radio>-->
-<!--            <el-radio :label="3" v-model="ruleForm.olderState">差</el-radio>-->
-<!--          </el-radio-group>-->
+        <el-form-item label="健康状态：" prop="olderBmi" >
+          <span v-if="ruleForm.olderBmi>=1200">优</span>
+          <span v-else-if="800<=ruleForm.olderBmi&&ruleForm.olderBmi<1200">良</span>
+          <span v-else-if="600<=ruleForm.olderBmi&&ruleForm.olderBmi<800">一般</span>
+          <span v-else-if="ruleForm.olderBmi<600">差</span>
         </el-form-item>
         <el-form-item label="备注：" prop="remarks" >
           <span>{{ruleForm.remarks}}</span>
@@ -60,6 +54,7 @@
             olderAddress:"",
             remarks:"",
             olderPhotourl:"",
+            olderBmi:"",
           },
         fileList:[],
         buttonText:"创建"

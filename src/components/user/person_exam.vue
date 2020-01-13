@@ -40,7 +40,7 @@
 <!--    </div>-->
     <!--急救管理-->
     <el-container style="background-color: #FFFFFF">
-      <el-main >
+      <el-main style="height: 1300px">
         <!--体检-->
         <el-card >
           <div slot="header" class="clearfix">

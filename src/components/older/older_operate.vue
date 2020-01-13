@@ -43,6 +43,10 @@
         prop="olderAge"
         label="年龄">
       </el-table-column>
+      <el-table-column
+        prop="olderBmi"
+        label="健康指数">
+      </el-table-column>
 <!--      <el-table-column-->
 <!--        prop="olderCard"-->
 <!--        label="身份证">-->

@@ -43,16 +43,33 @@
         prop="workerName"
         label="随访人">
       </el-table-column>
+<!--      <el-table-column-->
+<!--        prop="visitsState"-->
+<!--        label="是否随访">-->
+<!--        <template slot-scope="scope">-->
+<!--          <span v-if="scope.row.visitsState===0" style="color: #df9549">未随访</span>-->
+<!--          <el-button v-if="scope.row.visitsState===0" @click="update_visitsState(scope.row)" type="small" style="background-color:#5fb381;">已随访</el-button>-->
+<!--          <span v-if="scope.row.visitsState===1" style="color: #9bdf72">已随访</span>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
       <el-table-column
-        prop="visitsState"
-        label="是否随访">
+        prop="rank"
+        label="身体状态">
         <template slot-scope="scope">
-          <span v-if="scope.row.visitsState===0" style="color: #df9549">未随访</span>
-          <el-button v-if="scope.row.visitsState===0" @click="update_visitsState(scope.row)" type="small" style="background-color:#5fb381;">已随访</el-button>
-          <span v-if="scope.row.visitsState===1" style="color: #9bdf72">已随访</span>
+          <div class="block">
+            <el-radio-group v-model="scope.row.rank" v-if="scope.row.checkState===1"  disabled>
+              <el-radio :label="1">良好</el-radio>
+              <el-radio :label="2">一般</el-radio>
+              <el-radio :label="3">严重</el-radio>
+            </el-radio-group>
+            <el-radio-group v-model="scope.row.rank" @change="updateRank(scope.row)"   v-else>
+              <el-radio :label="1" >良好</el-radio>
+              <el-radio :label="2" >一般</el-radio>
+              <el-radio :label="3" >严重</el-radio>
+            </el-radio-group>
+          </div>
         </template>
       </el-table-column>
-
       <el-table-column
         label="随访时间">
         <template slot-scope="scope">
@@ -166,6 +183,28 @@
       //     shade :true
       //   });
       // },
+      /*修改等级状态*/
+      updateRank(row){
+        this.$confirm('确定码?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.get("visits/updateRank",(data)=>{
+            if(data>0){
+              this.$message({
+                type: 'success',
+                message: '成功!'
+              });
+            }
+          },{id:row.id,rank: row.rank,olderId:row.olderId});
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '失败'
+          });
+        });
+      },
       del(row){
         this.delete("visits/del",row.id,row.active);
       },
@@ -184,7 +223,7 @@
         a.click();
       },
       update_visitsState(row){
-        this.$confirm('确定要取消码?', '提示', {
+        this.$confirm('确定码?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
