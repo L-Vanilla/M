@@ -23,7 +23,7 @@
        <el-header>
          <el-row>
            <el-col :span="18" style="text-align: left" >
-             <h1>社区老人健康监控与跟踪系统</h1>
+             <h1>社区老人健康服务与跟踪系统</h1>
            </el-col>
            <el-col :span="6">
              <div v-if="isOlder!=='1'">
@@ -229,7 +229,7 @@
  }
  .lizi{
    width: 100%;
-   height:calc(200% + 100px);
+   height:calc(200% + 200px);
    display: flex;
    flex: 1;
    flex-direction:column;

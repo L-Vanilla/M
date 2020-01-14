@@ -173,11 +173,11 @@
     text-align: center;
   }
   .el-table__header th, .el-table__header tr {
-    background-color: #17B3A3;
+    background-color: #5fb381;
     color: black;
   }
   .el-pagination.is-background .el-pager li:not(.disabled).active {
-    background-color: #17B3A3;
+    background-color: #5fb381;
     color: #FFF;
   }
 </style>

@@ -24,7 +24,7 @@
       </div>
       <div style="padding: 100px 100px">
         <div>
-          <el-card class="box-card"  style="">
+          <el-card class="box-card"  style="background-color: #9edcdf;box-shadow:3px 3px 1px #73b7ce inset;">
             <div slot="header" class="clearfix" >
               <el-row>
                 <el-col :span="3" style="float: left">

@@ -10,7 +10,6 @@
         </el-col>
         <el-col :span="2">
           <el-button size="medium" type="primary"  icon="icon-xiazai2" @click="handleDownLoad()">下载模板</el-button>
-<!--          <a href="/./static/visits_exam/1.docx">下载</a>-->
         </el-col>
       </el-row>
     </div>
@@ -53,19 +52,18 @@
 <!--        </template>-->
 <!--      </el-table-column>-->
       <el-table-column
-        prop="rank"
         label="身体状态">
         <template slot-scope="scope">
           <div class="block">
             <el-radio-group v-model="scope.row.rank" v-if="scope.row.checkState===1"  disabled>
-              <el-radio :label="1">良好</el-radio>
-              <el-radio :label="2">一般</el-radio>
-              <el-radio :label="3">严重</el-radio>
+              <el-radio :label="1" style="margin-right: 0">良好</el-radio>
+              <el-radio :label="2" style="margin-right: 0">一般</el-radio>
+              <el-radio :label="3" style="margin-right: 0">严重</el-radio>
             </el-radio-group>
             <el-radio-group v-model="scope.row.rank" @change="updateRank(scope.row)"   v-else>
-              <el-radio :label="1" >良好</el-radio>
-              <el-radio :label="2" >一般</el-radio>
-              <el-radio :label="3" >严重</el-radio>
+              <el-radio :label="1" style="margin-right: 0">良好</el-radio>
+              <el-radio :label="2" style="margin-right: 0">一般</el-radio>
+              <el-radio :label="3" style="margin-right: 0" >严重</el-radio>
             </el-radio-group>
           </div>
         </template>
@@ -94,8 +92,9 @@
 <!--      </el-table-column>-->
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button @click="edit(scope.row)" style="color:#17B3A3" type="text" size="small" icon="el-icon-edit">修改</el-button>
-          <el-button type="text" size="small" style="color:red" @click="del(scope.row)"  icon="el-icon-delete">{{deltext(scope.row.active)}}</el-button>
+          <el-button @click="edit(scope.row)" v-if="scope.row.checkState===1" style="color:#afbbbb" type="text" size="small" icon="el-icon-edit" disabled>修改</el-button>
+          <el-button @click="edit(scope.row)" v-if="scope.row.checkState===0" style="color:#17B3A3" type="text" size="small" icon="el-icon-edit">修改</el-button>
+<!--          <el-button type="text" size="small" style="color:red" @click="del(scope.row)"  icon="el-icon-delete">{{deltext(scope.row.active)}}</el-button>-->
         </template>
       </el-table-column>
     </el-table>
@@ -195,7 +194,9 @@
               this.$message({
                 type: 'success',
                 message: '成功!'
-              });
+
+              }); this.reload();
+
             }
           },{id:row.id,rank: row.rank,olderId:row.olderId});
         }).catch(() => {
@@ -214,7 +215,7 @@
       /*文件下载*/
       handleDownLoad(){
         let a = document.createElement('a');
-        a.href = '/./static/visits_exam/1.docx';
+        a.href = '/./static/visits_exam/visits_exam_model.docx';
         a.click();
       },
       download(row){
@@ -235,6 +236,7 @@
                 type: 'success',
                 message: '成功!'
               });
+              this.$ro
             }
           },{id:row.id,visitsState: row.visitsState});
         }).catch(() => {

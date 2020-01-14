@@ -37,12 +37,12 @@
         <el-form-item label="备注" prop="remarks" >
           <el-input v-model="ruleForm.remarks"   placeholder="请输入备注" style="width:50%"></el-input>
         </el-form-item>
-        <el-form-item label="选择图片" prop="olderPhotourl" >
-          <input type="file" @change="upData($event)" ref="InputFile" name="files"  placeholder="请选择图片"/>
+        <el-form-item label="修改头像" prop="olderPhotourl" >
+          <input type="file" @change="upData($event)" ref="InputFile" name="files" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" placeholder="修改头像"/>
         </el-form-item>
-        <el-form-item label="图片" prop="olderPhotourl" >
-          <img :src="baseurl+ruleForm.olderPhotourl" alt=""style="width: 30%;height: 40%"/>
-        </el-form-item>
+        <!--<el-form-item label="图片" prop="olderPhotourl" >
+          <img :src="baseurl+ruleForm.olderPhotourl" style="width: 30px;height: 40px"/>
+        </el-form-item>-->
         <el-form-item >
             <el-button type="primary" @click="submitForm('ruleForm')" >{{buttonText}}</el-button>
             <el-button @click="resetForm('ruleForm')">重置</el-button>
@@ -135,7 +135,6 @@
       var list = JSON.parse(localStorage.getItem("older") || '[]');
       this.ruleForm.id=list.id;
       this.ruleForm.olderPhotourl=list.olderPhotourl;
-
        this.get("older/getOne",(data)=>{
           this.ruleForm=data;
           console.log("老人图片："+this.ruleForm.olderPhotourl);

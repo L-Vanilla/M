@@ -128,7 +128,15 @@
                       <el-col >
                         <span>医嘱信息：{{item.diagnosisInformation}}</span>
                       </el-col>
-
+                    </el-row>
+                    <br>
+                    <el-row>
+                      <el-col :span="24">
+                        <span v-if="item.rank===1">等&nbsp;级：一般</span>
+                        <span v-else-if="item.rank===2">等&nbsp;级：严重</span>
+                        <span v-else-if="item.rank===3">等&nbsp;级：非常严重</span>
+                        <span v-else>等&nbsp;级：未评判</span>
+                      </el-col>
                     </el-row>
                     <br>
                     <el-row>
@@ -172,13 +180,22 @@
                     </el-row>
                     <br>
                     <el-row>
-                      <el-col :span="10">
+                      <el-col :span="24">
+                        <span v-if="item.rank===1">等&nbsp;级：一般</span>
+                        <span v-else-if="item.rank===2">等&nbsp;级：严重</span>
+                        <span v-else-if="item.rank===3">等&nbsp;级：非常严重</span>
+                        <span v-else>等&nbsp;级：未评判</span>
+                      </el-col>
+                    </el-row>
+                    <br>
+                    <el-row>
+                      <el-col :span="24">
                         <span>备&nbsp;注：{{item.aidRemarks}}</span>
                       </el-col>
                     </el-row>
                     <br>
                     <el-row>
-                      <el-col :span="10">
+                      <el-col :span="24">
                         <el-button style="background-color:#e4f1ff;line-height: 20px " type="small" icon="el-icon-edit" @click="editAid(item)">编辑</el-button>
                       </el-col>
                     </el-row>
@@ -416,6 +433,12 @@
           shadeClose: false,
           shade :true
         });
+      },
+      /*文件下载*/
+      download(item){
+        let a = document.createElement('a');
+        a.href = '/./static/visits_exam/'+item.fileurl;
+        a.click();
       },
     },
     store

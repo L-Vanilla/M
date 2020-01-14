@@ -179,6 +179,15 @@
                     </el-row>
                     <br>
                     <el-row>
+                      <el-col :span="24">
+                        <span v-if="item.rank===1">等&nbsp;级：一般</span>
+                        <span v-else-if="item.rank===2">等&nbsp;级：严重</span>
+                        <span v-else-if="item.rank===3">等&nbsp;级：非常严重</span>
+                        <span v-else>等&nbsp;级：未评判</span>
+                      </el-col>
+                    </el-row>
+                    <br>
+                    <el-row>
                       <el-col>
                         <el-button style="background-color:#e4f1ff;line-height: 20px " type="small" icon="el-icon-edit" @click="editDiagnosis(item)">编辑</el-button>
                       </el-col>
@@ -215,6 +224,15 @@
                     <el-row>
                       <el-col >
                         <span >急救日期：{{item.aidDate | FormatDate('yyyy-MM-dd')}}</span>
+                      </el-col>
+                    </el-row>
+                    <br>
+                    <el-row>
+                      <el-col :span="24">
+                        <span v-if="item.rank===1">等&nbsp;级：一般</span>
+                        <span v-else-if="item.rank===2">等&nbsp;级：严重</span>
+                        <span v-else-if="item.rank===3">等&nbsp;级：非常严重</span>
+                        <span v-else>等&nbsp;级：未评判</span>
                       </el-col>
                     </el-row>
                     <br>

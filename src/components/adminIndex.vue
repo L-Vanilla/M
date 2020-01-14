@@ -2,26 +2,39 @@
 <template>
   <el-container class="wrap">
     <el-header class="header" style=" display: inline-block;">
-      <img src="../assets/hotel.png" style="width: 26px;height: 26px;display:inline-block; vertical-align:middle"/>
-      <h1  class="title">老人社区健康管理与跟踪系统（系统后台）</h1>
+      <el-row>
+        <el-col :span="1" style="float: left">
+          <img src="../assets/hotel.png" style="text-align:center;width: 30px;height: 30px;float: left;margin-top: 10px"/>
+        </el-col>
+        <el-col :span="18" style="float: left">
+          <h1  class="title" style="color: #FFFFFF;float: left">老人社区健康服务与跟踪系统（系统后台）</h1>
+        </el-col>
+        <el-col :span="2">
+          <el-button type="text" @click="home()" style="color: #FFFFFF;" icon="el-icon-s-home">首页</el-button>
+          <el-button type="text" @click="Sum_Older()" style="color: #FFFFFF;" icon="icon-tubiao"></el-button>
+        </el-col>
+        <el-col :span="2">
+          <el-menu
+            :default-active="activeIndex2"
+            mode="horizontal"
+            @select="handleSelect"
+            background-color="#333744"
+            text-color="#fff"
+            style=" display: inline-block;float: right"
+            active-text-color="#ffd04b">
+            <el-submenu index="2" style="float: right">
+              <template slot="title">{{admin.name}}</template>
+              <el-menu-item index="2-1" @click="edit()">修改信息</el-menu-item>
+              <el-menu-item index="2-1" @click="logout()">退出</el-menu-item>
+            </el-submenu>
+          </el-menu>
+        </el-col>
+      </el-row>
+
 <!--      <button @click="logout()" class="logout">退出</button>-->
 <!--      <p  class="user">{{user.userName}}</p>-->
-      <el-button type="text" @click="home()" style="color: #FFFFFF;margin-left: 850px" icon="el-icon-s-home">首页</el-button>
-      <el-button type="text" @click="Sum_Older()" style="color: #FFFFFF;" icon="icon-tubiao"></el-button>
-      <el-menu
-        :default-active="activeIndex2"
-        mode="horizontal"
-        @select="handleSelect"
-        background-color="#333744"
-        text-color="#fff"
-        style=" display: inline-block;float: right"
-        active-text-color="#ffd04b">
-        <el-submenu index="2" style="float: right">
-          <template slot="title">{{admin.name}}</template>
-          <el-menu-item index="2-1" @click="edit()">修改信息</el-menu-item>
-          <el-menu-item index="2-1" @click="logout()">退出</el-menu-item>
-        </el-submenu>
-      </el-menu>
+
+
     </el-header>
     <el-container class="content">
       <el-aside width="200px">

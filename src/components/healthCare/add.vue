@@ -74,7 +74,6 @@
           ] ,
           title: [
             { required: true, message: '请输入标题', trigger: 'blur' },
-            { min: 1, max: 20, message: '长度在 1 到 20 个字符', trigger: 'blur' }
           ],
           content: [
             { required: true, message: '请输入内容', trigger: 'blur' },

@@ -3,10 +3,10 @@
   <div style="margin-top: 15px;">
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" >
         <el-form-item label="姓名" prop="olderName" >
-            <el-input v-model="ruleForm.olderName"   placeholder="请输入姓名" style="width:200%"></el-input>
+            <el-input v-model="ruleForm.olderName"   placeholder="请输入姓名" style="width:100%"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="olderPassword" >
-            <el-input  type="password" :autosize="{ minRows: 5, maxRows: 10}" style="width:200%"  placeholder="请输入密码" v-model="ruleForm.olderPassword" ></el-input>
+            <el-input  type="password" :autosize="{ minRows: 5, maxRows: 10}" style="width:100%"  placeholder="请输入密码" v-model="ruleForm.olderPassword" ></el-input>
         </el-form-item>
         <el-form-item label="性别" prop="olderSex" >
           <el-radio-group v-model="ruleForm.olderSex">
@@ -15,16 +15,16 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="年龄" prop="olderAge" >
-          <el-input v-model="ruleForm.olderAge"   placeholder="请输入年龄" style="width:200%" type="number"></el-input>
+          <el-input v-model="ruleForm.olderAge"   placeholder="请输入年龄" style="width:100%" type="number"></el-input>
         </el-form-item>
         <el-form-item label="手机号" prop="olderPhone" >
-            <el-input v-model="ruleForm.olderPhone"   placeholder="请输入手机号" style="width:200%"></el-input>
+            <el-input v-model="ruleForm.olderPhone"   placeholder="请输入手机号" style="width:100%"></el-input>
         </el-form-item>
         <el-form-item label="身份证" prop="olderCard" >
-          <el-input v-model="ruleForm.olderCard"   placeholder="请输入身份证号" style="width:200%"></el-input>
+          <el-input v-model="ruleForm.olderCard"   placeholder="请输入身份证号" style="width:100%"></el-input>
         </el-form-item>
         <el-form-item label="地址" prop="olderAddress" >
-          <el-input v-model="ruleForm.olderAddress"   placeholder="请输入地址" style="width:200%"></el-input>
+          <el-input v-model="ruleForm.olderAddress"   placeholder="请输入地址" style="width:100%"></el-input>
         </el-form-item>
         <el-form-item label="健康状态" prop="olderState" >
           <el-radio-group v-model="ruleForm.olderState">
@@ -35,7 +35,7 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="备注" prop="remarks" >
-          <el-input v-model="ruleForm.remarks"   placeholder="请输入备注" style="width:200%"></el-input>
+          <el-input v-model="ruleForm.remarks"   placeholder="请输入备注" style="width:100%"></el-input>
         </el-form-item>
         <el-form-item label="选择图片" prop="olderPhotourl" >
           <input type="file" @change="upData($event)" ref="InputFile" name="files"  placeholder="请选择图片"/>

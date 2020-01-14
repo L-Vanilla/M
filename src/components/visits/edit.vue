@@ -24,7 +24,7 @@
         <el-input v-model="ruleForm.remarks"   placeholder="请输入..." style="width:200%"></el-input>
       </el-form-item>
       <el-form-item label="上传体检文件" prop="fileurl" >
-        <input type="file" @change="upData($event)" ref="InputFile" name="files"  placeholder="请选择文件"/>
+        <input type="file" @change="upData($event)" ref="InputFile" accept=".docx" name="files"  placeholder="请选择文件"/>
       </el-form-item>
       <el-form-item >
         <el-button type="primary" @click="submitForm('ruleForm')" >{{buttonText}}</el-button>

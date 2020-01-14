@@ -22,7 +22,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #3f2766;
+  background: #789c9d;
 }
 .form {
   display: -webkit-box;
@@ -100,7 +100,7 @@
   top: 0;
   height: 100%;
   width: 100%;
-  background: #4d317a;
+  background: #7c9996;
   z-index: -4;
   border-radius: 50%;
   -webkit-transition: all 1.5s ease 0.3s;
@@ -158,7 +158,7 @@ h1 {
   font-size: 40px;
   margin: 15px 0 20px 0;
   letter-spacing: 0.05em;
-  color: #714cab;
+  color: #8e8bab;
   font-weight: 700;
 }
 .styled-button {
@@ -230,7 +230,7 @@ h1 {
 .styled-button:hover,
 .styled-button:active {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  background: #7a51bb;
+  background: #afbbbb;
 }
 .styled-button:hover .face,
 .styled-button:active .face {
@@ -297,7 +297,7 @@ h1 {
   outline: none;
   background: none;
   padding: 18px 15px;
-  color: #ceafff;
+  color: #fbfff8;
   border: none;
   font-weight: 600;
   letter-spacing: 0.035em;

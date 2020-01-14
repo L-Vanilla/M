@@ -138,11 +138,22 @@
     color: black;
   }
   .el-pagination.is-background .el-pager li:not(.disabled).active {
-    background-color: #17B3A3;
+    background-color: #cbffe3;
     color: #FFF;
   }
   .el-table_1_column_2 td{
     text-align: right;
+  }
+  .el-table .cell {
+    text-align: center;
+  }
+  .el-table__header th, .el-table__header tr {
+    background-color: #8eb3ac;
+    color: black;
+  }
+  .el-pagination.is-background .el-pager li:not(.disabled).active {
+    background-color: #8eb3ac;
+    color: #FFF;
   }
   /*.left {  float: left;  width: 40%;   }*/
   /*.center { margin-left: 50%;  margin-right: 20%;  }*/

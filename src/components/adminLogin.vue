@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="form__content">
-        <h1>老人健康管理与跟踪系统后台登录</h1>
+        <h1 style="color: #d9eeff">老人健康管理与跟踪系统后台登录</h1>
         <div class="styled-input">
           <input type="text" class="styled-input__input" v-model="loginForm.name" placeholder="请输入账号" required></input>
           <!--<div class="styled-input__placeholder"> <span class="styled-input__placeholder-text">Username</span> </div>-->
@@ -22,8 +22,8 @@
           <!--<div class="styled-input__placeholder"> <span class="styled-input__placeholder-text">Password</span> </div>-->
           <!--<div class="styled-input__circle"></div>-->
         </div>
-        <button type="button" class="styled-button" @click="adminLogin()"> <span class="styled-button__real-text-holder"> <span class="styled-button__real-text">登录</span> <span class="styled-button__moving-block face"> <span class="styled-button__text-holder"> <span class="styled-button__text">登录</span> </span> </span><span class="styled-button__moving-block back"> <span class="styled-button__text-holder"> <span class="styled-button__text">登录</span> </span> </span> </span> </button>
-        <h5 style="color: #714cab;">开发人员：刘香草</h5>
+        <button type="button" class="styled-button" style="background-color: #8fb3b4;color: #d9eeff" @click="adminLogin()"> <span class="styled-button__real-text-holder"> <span class="styled-button__real-text">登录</span> <span class="styled-button__moving-block face"> <span class="styled-button__text-holder"> <span class="styled-button__text">登录</span> </span> </span><span class="styled-button__moving-block back"> <span class="styled-button__text-holder"> <span class="styled-button__text">登录</span> </span> </span> </span> </button>
+        <h5 style="color:#d9eeff;">开发人员：刘香草</h5>
       </div>
     </form>
   </div>

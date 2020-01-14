@@ -541,7 +541,7 @@
           /*高/低压统计*/
           let option4 = {
             title: {
-              text: '高低压浓度变化'
+              text: '高低压次数统计'
             },
             tooltip: {
               trigger: 'axis'

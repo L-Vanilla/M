@@ -29,7 +29,7 @@
       </div>
       <div style="padding: 80px 100px 0 100px">
         <div>
-          <el-card class="box-card" style="background-color: #dfdedd">
+          <el-card class="box-card" style="background-color: #c2dfd3;box-shadow:3px 3px 1px #88ceac inset;">
             <div slot="header" class="clearfix" >
               <el-row>
                 <el-col :span="3" style="float: left">
@@ -93,7 +93,7 @@
               </div>
               <div v-if="active===2">
                 <el-form-item label="地址" prop="olderAddress" >
-                  <el-input v-model="ruleForm.olderAddress"   placeholder="请输入地址" ></el-input>
+                  <el-input v-model="ruleForm.olderAddress" style="width: 70%;"  placeholder="请输入地址" ></el-input>
                 </el-form-item>
                 <el-form-item label="健康状态" prop="olderState" >
                   <el-radio-group v-model="ruleForm.olderState">
@@ -104,7 +104,7 @@
                   </el-radio-group>
                 </el-form-item>
                 <el-form-item label="备注" prop="remarks" >
-                  <el-input v-model="ruleForm.remarks"   placeholder="请输入备注" ></el-input>
+                  <el-input v-model="ruleForm.remarks" style="width: 70%;"  placeholder="请输入备注" ></el-input>
                 </el-form-item>
                 <el-form-item label="选择图片" prop="olderPhotourl" >
                   <input type="file" @change="upData($event)" ref="InputFile" name="files" placeholder="请选择头像"/>
@@ -241,6 +241,7 @@
       },
       submitForm(formName) {
         let url = "";
+        this.older.olderName=this.ruleForm.olderName;
         this.get("older/getAll",(data)=>{
             // this.admin.name=this.ruleForm.name;
             console.log("用户姓名"+this.ruleForm.name);
@@ -307,7 +308,7 @@
   }
   .lizi{
     width: 100%;
-    height:100%;
+    height:120%;
     display: flex;
     flex: 1;
     flex-direction:column;
