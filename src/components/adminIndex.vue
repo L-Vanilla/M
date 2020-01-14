@@ -6,7 +6,7 @@
         <el-col :span="1" style="float: left">
           <img src="../assets/hotel.png" style="text-align:center;width: 30px;height: 30px;float: left;margin-top: 10px"/>
         </el-col>
-        <el-col :span="18" style="float: left">
+        <el-col :span="19" style="float: left">
           <h1  class="title" style="color: #FFFFFF;float: left">老人社区健康服务与跟踪系统（系统后台）</h1>
         </el-col>
         <el-col :span="2">

@@ -24,7 +24,12 @@
         <el-input v-model="ruleForm.remarks"   placeholder="请输入..." style="width:200%"></el-input>
       </el-form-item>
       <el-form-item label="上传体检文件" prop="fileurl" >
-        <input type="file" @change="upData($event)" ref="InputFile" accept=".docx" name="files"  placeholder="请选择文件"/>
+        <div class="file-box">
+          <input type="file" class="file-btn" @change="upData($event)" ref="InputFile" accept=".docx" name="files" />
+          上传文件
+        </div>
+        <span>{{ruleForm.fileurl}}</span>
+<!--        <input type="file" @change="upData($event)" ref="InputFile" accept=".docx" name="files"  placeholder="请选择文件"/>-->
       </el-form-item>
       <el-form-item >
         <el-button type="primary" @click="submitForm('ruleForm')" >{{buttonText}}</el-button>
@@ -125,6 +130,28 @@
 
 </script>
 
-<style >
-
+<style scoped >
+  .file-box{
+    display: inline-block;
+    position: relative;
+    padding: 3px 5px;
+    height: 40px;
+    overflow: hidden;
+    color:#fff;
+    background-color:#5fb381;
+    border-radius: 10%;
+  }
+  .file-btn{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    outline: none;
+    background-color: #5fb381;
+    filter:alpha(opacity=0);
+    -moz-opacity:0;
+    -khtml-opacity: 0;
+    opacity: 0;
+  }
 </style>

@@ -14,7 +14,8 @@
     <el-table
       :data="tableData.list"
       border
-      style="width: 100%;">
+      style="width: 100%;"
+      :header-cell-style="{background:'#5fb381',color:'#606266'}">
       <el-table-column
         type="index"
         width="50">

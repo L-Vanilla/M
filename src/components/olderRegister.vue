@@ -106,8 +106,13 @@
                 <el-form-item label="备注" prop="remarks" >
                   <el-input v-model="ruleForm.remarks" style="width: 70%;"  placeholder="请输入备注" ></el-input>
                 </el-form-item>
-                <el-form-item label="选择图片" prop="olderPhotourl" >
-                  <input type="file" @change="upData($event)" ref="InputFile" name="files" placeholder="请选择头像"/>
+                <el-form-item label="选择头像" prop="olderPhotourl" >
+                  <div class="file-box">
+                    <input type="file" class="file-btn" @change="upData($event)" ref="InputFile" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" name="files" />
+                    上传头像
+                  </div>
+                  <span>{{ruleForm.olderPhotourl}}</span>
+<!--                  <input type="file" @change="upData($event)" ref="InputFile" name="files" placeholder="请选择头像"/>-->
                 </el-form-item>
                 <el-form-item label="图片" prop="olderPhotourl" >
                   <img :src="baseurl+ruleForm.olderPhotourl" alt=""style="width: 30%;height: 40%"/>
@@ -317,5 +322,28 @@
     /*background-image: url("../assets/img/register.jpg");*/
     /*background-repeat: no-repeat;*/
     /*background-size: 100%;*/
+  }
+  .file-box{
+    display: inline-block;
+    position: relative;
+    padding: 3px 5px;
+    height: 40px;
+    overflow: hidden;
+    color:#fff;
+    background-color:#5fb381;
+    border-radius: 10%;
+  }
+  .file-btn{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    outline: none;
+    background-color: #5fb381;
+    filter:alpha(opacity=0);
+    -moz-opacity:0;
+    -khtml-opacity: 0;
+    opacity: 0;
   }
 </style>

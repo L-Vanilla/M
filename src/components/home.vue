@@ -29,7 +29,7 @@
              <div v-if="isOlder!=='1'">
                <el-button type="text" @click="register()" style="color: black">注册</el-button>
                <el-divider direction="vertical"></el-divider>
-               <el-button type="text" @click="login()" style="color: black">登录</el-button>
+               <el-button type="text" @click="login()" style="color: black;">登录</el-button>
                <el-divider direction="vertical"></el-divider>
                <el-button type="text" @click="adminLogin()" style="color: black">系统后台</el-button>
              </div>

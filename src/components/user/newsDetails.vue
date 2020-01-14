@@ -35,7 +35,8 @@
       <el-table
         :data="tableData.list"
         style="width: 100%"
-        @row-click="rowClick">
+        @row-click="rowClick"
+        :show-header="false">
         <el-table-column
           label="站内新闻"
           width="480px"
@@ -154,5 +155,16 @@
     margin-right: 100px;
     margin-left: 100px;
     background-color: #FFFFFF;
+  }
+  .el-table .cell {
+    text-align: center;
+  }
+  .el-table__header th, .el-table__header tr {
+    background-color: #8eb3ac;
+    color: black;
+  }
+  .el-pagination.is-background .el-pager li:not(.disabled).active {
+    background-color: #8eb3ac;
+    color: #FFF;
   }
 </style>
